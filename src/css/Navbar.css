@@ -1,0 +1,20 @@
+.navbar-div {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  background: var(--main-white);
+}
+
+.text-div {
+  display: flex;
+  justify-content: flex-end;
+}
+.text {
+  padding-right: 0.5rem;
+  color: var(--main-orange);
+}
+
+.search-bar {
+  display: flex;
+  justify-content: flex-start;
+}
