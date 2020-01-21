@@ -1,9 +1,9 @@
 import React from "react";
 import { ReactMic } from "react-mic";
 import axios from "axios";
-// CSS
-import "./../css/main.css";
 
+// CSS
+import "./../../css/main.css";
 
 export default class Example extends React.Component {
   constructor(props) {
@@ -40,12 +40,12 @@ export default class Example extends React.Component {
         fileType: fileType
       })
       .then(response => {
-        var returnData = response.data.data.returnData;
-        var signedRequest = returnData.signedRequest;
+        const returnData = response.data.data.returnData;
+        const signedRequest = returnData.signedRequest;
         // var url = returnData.url;
-        console.log("Recieved a signed request " + signedRequest);
+        console.log("Received a signed request " + signedRequest);
         // Put the fileType in the headers for the upload
-        var options = {
+        const options = {
           headers: {
             "Content-Type": fileType
           }

@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import AppRouter from './routes/AppRouter.js';
+
+// CSS 
+import './index.css';
 
 // Redux 
 import { store } from './redux/store.js';

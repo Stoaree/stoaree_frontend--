@@ -1,10 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 // Components
-import SearchBar from './SearchBar.js';
+import SearchBar from './../SearchBar/SearchBar.js';
 
 // CSS
-import './../css/main.css';
+import './../../css/main.css';
 
 
 class Navbar extends React.Component {
