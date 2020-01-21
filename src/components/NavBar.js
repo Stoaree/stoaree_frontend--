@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { NavLink } from 'react-router-dom';
 // Components
 import SearchBar from './SearchBar.js';
 
@@ -15,9 +15,9 @@ class Navbar extends React.Component {
           <SearchBar />
         </div>
         <div className="text-div">
-          <h3 className="text"> Home </h3>
-          <h3 className="text"> Sign up </h3>
-          <h3 className="text"> Login </h3>
+          <NavLink to="/" className="text" exact={true}> Home </NavLink>
+          <NavLink to="/signup" className="text"> Sign up </NavLink>
+          <NavLink to="/login" className="text"> Login </NavLink>
         </div>
       </div>
     )

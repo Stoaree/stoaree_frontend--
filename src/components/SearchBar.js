@@ -7,8 +7,7 @@ class SearchBar extends React.Component {
         <div className="search-div">
           <div className="inside-search-bar">
             <h5> Search </h5>
-          </div>
-          
+          </div>    
         </div>
       </div>
     )
