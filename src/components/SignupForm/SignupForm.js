@@ -1,21 +1,21 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
-  function validate(values) {
-    let errors = {}
+function validate(values) {
+  let errors = {}
 
-    if (!values.displayName) {
-      errors.displayName = 'Required';
-    } else if (values.displayName.length < 2) {
-      errors.displayName = 'Must be above 2 characters'
-    };
+  if (!values.displayName) {
+    errors.displayName = 'Required';
+  } else if (values.displayName.length < 2) {
+    errors.displayName = 'Must be above 2 characters'
+  };
 
-    if (!values.email) {
-      errors.email = 'Required';
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-      errors.email = 'Invalid Email';
-    }
-  }
+  if (!values.email) {
+    errors.email = 'Required';
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = 'Invalid Email';
+  };
+}
 
 class ContactForm extends React.Component {
 
