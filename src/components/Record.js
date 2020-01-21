@@ -1,6 +1,8 @@
 import React from "react";
 import { ReactMic } from "react-mic";
 import axios from "axios";
+// CSS
+import './../css/main.css';
 
 export default class Example extends React.Component {
   constructor(props) {
@@ -60,20 +62,22 @@ export default class Example extends React.Component {
 
   render() {
     return (
-      <div>
+      <div class="recording">
+        <h1>Record your stoaree here</h1>
+        <h2>1. When did you ....</h2>
         <ReactMic
           record={this.state.record}
           className="sound-wave"
           onStop={this.onStop}
           onData={this.onData}
           strokeColor="#000000"
-          backgroundColor="#FF4081"
+          backgroundColor="#e2725b"
         />
         <button onClick={this.startRecording} type="button">
           Start
         </button>
         <button onClick={this.stopRecording} type="button">
-          Save
+          Next
         </button>
       </div>
     );
