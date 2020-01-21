@@ -1,0 +1,11 @@
+
+/* Components */
+@import url("./Navbar.css");
+@import url("./SearchBar.css");
+
+:root {
+  --main-orange: #EF6248;
+  --main-grey: #232323;
+  --main-green: #1F9397;
+  --main-white: white;
+}
