@@ -2,7 +2,8 @@ import React from "react";
 import { ReactMic } from "react-mic";
 import axios from "axios";
 // CSS
-import './../css/main.css';
+import "./../css/main.css";
+
 
 export default class Example extends React.Component {
   constructor(props) {
@@ -58,13 +59,15 @@ export default class Example extends React.Component {
       .catch(error => {
         console.error(error);
       });
+
+    
   }
 
   render() {
     return (
       <div class="recording">
         <h1>Record your stoaree here</h1>
-        <h2>1. When did you ....</h2>
+        <h2>Question 1: Who are you?</h2>
         <ReactMic
           record={this.state.record}
           className="sound-wave"
