@@ -42,7 +42,7 @@ export default class Example extends React.Component {
       .then(response => {
         var returnData = response.data.data.returnData;
         var signedRequest = returnData.signedRequest;
-        var url = returnData.url;
+        // var url = returnData.url;
         console.log("Recieved a signed request " + signedRequest);
         // Put the fileType in the headers for the upload
         var options = {
