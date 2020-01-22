@@ -21,9 +21,9 @@ function validate(values) {
   }
 };
 
-class ContactForm extends React.Component {
+class SignupForm extends React.Component {
 
-  renderField({ input, label, type, meta: {touched, error, warning }}) {
+  renderField({ input, label, type, meta: {touched, error }}) {
     return (
       <div>
         <label> {label} </label>
@@ -31,15 +31,14 @@ class ContactForm extends React.Component {
         <div>
           <input {...input} placeholder={label} type={type} />
           {
-            touched && 
-            ((error && <span> {error} </span>) || 
-            (warning && <span> {warning} </span>))
+            touched && ((error && <span> {error} </span>))
           }
         </div>
       </div>
 
     )
-  }
+  };
+  
   render() {
     return (
       <div>
@@ -69,6 +68,6 @@ class ContactForm extends React.Component {
   }
 }
 
-ContactForm = reduxForm({ form: 'contact', validate })(ContactForm);
+SignupForm = reduxForm({ form: 'signup', validate })(SignupForm);
 
-export default ContactForm;
+export default SignupForm;
