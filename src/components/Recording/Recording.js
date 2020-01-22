@@ -35,19 +35,19 @@ export default class Example extends React.Component {
     const fileType = recordedBlob.options.mimeType;
     console.log("Preparing the upload");
     axios
-      .post("https://polar-castle-01694.herokuapp.com/sign_s3", {
+      .post("http://localhost:3001/sign_s3", {
         fileName: fileName,
         fileType: fileType
       })
       .then(response => {
         const returnData = response.data.data.returnData;
-        const signedRequest = returnData.signedRequest;
+        const signedRequest = returnData.signedRequest;put
         // var url = returnData.url;
         console.log("Received a signed request " + signedRequest);
         // Put the fileType in the headers for the upload
         const options = {
           headers: {
-            "Content-Type": fileType
+            // "Content-Type": fileType
           }
         };
         return axios
