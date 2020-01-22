@@ -15,7 +15,11 @@ function validate(values) {
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
     errors.email = 'Invalid Email';
   };
-}
+
+  if (values.password !== values.confirmPassword) {
+    errors.email = 'Passwords don\'t match'
+  }
+};
 
 class ContactForm extends React.Component {
 
@@ -28,7 +32,7 @@ class ContactForm extends React.Component {
           <input {...input} placeholder={label} type={type} />
           {
             touched && 
-            ((error && <span> {error} </span>)|| 
+            ((error && <span> {error} </span>) || 
             (warning && <span> {warning} </span>))
           }
         </div>
@@ -40,6 +44,7 @@ class ContactForm extends React.Component {
     return (
       <div>
         <form onSubmit={this.props.handleSubmit}>
+        
           <div>
             <Field name="firstName" component={this.renderField} type="text" label="First Name" />
             <Field name="lastName" component={this.renderField} type="text" label="Last Name" />
