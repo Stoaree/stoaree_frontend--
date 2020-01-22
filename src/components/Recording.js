@@ -4,7 +4,6 @@ import axios from "axios";
 // CSS
 import "./../css/main.css";
 
-
 export default class Example extends React.Component {
   constructor(props) {
     super(props);
@@ -35,7 +34,7 @@ export default class Example extends React.Component {
     const fileType = recordedBlob.options.mimeType;
     console.log("Preparing the upload");
     axios
-      .post("http://localhost:3001/sign_s3", {
+      .post("https://polar-castle-01694.herokuapp.com/sign_s3", {
         fileName: fileName,
         fileType: fileType
       })
@@ -59,8 +58,6 @@ export default class Example extends React.Component {
       .catch(error => {
         console.error(error);
       });
-
-    
   }
 
   render() {
