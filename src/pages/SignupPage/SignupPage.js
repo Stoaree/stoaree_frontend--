@@ -1,12 +1,31 @@
 import React from 'react';
+import axios from 'axios';
+import Cookies from 'universal-cookie';
 
 // Component
 import SignupForm from '../../components/SignupForm/SignupForm.js';
 
+const cookies = new Cookies();
 class SignupPage extends React.Component {
 
   onSubmit = (values) => {
-    console.log(values.displayName);
+    axios.post("https://polar-castle-01694.herokuapp.com/signup", {
+      firstName: values.firstName,
+      lastName: values.lastName,
+      displayName: values.displayName,
+      email: values.email,
+      password: values.password
+    }).then(response => {
+      if (response.status === 200) {
+        axios.post("https://polar-castle-01694.herokuapp.com/login", {
+          email: values.email,
+          password: values.password
+        }).then(response => {
+          const token = response.data.token;
+          cookies.set(token, true, { path: "/" })
+        })
+      }
+    })
   };
 
   render() {
