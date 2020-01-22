@@ -3,19 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import axios from "axios";
 // import {loginPost} from './../../services/Login.js'
 
-
 class LoginForm extends React.Component {
-
-  loginPost = (email, password) => {
-    axios.post("http://localhost:3001/login", {
-      email: email,
-      password: password
-    }).then(response => {
-      console.log(response);
-    }).catch(error => {
-      console.error(error);
-    })
-  };
 
   renderField({ input, label, type, meta: {touched, error}}) {
     return (
