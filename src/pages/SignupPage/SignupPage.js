@@ -16,7 +16,6 @@ class SignupPage extends React.Component {
       email: values.email,
       password: values.password
     }).then(response => {
-      console.log(response)
       if (response.status === 200) {
         axios.post("http://localhost:3001/login", {
           email: values.email,
@@ -24,7 +23,6 @@ class SignupPage extends React.Component {
         }).then(response => {
           const token = response.data.token;
           cookies.set(token, true, { path: "/" })
-          console.log(cookies.get(token))
         })
       }
     })
