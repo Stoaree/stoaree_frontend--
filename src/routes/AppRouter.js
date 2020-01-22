@@ -3,13 +3,13 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './../css/main.css';
 
 // Pages
-import HomePage from './../pages/HomePage.js';
-import LoginPage from './../pages/LoginPage.js';
-import SignupPage from './../pages/SignupPage.js';
-import QuestionsPage from './../pages/QuestionsPage.js';
+import HomePage from './../pages/HomePage/HomePage.js';
+import LoginPage from './../pages/LoginPage/LoginPage.js';
+import SignupPage from './../pages/SignupPage/SignupPage.js';
+import QuestionsPage from './../pages/QuestionsPage/QuestionsPage.js';
 
 // Components 
-import NavBar from './../components/NavBar.js';
+import NavBar from './../components/Navbar/NavBar.js';
 
 const AppRouter = () => {
   return (

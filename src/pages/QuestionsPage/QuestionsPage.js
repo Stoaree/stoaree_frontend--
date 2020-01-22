@@ -1,5 +1,5 @@
 import React from 'react';
-import Recording from './../components/Recording.js';
+import Recording from './../../components/Recording/Recording.js';
 
 function QuestionsPage() {
   return (

@@ -1,7 +1,7 @@
 /* Components */
-@import url("./Navbar.css");
-@import url("./SearchBar.css");
-@import url("./Recording.css");
+@import url("./../components/Navbar/Navbar.css");
+@import url("./../components/SearchBar/SearchBar.css");
+@import url("./../components/Recording/Recording.css");
 
 
 :root {
