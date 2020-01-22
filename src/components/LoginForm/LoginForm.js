@@ -1,7 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import axios from "axios";
-// import {loginPost} from './../../services/Login.js'
 
 class LoginForm extends React.Component {
 
