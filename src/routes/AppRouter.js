@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { getStories } from './../services/getStory.js';
+
+// CSS
 import './../css/main.css';
 
 // Pages
@@ -14,11 +16,14 @@ import SearchPage from './../pages/SearchPage/SearchPage.js'
 import NavBar from './../components/Navbar/NavBar.js';
 
 class AppRouter extends React.Component {
+
+  // Handles state for search
   state = {
     stories: null,
     filteredStories: null
   };
 
+  // Handles search results
   componentDidMount() {
     getStories().then((response) => {
       const stories = response.map((story) => {
@@ -29,6 +34,7 @@ class AppRouter extends React.Component {
     })
   };
 
+  // Handles when the user searches 
   handleSearch = (e) => {
     // setState
     // quick fix
@@ -44,7 +50,7 @@ class AppRouter extends React.Component {
         <div>
           <NavBar stories={this.state.filteredStories} handleSearch={this.handleSearch} />
           <Switch>
-            <Route path="/search" render={() => {
+            <Route path="/search" render= {() => {
               return <SearchPage stories={this.state.filteredStories} />
             }} />
             <Route path="/question" component={QuestionsPage} />

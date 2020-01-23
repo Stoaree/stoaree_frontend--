@@ -18,7 +18,7 @@ class StoryCard extends React.Component {
         </div>
         <div className={styles.storyContent}>
           <div className={styles.profileImageDiv}>
-            <img className={styles.profileImage} />
+            <img className={styles.profileImage} alt="profileImage" />
           </div>
           <div className={styles.storyTitle}>
             <h4 className={styles.storyTitle}>{this.props.story.title}</h4>
