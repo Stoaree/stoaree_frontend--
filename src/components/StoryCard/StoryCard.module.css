@@ -1,0 +1,30 @@
+.storyCard {
+  border: var(--main-grey) 1px solid;
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+.storyContent {
+  display: flex;
+  flex-direction: row;
+}
+
+.storyTitle {
+  color: red;
+  margin-top: 0;
+  margin-left: 0.5rem;
+}
+
+.descriptionText {
+  color: var(--main-green);
+  margin-top: 0;
+  margin-left: 3rem;
+}
+
+.profileImage {
+  border: tomato 1px solid;
+  border-radius: 50%;
+  padding: 1rem;
+}
+
+
