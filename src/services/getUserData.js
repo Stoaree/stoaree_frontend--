@@ -1,8 +1,10 @@
 import axios from 'axios';
 
-export const getUserData = () => {
-  return axios.get("http://localhost:3001/users/5e2669da480c6704e31f39bc").then((response) => {
+export const getUserData = (id) => {
+  return axios.get(`http://localhost:3001/users/${id}`).then((response) => {
     return response;
+  }).catch((err) => {
+    console.log(err);
   })
 };
 

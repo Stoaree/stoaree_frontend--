@@ -10,7 +10,7 @@ class ProfilePage extends React.Component {
   }
 
   componentDidMount() {
-    getUserData().then((response) => {
+    getUserData(this.props.match.params.id).then((response) => {
       const stories = response.data.stories.map((story) => {
         return story
       })
