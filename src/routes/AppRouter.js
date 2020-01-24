@@ -37,7 +37,7 @@ class AppRouter extends React.Component {
   // Handles when the user searches
   handleSearch = e => {
     // setState
-    // quick fix
+
     this.setState({
       filteredStories: this.state.stories.filter(story =>
         story.title.includes(e.target.value)
@@ -55,14 +55,10 @@ class AppRouter extends React.Component {
             handleSearch={this.handleSearch}
           />
           <Switch>
-            <Route
-              path="/search"
-              render={() => {
-                return <SearchPage stories={this.state.filteredStories} />;
-              }}
-            />
-
-            <Route path="/story/:id" component={StoryPage} />
+            <Route path="/search" render= {() => {
+              return <SearchPage stories={this.state.filteredStories} />
+            }} />
+            <Route path="/profile/:id" component={ProfilePage} />
             <Route path="/question" component={QuestionsPage} />
             <Route path="/signup" component={SignupPage} />
             <Route path="/login" component={LoginPage} />
