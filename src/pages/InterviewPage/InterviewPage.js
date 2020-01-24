@@ -3,19 +3,18 @@ import axios from "axios";
 import Question from "../../components/Question/Question";
 import { connect } from "react-redux";
 
-import { answerYes, setAllQuestions } from "../../redux/storyReducer";
-import { getQuestionFromId } from "./functions";
+import { setAllQuestions, nextQuestion } from "../../redux/storyReducer";
 
 function mapStateToProps(state) {
   return {
-    allQuestions: state.allQuestions,
-    currentQuestion: state.currentQuestion,
-    currentQuestionSubset: state.currentQuestionSubset
+    allQuestions: state.storyReducer.allQuestions,
+    currentQuestion: state.storyReducer.currentQuestion,
+    currentQuestionSubset: state.storyReducer.currentQuestionSubset
   };
 }
 
 const mapDispatchToProps = {
-  answerYes, setAllQuestions
+  setAllQuestions, nextQuestion
 }
 
 class InterviewPage extends React.Component {
@@ -23,30 +22,10 @@ class InterviewPage extends React.Component {
     axios.get("http://localhost:3001/questions/admin/").then(response => this.props.setAllQuestions(response.data));
   }
 
-  getSubQuestions = () => {
-    const { currentQuestion } = this.state;
-    return currentQuestion.subQuestions;
-  }
-
-  answerYes = () => {
-    const subQuestions = this.getSubQuestions();
-    // this.setState({ currentQuestionSubset: subQuestions });
-    // this.setState({ currentQuestion: this.getQuestionFromId(subQuestions[0]) })
-    this.props.answerYes(subQuestions);
-  }
-
-  nextQuestion = () => {
-    const { currentQuestion, currentQuestionSubset } = this.props;
-    const nextIndex = currentQuestionSubset.indexOf(currentQuestion._id) + 1;
-    const nextQuestion = getQuestionFromId(currentQuestionSubset[nextIndex])
-    console.log(nextQuestion)
-    this.setState({ currentQuestion: nextQuestion });
-  }
-
   renderCurrentQuestion = () => {
     const { allQuestions, currentQuestion } = this.props;
     if (currentQuestion) {
-      return <Question question={currentQuestion} allQuestions={allQuestions} getSubQuestions={this.answerYes} nextQuestion={this.nextQuestion} />
+      return <Question question={currentQuestion} allQuestions={allQuestions} nextQuestion={this.nextQuestion} />
     }
   }
 
