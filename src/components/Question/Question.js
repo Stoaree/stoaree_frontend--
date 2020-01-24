@@ -1,26 +1,20 @@
 import React from "react";
 
 class Question extends React.Component {
-  renderSubQuestions = () => {
-    const { subQuestions } = this.props.question;
-    if (subQuestions) {
-    }
-  }
-
   renderQuestionType = () => {
     const { isYesOrNo } = this.props.question;
     if (isYesOrNo) {
       return (
         <div>
-          <button>Yes</button>
-          <button>No</button>
+          <button onClick={this.props.getSubQuestions}>Yes</button>
+          <button onClick={this.props.nextQuestion}>No</button>
         </div>
       )
     }
     else {
       return (
         <div>
-          <button>Next</button>
+          <button onClick={this.props.nextQuestion}>Next</button>
         </div>
       )
     }

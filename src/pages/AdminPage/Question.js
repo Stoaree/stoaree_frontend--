@@ -2,10 +2,11 @@ import React from "react";
 
 class Question extends React.Component {
   renderSubQuestions = () => {
-    const { subQuestions } = this.props.question;
-    if (subQuestions) {
-      return subQuestions.map(question => {
-        return <Question key={question._id} question={question} />
+    const { question, questions } = this.props;
+    if (question.subQuestions) {
+      return question.subQuestions.map(subQuestionId => {
+        const questionObj = questions.find(foundQuestion => foundQuestion._id === subQuestionId);
+        return <Question key={questionObj._id} question={questionObj} questions={questions} />
       });
     }
   }
