@@ -17,10 +17,11 @@ class SearchPage extends React.Component {
       <div>
         <h1> Search Page! </h1>
         {this.renderStories()}
-        <Link to={"/stories/" + props.stories._id}>show</Link>
       </div>
     );
   }
 }
 
 export default SearchPage;
+
+
