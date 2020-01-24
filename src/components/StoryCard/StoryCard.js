@@ -17,7 +17,7 @@ class StoryCard extends React.Component {
             <img className="profileImage" alt="profileImage" />
           </div>
           <div className="storyTitle">
-            <h4 className="storyTitle">{this.props.story.title}</h4>
+            <Link className="storyTitle" to={"/stories/" + this.props.story._id}>{this.props.story.title}</Link> 
           </div>
         </div>
         <div className="storyDescription">
@@ -30,6 +30,3 @@ class StoryCard extends React.Component {
 
 export default StoryCard;
 
-{
-  /* <Link to={"/stories/" + props.stories._id}>{this.props.story.title}</Link> */
-}

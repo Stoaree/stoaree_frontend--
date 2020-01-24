@@ -11,7 +11,7 @@ import LoginPage from "./../pages/LoginPage/LoginPage.js";
 import SignupPage from "./../pages/SignupPage/SignupPage.js";
 import QuestionsPage from "./../pages/QuestionsPage/QuestionsPage.js";
 import SearchPage from "./../pages/SearchPage/SearchPage.js";
-import StoryPage from "../pages/StoryCard/StoryPage.js";
+import StoryPage from "../pages/StoryPage/StoryPage.js";
 import ProfilePage from "../pages/ProfilePage/ProfilePage.js";
 
 // Components
@@ -59,6 +59,7 @@ class AppRouter extends React.Component {
             <Route path="/search" render= {() => {
               return <SearchPage stories={this.state.filteredStories} />
             }} />
+            <Route path="/stories/:id" component={StoryPage} />
             <Route path="/profile/:id" component={ProfilePage} />
             <Route path="/question" component={QuestionsPage} />
             <Route path="/signup" component={SignupPage} />
