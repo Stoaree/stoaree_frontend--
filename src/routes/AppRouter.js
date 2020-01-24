@@ -12,6 +12,7 @@ import SignupPage from "./../pages/SignupPage/SignupPage.js";
 import QuestionsPage from "./../pages/QuestionsPage/QuestionsPage.js";
 import SearchPage from "./../pages/SearchPage/SearchPage.js";
 import StoryPage from "../pages/StoryCard/StoryPage.js";
+import ProfilePage from "../pages/ProfilePage/ProfilePage.js";
 
 // Components
 import NavBar from "./../components/Navbar/NavBar.js";
