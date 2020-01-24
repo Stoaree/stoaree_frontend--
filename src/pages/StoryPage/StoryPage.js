@@ -1,12 +1,10 @@
 import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Cookies from "universal-cookie";
-import StoryCard from "../../components/StoryCard/StoryCard.js";
 
-// 5e2669e5480c6704e31f39bd
 
 class StoryPage extends React.Component {
+  
   state = {
     story: null
   };
@@ -22,7 +20,7 @@ class StoryPage extends React.Component {
 
   render() {
     const { story } = this.state;
-    console.log(story);
+
     return story ? (
       <dl>
         {" "}
