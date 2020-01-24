@@ -7,7 +7,7 @@ export const getStory = () => {
 };
 
 export const getStories = () => {
-  return axios.get("https://polar-castle-01694.herokuapp.com/stories").then((response) => {
+  return axios.get("http://localhost:3001/stories").then((response) => {
     return response.data;
   })
 };
