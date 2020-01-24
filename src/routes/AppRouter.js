@@ -10,7 +10,8 @@ import HomePage from './../pages/HomePage/HomePage.js';
 import LoginPage from './../pages/LoginPage/LoginPage.js';
 import SignupPage from './../pages/SignupPage/SignupPage.js';
 import QuestionsPage from './../pages/QuestionsPage/QuestionsPage.js';
-import SearchPage from './../pages/SearchPage/SearchPage.js'
+import SearchPage from './../pages/SearchPage/SearchPage.js';
+import ProfilePage from './../pages/ProfilePage/ProfilePage.js';
 
 // Components 
 import NavBar from './../components/Navbar/NavBar.js';
@@ -37,7 +38,7 @@ class AppRouter extends React.Component {
   // Handles when the user searches 
   handleSearch = (e) => {
     // setState
-    // quick fix
+
     this.setState({
       filteredStories: this.state.stories.filter((story) => story.title.includes(e.target.value))
     })
@@ -53,6 +54,7 @@ class AppRouter extends React.Component {
             <Route path="/search" render= {() => {
               return <SearchPage stories={this.state.filteredStories} />
             }} />
+            <Route path="/profile/:id" component={ProfilePage} />
             <Route path="/question" component={QuestionsPage} />
             <Route path="/signup" component={SignupPage} />
             <Route path="/login" component={LoginPage} />
