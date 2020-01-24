@@ -23,7 +23,8 @@ class UserDataDisplay extends React.Component {
           <ul>
             <li>{this.props.userData.firstName} {this.props.userData.lastName}</li>
             <li>{this.props.userData.displayName}</li>
-            <li>{this.props.userData.password}</li>
+            <li>{this.props.userData.location}</li>
+            {console.log(this.props.userData)}
 
             <h3> Stories </h3>
             {this.handleStories()}
