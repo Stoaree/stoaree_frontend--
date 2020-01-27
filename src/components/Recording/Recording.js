@@ -1,11 +1,24 @@
 import React from "react";
 import { ReactMic } from "react-mic";
 import axios from "axios";
+import { connect } from "react-redux";
+import { setCurrentStory } from "../../redux/storyReducer";
 
 // CSS
 import "./../../css/main.css";
 
-export default class Example extends React.Component {
+function mapStateToProps(state) {
+  const { currentStory } = state.storyReducer;
+  return {
+    currentStory
+  };
+}
+
+const mapDispatchToProps = {
+  setCurrentStory
+}
+
+class Recording extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -54,7 +67,13 @@ export default class Example extends React.Component {
           .put(signedRequest, recordedBlob.blob, options)
           .then(result => {
             console.log("Response from s3");
-            console.log(result)
+
+            // save question in story
+            // axios.post(`http://localhost:3001/questions/`, {
+            //   story_id: this.props.currentStory._id,
+            //   question: currentQuestion,
+            //   audioFileURL: returnData.url
+            // });
           });
       })
       .catch(error => {
@@ -83,3 +102,5 @@ export default class Example extends React.Component {
     );
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Recording);
