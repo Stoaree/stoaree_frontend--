@@ -1,22 +1,9 @@
 import React from "react";
 import { ReactMic } from "react-mic";
 import axios from "axios";
-import { connect } from "react-redux";
-import { setCurrentStory } from "../../redux/storyReducer";
 
 // CSS
 import "./../../css/main.css";
-
-function mapStateToProps(state) {
-  const { currentStory } = state.storyReducer;
-  return {
-    currentStory
-  };
-}
-
-const mapDispatchToProps = {
-  setCurrentStory
-}
 
 class Recording extends React.Component {
   constructor(props) {
@@ -70,7 +57,7 @@ class Recording extends React.Component {
 
             // save question in story
             // axios.post(`http://localhost:3001/questions/`, {
-            //   story_id: this.props.currentStory._id,
+            //   story_id,
             //   question: currentQuestion,
             //   audioFileURL: returnData.url
             // });
@@ -103,4 +90,4 @@ class Recording extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Recording);
+export default Recording;
