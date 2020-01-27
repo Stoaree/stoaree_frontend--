@@ -61,6 +61,10 @@ class Question extends React.Component {
           nextQuestionSubset = this.getTopLevelQuestions();
           nextIndex = nextQuestionSubset.indexOf(parentQuestion._id) + 1;
           nextQuestion = this.getQuestionFromId(nextQuestionSubset[nextIndex]);
+          if (!nextQuestion) {
+            nextQuestion = "finished";
+            break;
+          }
         }
         // else, try to get the next question in the parent subset of questions
         else {
