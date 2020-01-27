@@ -19,7 +19,7 @@ const mapDispatchToProps = {
 
 class InterviewPage extends React.Component {
   componentDidMount() {
-    axios.get("http://localhost:3001/questions/admin/").then(response => this.props.setAllQuestions(response.data));
+    axios.get("http://localhost:3001/questions/all").then(response => this.props.setAllQuestions(response.data));
   }
 
   renderCurrentQuestion = () => {

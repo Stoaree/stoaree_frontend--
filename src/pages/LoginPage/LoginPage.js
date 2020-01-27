@@ -14,9 +14,8 @@ class LoginPage extends React.Component {
       password: values.password
     }).then(response => {
       const token = response.data.token;
-      cookies.set(token, true, {path: "/"})
+      cookies.set(token, true, { path: "/" })
       console.log(cookies.get(token))
-
 
     }).catch(error => {
       console.error(error);
