@@ -14,7 +14,7 @@ import SearchPage from "./../pages/SearchPage/SearchPage.js";
 import StoryPage from "../pages/StoryPage/StoryPage.js";
 import ProfilePage from "../pages/ProfilePage/ProfilePage.js";
 import AdminPage from '../pages/AdminPage/AdminPage';
-import InterviewPage from '../pages/InterviewPage/InterviewPage';
+import RecordPage from '../pages/RecordPage/RecordPage';
 
 // Components
 import NavBar from "./../components/Navbar/NavBar.js";
@@ -61,7 +61,7 @@ class AppRouter extends React.Component {
             <Route path="/search" render={() => {
               return <SearchPage stories={this.state.filteredStories} />
             }} />
-            <Route path="/record" component={InterviewPage} />
+            <Route path="/record" component={RecordPage} />
             <Route path="/admin" component={AdminPage} />
             <Route path="/stories/:id" component={StoryPage} />
             <Route path="/profile/:id" component={ProfilePage} />
