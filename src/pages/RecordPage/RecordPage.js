@@ -17,7 +17,7 @@ const mapDispatchToProps = {
   setAllQuestions, nextQuestion
 }
 
-class InterviewPage extends React.Component {
+class RecordPage extends React.Component {
   componentDidMount() {
     axios.get("http://localhost:3001/questions/all").then(response => this.props.setAllQuestions(response.data));
   }
@@ -48,4 +48,4 @@ class InterviewPage extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(InterviewPage);
+export default connect(mapStateToProps, mapDispatchToProps)(RecordPage);
