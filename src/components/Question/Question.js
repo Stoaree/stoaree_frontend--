@@ -31,8 +31,9 @@ class Question extends React.Component {
   }
 
   goBackToParent = (childQuestionId) => {
-    const { allQuestions } = this.props;
-    return allQuestions.find(question => question.subQuestions.includes(childQuestionId));
+    return this.props.allQuestions.find(question => {
+      return question.subQuestions.includes(childQuestionId);
+    });
   }
 
   nextQuestion = () => {
@@ -42,26 +43,30 @@ class Question extends React.Component {
     let nextIndex = currentQuestionSubset.indexOf(currentQuestion._id) + 1;
     let nextQuestion = this.getQuestionFromId(currentQuestionSubset[nextIndex]);
 
+    // get the parent of the current subset of questions (if it exists)
+    let parentQuestion = this.goBackToParent(currentQuestion._id);
+
+    // current subset contains no more questions
     while (!nextQuestion) {
+      // if on the top level of questions, that's all, folks!
       if (currentQuestion.isTopLevel) {
         console.log("oops! no more questions")
         break;
       }
       else {
-        const parentQuestion = this.goBackToParent(currentQuestion._id);
-
+        // if the parent is a top level question, try to get the next top level question
         if (parentQuestion.isTopLevel) {
-          const topLevelQuestions = this.getTopLevelQuestions();
-
-          nextIndex = topLevelQuestions.indexOf(parentQuestion._id) + 1;
-          nextQuestion = topLevelQuestions[nextIndex];
-          nextQuestionSubset = topLevelQuestions;
+          nextQuestionSubset = this.getTopLevelQuestions();
+          nextIndex = nextQuestionSubset.indexOf(parentQuestion._id) + 1;
+          nextQuestion = this.getQuestionFromId(nextQuestionSubset[nextIndex]);
         }
+        // else, try to get the next question in the parent subset of questions
         else {
-          const parentSubset = this.goBackToParent(parentQuestion._id).subQuestions;
-          nextIndex = parentSubset.indexOf(parentQuestion._id) + 1;
-          nextQuestion = this.getQuestionFromId(parentSubset[nextIndex]);
-          nextQuestionSubset = parentSubset;
+          let parentOfParent = this.goBackToParent(parentQuestion._id);
+          nextQuestionSubset = parentOfParent.subQuestions;
+          nextIndex = nextQuestionSubset.indexOf(parentQuestion._id) + 1;
+          nextQuestion = this.getQuestionFromId(nextQuestionSubset[nextIndex]);
+          parentQuestion = parentOfParent;
         }
       }
     }
