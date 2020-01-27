@@ -1,13 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import Recording from "../Recording/Recording";
 import { enterSubQuestions, nextQuestion } from "../../redux/storyReducer";
 
 function mapStateToProps(state) {
+  const { allQuestions, currentQuestion, currentQuestionSubset } = state.storyReducer;
   return {
-    allQuestions: state.storyReducer.allQuestions,
-    currentQuestion: state.storyReducer.currentQuestion,
-    currentQuestionSubset: state.storyReducer.currentQuestionSubset
+    allQuestions,
+    currentQuestion,
+    currentQuestionSubset
   };
 }
 
@@ -50,7 +52,7 @@ class Question extends React.Component {
     while (!nextQuestion) {
       // if on the top level of questions, that's all, folks!
       if (currentQuestion.isTopLevel) {
-        console.log("oops! no more questions")
+        nextQuestion = "finished";
         break;
       }
       else {
@@ -87,6 +89,7 @@ class Question extends React.Component {
     else {
       return (
         <div>
+          <Recording />
           <button onClick={this.nextQuestion}>Next</button>
         </div>
       )
@@ -97,7 +100,7 @@ class Question extends React.Component {
     const { title } = this.props.question;
 
     return (
-      <div style={{ marginLeft: 50 }}>
+      <div>
         <h2>{title}</h2>
         {this.renderQuestionType()}
       </div>

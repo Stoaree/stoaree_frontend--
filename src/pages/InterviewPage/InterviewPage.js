@@ -25,7 +25,17 @@ class InterviewPage extends React.Component {
   renderCurrentQuestion = () => {
     const { allQuestions, currentQuestion } = this.props;
     if (currentQuestion) {
-      return <Question question={currentQuestion} allQuestions={allQuestions} nextQuestion={this.nextQuestion} />
+      if (currentQuestion === "finished") {
+        return (
+          <div>
+            <h2>No more questions!</h2>
+            <button>Finish Story</button>
+          </div>
+        )
+      }
+      else {
+        return <Question question={currentQuestion} allQuestions={allQuestions} nextQuestion={this.nextQuestion} />
+      }
     }
   }
 

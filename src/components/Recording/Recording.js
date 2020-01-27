@@ -54,6 +54,7 @@ export default class Example extends React.Component {
           .put(signedRequest, recordedBlob.blob, options)
           .then(result => {
             console.log("Response from s3");
+            console.log(result)
           });
       })
       .catch(error => {
@@ -63,9 +64,7 @@ export default class Example extends React.Component {
 
   render() {
     return (
-      <div class="recording">
-        <h1>Record your stoaree here</h1>
-        <h2>Question 1: Who are you?</h2>
+      <div className="recording">
         <ReactMic
           record={this.state.record}
           className="sound-wave"
@@ -78,7 +77,7 @@ export default class Example extends React.Component {
           Start
         </button>
         <button onClick={this.stopRecording} type="button">
-          Next
+          Stop
         </button>
       </div>
     );
