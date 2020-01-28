@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 // CSS 
 import './StoryCard.css';
 
+// Components
+import ProfileImage from './../ProfileImage/ProfileImage.js';
+
 class StoryCard extends React.Component {
   render() {
     return (
@@ -14,7 +17,7 @@ class StoryCard extends React.Component {
         </div>
         <div className="storyContent">
           <div className="profileImageDiv">
-            <img className="profileImage" alt="profileImage" />
+            <ProfileImage />
           </div>
           <div className="storyTitle">
             <Link className="storyTitle" to={"/stories/" + this.props.story._id}>{this.props.story.title}</Link> 

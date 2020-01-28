@@ -2,6 +2,10 @@ import React from 'react';
 import UserDataDisplay from './../../components/UserDataDisplay/UserDataDisplay.js';
 import { getUserData } from './../../services/getUserData.js';
 
+// Components
+import ProfileImage from './../../components/ProfileImage/ProfileImage.js';
+import ImageUpload from './../../services/imageUpload.js';
+
 class ProfilePage extends React.Component {
 
   state = {
@@ -22,7 +26,13 @@ class ProfilePage extends React.Component {
     console.log(this.state.stories)
     return (
       <div>
-        <h1> Profile Page </h1> 
+        <h1> Profile Page </h1>
+        <div> 
+          <ProfileImage />
+          <ImageUpload  userId={this.props.match.params.id}/>
+          <button> Add/Change Image </button>
+        </div>
+
         <UserDataDisplay userData={this.state.userData} stories={this.state.stories} />
       </div>
     )

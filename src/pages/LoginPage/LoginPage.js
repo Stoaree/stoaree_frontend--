@@ -9,7 +9,7 @@ const cookies = new Cookies();
 class LoginPage extends React.Component {
 
   onSubmit = (values) => {
-    axios.post("https://polar-castle-01694.herokuapp.com/login", {
+    axios.post("http://localhost:3001/login", {
       email: values.email,
       password: values.password
     }).then(response => {

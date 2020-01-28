@@ -1,6 +1,6 @@
 import React from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
+
+// Components
 import StoryShow from "./../../components/StoryShow/StoryShow";
 import Comment from "./../../components/Comment/Comment";
 

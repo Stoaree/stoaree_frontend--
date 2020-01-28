@@ -18,6 +18,7 @@ class Navbar extends React.Component {
           <NavLink to="/" className="text" exact={true}> Home </NavLink>
           <NavLink to="/signup" className="text"> Sign up </NavLink>
           <NavLink to="/login" className="text"> Login </NavLink>
+          <NavLink to="/record" className="text"> Record </NavLink>
         </div>
       </div>
     )
