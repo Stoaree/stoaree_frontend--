@@ -24,16 +24,17 @@ class CreateStoryPage extends React.Component {
   }
 
   onSubmit = (values) => {
-    axiosAPI.post("/stories", { ...values }).then(response => {
-      console.log(response);
-      if (response.status === 200) {
-        this.setState({ recording: true });
-        this.props.setCurrentStory(response.data._id);
-      }
-    }).catch(error => {
-      console.error(error);
-    })
-  };
+    console.log(values);
+    // axiosAPI.post("/stories", { ...values }).then(response => {
+    //   console.log(response);
+    //   if (response.status === 200) {
+    //     this.setState({ recording: true });
+    //     this.props.setCurrentStory(response.data._id);
+    //   }
+    // }).catch(error => {
+    //   console.error(error);
+    // })
+  }
 
   renderFormOrQuestions = () => {
     if (this.state.recording) {
