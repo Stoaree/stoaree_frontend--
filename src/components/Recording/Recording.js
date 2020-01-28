@@ -5,7 +5,7 @@ import axios from "axios";
 // CSS
 import "./../../css/main.css";
 
-export default class Example extends React.Component {
+class Recording extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -54,6 +54,13 @@ export default class Example extends React.Component {
           .put(signedRequest, recordedBlob.blob, options)
           .then(result => {
             console.log("Response from s3");
+
+            // save question in story
+            // axios.post(`http://localhost:3001/questions/`, {
+            //   story_id,
+            //   question: currentQuestion,
+            //   audioFileURL: returnData.url
+            // });
           });
       })
       .catch(error => {
@@ -63,9 +70,7 @@ export default class Example extends React.Component {
 
   render() {
     return (
-      <div class="recording">
-        <h1>Record your stoaree here</h1>
-        <h2>Question 1: Who are you?</h2>
+      <div className="recording">
         <ReactMic
           record={this.state.record}
           className="sound-wave"
@@ -78,9 +83,11 @@ export default class Example extends React.Component {
           Start
         </button>
         <button onClick={this.stopRecording} type="button">
-          Next
+          Stop
         </button>
       </div>
     );
   }
 }
+
+export default Recording;
