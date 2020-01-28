@@ -93,7 +93,7 @@ class Question extends React.Component {
     else {
       return (
         <div>
-          <Recording question={this.props.currentQuestion} />
+          <Recording />
           <button onClick={this.nextQuestion}>Next</button>
         </div>
       )

@@ -1,15 +1,16 @@
 import React from "react";
-import axios from "axios";
+import axiosAPI from "../../api/stoareeAPI";
 import Question from "../../components/Question/Question";
 import { connect } from "react-redux";
 
 import { setAllQuestions, nextQuestion, setCurrentStory } from "../../redux/storyReducer";
 
 function mapStateToProps(state) {
-  const { currentQuestion, currentQuestionSubset } = state.storyReducer;
+  const { currentQuestion, currentQuestionSubset, currentStory } = state.storyReducer;
   return {
     currentQuestion,
-    currentQuestionSubset
+    currentQuestionSubset,
+    currentStory
   };
 }
 
@@ -19,12 +20,11 @@ const mapDispatchToProps = {
 
 class RecordPage extends React.Component {
   componentDidMount() {
-    this.props.setCurrentStory(this.props.match.params.id);
-    axios.get("http://localhost:3001/questions/all").then(response => this.props.setAllQuestions(response.data));
+    axiosAPI.get("/questions/all").then(response => this.props.setAllQuestions(response.data));
   }
 
   renderCurrentQuestion = () => {
-    const { currentQuestion } = this.props;
+    const { currentQuestion, currentStory } = this.props;
     if (currentQuestion) {
       if (currentQuestion === "finished") {
         return (
@@ -35,7 +35,7 @@ class RecordPage extends React.Component {
         )
       }
       else {
-        return <Question question={currentQuestion} story={this.props.match.params.id} />
+        return <Question question={currentQuestion} story={currentStory} />
       }
     }
   }

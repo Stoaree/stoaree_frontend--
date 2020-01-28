@@ -1,15 +1,17 @@
 import React from "react";
 import { ReactMic } from "react-mic";
 import axios from "axios";
+import axiosAPI from "../../api/stoareeAPI";
 import { connect } from "react-redux";
 
 // CSS
 import "./../../css/main.css";
 
 function mapStateToProps(state) {
-  const { currentStory } = state.storyReducer;
+  const { currentStory, currentQuestion } = state.storyReducer;
   return {
-    currentStory
+    currentStory,
+    currentQuestion
   };
 }
 
@@ -33,7 +35,7 @@ class Recording extends React.Component {
     console.log("chunk of real-time data is: ", recordedBlob);
   }
 
-  onStop(recordedBlob) {
+  onStop = (recordedBlob) => {
     console.log("recordedBlob is: ", recordedBlob);
 
     // const file = this.uploadInput.files[0];
@@ -42,7 +44,7 @@ class Recording extends React.Component {
     const fileName = Math.random().toString() + ".webm";
     const fileType = recordedBlob.options.mimeType;
     console.log("Preparing the upload");
-    axios
+    axiosAPI
       .post("https://polar-castle-01694.herokuapp.com/sign_s3", {
         fileName: fileName,
         fileType: fileType
@@ -58,17 +60,19 @@ class Recording extends React.Component {
             "Content-Type": fileType
           }
         };
+        console.log(signedRequest);
+        console.log(options);
+
         return axios
           .put(signedRequest, recordedBlob.blob, options)
           .then(result => {
             console.log("Response from s3");
 
             // save question in story
-            // axios.post(`http://localhost:3001/questions/`, {
-            //   story_id,
-            //   question: currentQuestion,
-            //   audioFileURL: returnData.url
-            // });
+            axiosAPI.post(`/questions/${this.props.currentStory}`, {
+              question: this.props.currentQuestion,
+              audioFileURL: returnData.url
+            }).then(response => console.log(response));
           });
       })
       .catch(error => {
