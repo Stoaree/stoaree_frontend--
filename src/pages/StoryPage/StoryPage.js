@@ -1,37 +1,47 @@
 import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
+import StoryShow from "./../../components/StoryShow/StoryShow";
+import Comment from "./../../components/Comment/Comment";
 
 class StoryPage extends React.Component {
-  
   state = {
-    story: null
+    story: null,
+    comments: null
   };
 
   async componentDidMount() {
-    const response = await axios.get(
-      `http://localhost:3001/stories/${this.props.match.params.id}`
-    );
-    this.setState({
-      story: response.data
+    const foundStory = this.props.stories.find(story => {
+      return story._id === this.props.match.params.id;
     });
+
+    this.setState({
+      story: foundStory,
+      comments: foundStory.comments
+    });
+  }
+
+  renderComments() {
+    return this.state.comments.map(comment => <Comment {...comment} />);
   }
 
   render() {
     const { story } = this.state;
+    const { comments } = this.state;
+    console.log(story);
+    console.log(comments);
 
-    return story ? (
-      <dl>
-        {" "}
-        <h1>Story:</h1> <dt>Title:{story.title}</dt>
-        <dt>Description:{story.description}</dt>
-        <dt>Tags:{story.tags}</dt>
-        <dt>
-          <Link to={"/"}>Home</Link>
-        </dt>
-      </dl>
-    ) : null;
+    if ((story, comments)) {
+      return (
+        <div>
+          {" "}
+          <StoryShow story={story} />
+          {this.renderComments()}
+        </div>
+      );
+    } else {
+      return null;
+    }
   }
 }
 
