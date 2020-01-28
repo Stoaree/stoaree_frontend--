@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {updateUserData} from './getUserData.js';
 
 class ImageUpload extends Component {
   constructor(props) {
@@ -28,6 +29,7 @@ class ImageUpload extends Component {
       const signedRequest = returnData.signedRequest;
       const url = returnData.url;
       this.setState({url: url})
+      console.log(this.state)
       
       console.log('Received a signed request ' + signedRequest);
 
@@ -36,19 +38,17 @@ class ImageUpload extends Component {
           'Content-Type': fileType
         }
       };
-
       
-      
-
       axios.put(signedRequest, file, options).then(result => {
         console.log("Response from s3")
-        this.setState({success: true});
+        this.setState({success: true, url: url});    
       }).catch(error => {
         alert("Error " + JSON.stringify(error));
       })
     }).catch(error => {
       alert(JSON.stringify(error));
     })
+    updateUserData(this.props.userId, this.state.url)
   }
 
   render() {
