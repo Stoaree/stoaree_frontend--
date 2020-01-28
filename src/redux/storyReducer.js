@@ -1,6 +1,7 @@
 const initialState = {
+  currentStory: "",
   allQuestions: [],
-  currentQuestion: null,
+  currentQuestion: "",
   currentQuestionSubset: []
 };
 
@@ -25,6 +26,10 @@ function nextQuestion(nextQuestion, nextQuestionSubset) {
   return { type: "NEXT_QUESTION", nextQuestion, nextQuestionSubset };
 }
 
+function setCurrentStory(storyId) {
+  return { type: "SET_CURRENT_STORY", storyId };
+}
+
 export function storyReducer(state = initialState, action) {
   let newState = { ...state };
 
@@ -42,10 +47,13 @@ export function storyReducer(state = initialState, action) {
       newState.currentQuestion = action.nextQuestion;
       newState.currentQuestionSubset = action.nextQuestionSubset;
       break;
+    case "SET_CURRENT_STORY":
+      newState.currentStory = action.storyId;
+      break;
     default:
       break;
   }
   return newState;
 }
 
-export { setAllQuestions, enterSubQuestions, nextQuestion };
+export { setAllQuestions, enterSubQuestions, nextQuestion, setCurrentStory };

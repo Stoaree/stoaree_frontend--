@@ -3,27 +3,28 @@ import axios from "axios";
 import Question from "../../components/Question/Question";
 import { connect } from "react-redux";
 
-import { setAllQuestions, nextQuestion } from "../../redux/storyReducer";
+import { setAllQuestions, nextQuestion, setCurrentStory } from "../../redux/storyReducer";
 
 function mapStateToProps(state) {
+  const { currentQuestion, currentQuestionSubset } = state.storyReducer;
   return {
-    allQuestions: state.storyReducer.allQuestions,
-    currentQuestion: state.storyReducer.currentQuestion,
-    currentQuestionSubset: state.storyReducer.currentQuestionSubset
+    currentQuestion,
+    currentQuestionSubset
   };
 }
 
 const mapDispatchToProps = {
-  setAllQuestions, nextQuestion
+  setAllQuestions, nextQuestion, setCurrentStory
 }
 
 class RecordPage extends React.Component {
   componentDidMount() {
+    this.props.setCurrentStory(this.props.match.params.id);
     axios.get("http://localhost:3001/questions/all").then(response => this.props.setAllQuestions(response.data));
   }
 
   renderCurrentQuestion = () => {
-    const { allQuestions, currentQuestion } = this.props;
+    const { currentQuestion } = this.props;
     if (currentQuestion) {
       if (currentQuestion === "finished") {
         return (
@@ -34,7 +35,7 @@ class RecordPage extends React.Component {
         )
       }
       else {
-        return <Question question={currentQuestion} allQuestions={allQuestions} nextQuestion={this.nextQuestion} />
+        return <Question question={currentQuestion} story={this.props.match.params.id} />
       }
     }
   }

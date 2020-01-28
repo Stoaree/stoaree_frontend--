@@ -9,14 +9,15 @@ const cookies = new Cookies();
 class LoginPage extends React.Component {
 
   onSubmit = (values) => {
-    axios.post("https://polar-castle-01694.herokuapp.com/login", {
+    axios.post("http://localhost:3001/login", {
       email: values.email,
       password: values.password
     }).then(response => {
+      console.log(response)
       const token = response.data.token;
       cookies.set(token, true, { path: "/" })
+      axios.defaults.headers.common['Authorization'] = token;
       console.log(cookies.get(token))
-
     }).catch(error => {
       console.error(error);
     })

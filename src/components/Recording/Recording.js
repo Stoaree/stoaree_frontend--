@@ -1,9 +1,17 @@
 import React from "react";
 import { ReactMic } from "react-mic";
 import axios from "axios";
+import { connect } from "react-redux";
 
 // CSS
 import "./../../css/main.css";
+
+function mapStateToProps(state) {
+  const { currentStory } = state.storyReducer;
+  return {
+    currentStory
+  };
+}
 
 class Recording extends React.Component {
   constructor(props) {
@@ -90,4 +98,4 @@ class Recording extends React.Component {
   }
 }
 
-export default Recording;
+export default connect(mapStateToProps)(Recording);
