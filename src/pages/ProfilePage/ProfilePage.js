@@ -23,6 +23,7 @@ class ProfilePage extends React.Component {
   };
 
   render () {
+    console.log(this.state.stories)
     return (
       <div>
         <h1> Profile Page </h1>
