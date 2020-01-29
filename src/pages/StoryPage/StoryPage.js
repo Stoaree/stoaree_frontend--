@@ -17,7 +17,7 @@ class StoryPage extends React.Component {
 
     this.setState({
       story: foundStory,
-      comments: foundStory.comments
+      comments: foundStory.comments,
     });
   }
 
@@ -28,8 +28,6 @@ class StoryPage extends React.Component {
   render() {
     const { story } = this.state;
     const { comments } = this.state;
-    console.log(story);
-    console.log(comments);
 
     if ((story, comments)) {
       return (

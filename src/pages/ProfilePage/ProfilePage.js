@@ -10,30 +10,33 @@ class ProfilePage extends React.Component {
 
   state = {
     userData: '',
-    stories: []
+    stories: [],
+    avatarURL: ''
   }
 
   componentDidMount() {
+    
     getUserData(this.props.match.params.id).then((response) => {
       const stories = response.data.stories.map((story) => {
         return story
       })
-      this.setState({ userData: response.data, stories: stories });
-    }) 
+      this.setState({ userData: response.data, stories: stories, avatarURL: response.data.avatarURL });
+    }).catch((err) => {
+      console.log(err);
+    })
   };
-
+  
   render () {
-    console.log(this.state.stories)
     return (
+
       <div>
-        <h1> Profile Page </h1>
+        <h1> {this.state.userData.displayName} </h1>
         <div> 
-          <ProfileImage />
-          <ImageUpload  userId={this.props.match.params.id}/>
-          <button> Add/Change Image </button>
+          <ProfileImage avatarURL={this.state.avatarURL}/>
+          <ImageUpload  userId={this.state.userData._id} />
         </div>
 
-        <UserDataDisplay userData={this.state.userData} stories={this.state.stories} />
+        <UserDataDisplay userData={this.state.userData} stories={this.state.stories} avatarURL={this.state.avatarURL} />    
       </div>
     )
   }

@@ -4,17 +4,22 @@ import '../StoryCard/StoryCard.css';
 
 class UserDataDisplay extends React.Component {
 
+  state = {
+    avatarURL: ''
+  }
+
+  avatarURL = this.props.avatarURL;
+
   handleStories = (props) => {
     const stories = this.props.stories;
-
     return stories.map((story) => {
       return (
         <div key={story._id}>
-          <StoryCard story={story}/>
+          <StoryCard story={story} userId={story.interviewer} />
         </div>
       )
     })
-  }
+  };
 
   render() {
     return (
@@ -27,7 +32,6 @@ class UserDataDisplay extends React.Component {
 
             <h3> Stories </h3>
             {this.handleStories()}
-            
           </ul>
         </div>
       </div>
