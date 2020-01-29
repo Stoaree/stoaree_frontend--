@@ -8,5 +8,17 @@ export const getUserData = (id) => {
   })
 };
 
+export const updateUserData = (id, url) => {
 
+  const fullToken = document.cookie;
+  const token = fullToken.split("=");
+  token.pop();
 
+  return axios.put(`http://localhost:3001/users/avatar_update/${id}`, {
+    avatarURL: url
+  }, ({ headers: { Authorization: token[0] } })).then(function (response) {
+    console.log(response);
+  }).catch(function (error) {
+    console.error(error);
+  })
+};

@@ -20,6 +20,19 @@ function validate(values) {
 }
 
 class StoryForm extends React.Component {
+  adaptFileEventToValue = delegate =>
+    e => delegate(e.target.files[0])
+
+  fileInput = ({ input: { value: omitValue, onChange, onBlur }, meta: omitMeta }) => {
+    return (
+      <input
+        onChange={this.adaptFileEventToValue(onChange)}
+        onBlur={this.adaptFileEventToValue(onBlur)}
+        type="file"
+      />
+    )
+  }
+
   renderField({ input, label, placeholder, type, meta: { touched, error } }) {
     return (
       <div>
@@ -60,7 +73,6 @@ class StoryForm extends React.Component {
         ))}
       </ul>
     </div>
-
   )
 
   render() {
@@ -70,17 +82,17 @@ class StoryForm extends React.Component {
 
           <div>
             <Field name="title" component={this.renderField} type="text" label="Title" />
-            {/* <Field name="description" component={this.renderField} type="text" label="Description" /> */}
-            <label>Description</label> <div><Field name="description" component="textarea" placeholder="Description" /></div>
+            <label>Description</label>
+            <div><Field name="description" component="textarea" placeholder="Description" /></div>
             <Field name="interviewee" component={this.renderField} type="email" label="Interviewee" placeholder="User's account email" />
-            {/* <Field name="tags" component={this.renderField} type="text" label="Tags" placeholder="Tags (separate by commas)" /> */}
             <FieldArray name="tags" component={this.renderTags} />
             <Field name="public" component={this.renderField} type="checkbox" label="Make public?" />
-            <Field name="image" component={this.renderField} type="file" label="Header image" />
+            <label>Header image</label>
+            <div><Field name="image" component={this.fileInput} type="file" label="Header image" value={null} /></div>
           </div>
 
           <div>
-            Once you save, you will be redirected to the questions so you can start recording.
+            Once you save, you will be redirected to the questions so you can start recording.<br />
             <button type="submit"> Save Story </button>
           </div>
         </form>
