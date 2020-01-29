@@ -19,6 +19,8 @@ class StoryCard extends React.Component {
   user = getUserData(this.props.user._id).then((response) => {
     const avatarURL = response.data.avatarURL;
     return this.setState({ avatarURL: avatarURL })
+  }).catch((err) => {
+    console.log(err);
   });
 
   render() {

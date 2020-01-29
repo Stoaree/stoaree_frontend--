@@ -13,13 +13,13 @@ class ProfileImage extends React.Component {
     if (this.props.avatarURL === undefined) {
       return (
         <div>
-          <img src={defaultImage} alt="DefaultImage" />
+          <img src={defaultImage} alt="DefaultImage" className="profile-image"/>
         </div>
       )
     } else {
       return (
         <div>
-          <img src={this.props.avatarURL} alt="profileImage" /> 
+          <img src={this.props.avatarURL} alt="profileImage" className="profile-image"/> 
         </div>
       )
     }

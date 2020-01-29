@@ -5,7 +5,7 @@ class SearchPage extends React.Component {
 
   
   renderStories = () => {
-    return this.props.stories.map(story => {
+    return this.props.stories.map((story)=> {
 
       return (
         <div key={story._id}>
