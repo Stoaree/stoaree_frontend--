@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axiosAPI from "../api/stoareeAPI"
 
 export const getUserData = (id) => {
-  return axios.get(`http://localhost:3001/users/${id}`).then((response) => {
+  return axiosAPI.get(`/users/${id}`).then((response) => {
     return response;
   }).catch((err) => {
     console.log(err);
@@ -17,6 +17,4 @@ export const updateUserData = (id, url) => {
     console.error(error);
   })
 };
-
-
 
