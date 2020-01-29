@@ -1,5 +1,6 @@
 import React from "react";
 import { Field, FieldArray, reduxForm } from "redux-form";
+import FormFileInput from "../FormFileInput/FormFileInput"
 
 function validate(values) {
   let errors = {};
@@ -20,19 +21,6 @@ function validate(values) {
 }
 
 class StoryForm extends React.Component {
-  adaptFileEventToValue = delegate =>
-    e => delegate(e.target.files[0])
-
-  fileInput = ({ input: { value: omitValue, onChange, onBlur }, meta: omitMeta }) => {
-    return (
-      <input
-        onChange={this.adaptFileEventToValue(onChange)}
-        onBlur={this.adaptFileEventToValue(onBlur)}
-        type="file"
-      />
-    )
-  }
-
   renderField({ input, label, placeholder, type, meta: { touched, error } }) {
     return (
       <div>
@@ -88,7 +76,7 @@ class StoryForm extends React.Component {
             <FieldArray name="tags" component={this.renderTags} />
             <Field name="public" component={this.renderField} type="checkbox" label="Make public?" />
             <label>Header image</label>
-            <div><Field name="image" component={this.fileInput} type="file" label="Header image" value={null} /></div>
+            <div><Field name="image" component={FormFileInput} /></div>
           </div>
 
           <div>

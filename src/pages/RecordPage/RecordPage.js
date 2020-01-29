@@ -1,6 +1,7 @@
 import React from "react";
 import axiosAPI from "../../api/stoareeAPI";
 import Question from "../../components/Question/Question";
+import LinkButton from "../../components/LinkButton/LinkButton"
 import { connect } from "react-redux";
 
 import { setAllQuestions, nextQuestion, setCurrentStory } from "../../redux/storyReducer";
@@ -30,7 +31,7 @@ class RecordPage extends React.Component {
         return (
           <div>
             <h2>No more questions!</h2>
-            <button>Finish Story</button>
+            <LinkButton to={`/stories/${currentStory}`}>Finish Story</LinkButton>
           </div>
         )
       }

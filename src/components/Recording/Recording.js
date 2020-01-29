@@ -19,7 +19,8 @@ class Recording extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      record: false
+      record: false,
+      uploadComplete: false
     };
   }
 
@@ -72,7 +73,9 @@ class Recording extends React.Component {
             axiosAPI.post(`/questions/${this.props.currentStory}`, {
               question: this.props.currentQuestion,
               audioFileURL: returnData.url
-            }).then(response => console.log(response));
+            }).then(response => {
+              this.setState({ uploadComplete: true });
+            });
           });
       })
       .catch(error => {
@@ -97,6 +100,7 @@ class Recording extends React.Component {
         <button onClick={this.stopRecording} type="button">
           Stop
         </button>
+        {this.state.uploadComplete && "Audio uploaded successfully"}
       </div>
     );
   }

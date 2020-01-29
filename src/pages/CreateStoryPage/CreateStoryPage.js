@@ -25,22 +25,17 @@ class CreateStoryPage extends React.Component {
   }
 
   onSubmit = (values) => {
-    console.log(values);
     console.log('Preparing the upload');
 
     axios.post("http://localhost:3001/sign_s3", {
-      fileName: values.image.name,
+      fileName: Math.random().toString() + "/" + values.image.name,
       fileType: values.image.type
     }).then(response => {
       const returnData = response.data.data.returnData;
       const signedRequest = returnData.signedRequest;
       const url = returnData.url;
-      console.log(url);
 
       console.log('Received a signed request ' + signedRequest);
-
-      // The below function calls axios put and updates the database
-      // updateUserData(this.props.userId, this.state.url)
 
       const options = {
         headers: {
@@ -52,18 +47,15 @@ class CreateStoryPage extends React.Component {
         console.log("Response from s3");
 
         axiosAPI.post("/stories", { ...values, imageURL: url }).then(response => {
-          console.log(response);
           if (response.status === 200) {
             this.setState({ recording: true });
             this.props.setCurrentStory(response.data._id);
           }
         });
-      }).catch(error => {
-        alert("Error " + JSON.stringify(error));
-      })
+      });
     }).catch(error => {
       alert(JSON.stringify(error));
-    })
+    });
   }
 
   renderFormOrQuestions = () => {
@@ -80,7 +72,7 @@ class CreateStoryPage extends React.Component {
       <div>
         <h3>Create New Story</h3>
         {this.renderFormOrQuestions()}
-      </div >
+      </div>
     );
   }
 }
