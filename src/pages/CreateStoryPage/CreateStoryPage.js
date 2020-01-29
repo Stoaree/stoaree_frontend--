@@ -28,38 +28,47 @@ class CreateStoryPage extends React.Component {
   //   console.log(values);
   // }
 
-  onSubmit = (values) => {
-    console.log('Preparing the upload');
-
-    axios.post("http://localhost:3001/sign_s3", {
-      fileName: Math.random().toString() + "/" + values.image.name,
-      fileType: values.image.type
-    }).then(response => {
-      const returnData = response.data.data.returnData;
-      const signedRequest = returnData.signedRequest;
-      const url = returnData.url;
-
-      console.log('Received a signed request ' + signedRequest);
-
-      const options = {
-        headers: {
-          'Content-Type': values.image.type
-        }
-      };
-
-      axios.put(signedRequest, values.image, options).then(result => {
-        console.log("Response from s3");
-
-        axiosAPI.post("/stories", { ...values, imageURL: url }).then(response => {
-          if (response.status === 200) {
-            this.setState({ recording: true });
-            this.props.setCurrentStory(response.data._id);
-          }
-        });
-      });
-    }).catch(error => {
-      alert(JSON.stringify(error));
+  postStory = (values, url = "") => {
+    axiosAPI.post("/stories", { ...values, imageURL: url }).then(response => {
+      if (response.status === 200) {
+        this.setState({ recording: true });
+        this.props.setCurrentStory(response.data._id);
+      }
     });
+  }
+
+  onSubmit = (values) => {
+    if (values.image) {
+      console.log('Preparing the upload');
+
+      axios.post("http://localhost:3001/sign_s3", {
+        fileName: Math.random().toString() + "/" + values.image.name,
+        fileType: values.image.type
+      }).then(response => {
+        const returnData = response.data.data.returnData;
+        const signedRequest = returnData.signedRequest;
+        const url = returnData.url;
+
+        console.log('Received a signed request ' + signedRequest);
+
+        const options = {
+          headers: {
+            'Content-Type': values.image.type
+          }
+        };
+
+        axios.put(signedRequest, values.image, options).then(result => {
+          console.log("Response from s3");
+
+          this.postStory(values, url);
+        });
+      }).catch(error => {
+        alert(JSON.stringify(error));
+      });
+    }
+    else {
+      this.postStory(values);
+    }
   }
 
   renderFormOrQuestions = () => {
