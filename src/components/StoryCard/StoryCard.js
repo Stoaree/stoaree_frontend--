@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-// CSS 
+// CSS
 import './StoryCard.css';
 
 class StoryCard extends React.Component {
@@ -14,10 +14,10 @@ class StoryCard extends React.Component {
         </div>
         <div className="storyContent">
           <div className="profileImageDiv">
-            <img className="profileImage" alt="profileImage" />
+            <img className="profileImage" alt="profileImage" src={this.props.story.imageURL} />
           </div>
           <div className="storyTitle">
-            <Link className="storyTitle" to={"/stories/" + this.props.story._id}>{this.props.story.title}</Link> 
+            <Link className="storyTitle" to={"/stories/" + this.props.story._id}>{this.props.story.title}</Link>
           </div>
         </div>
         <div className="storyDescription">
@@ -29,4 +29,3 @@ class StoryCard extends React.Component {
 }
 
 export default StoryCard;
-

@@ -4,6 +4,8 @@ import FormFileInput from "../FormFileInput/FormFileInput"
 
 function validate(values) {
   let errors = {};
+  const FILE_SIZE_LIMIT = 200; // in kb
+  const FILE_TYPES = ["image/jpg", "image/jpeg", "image/png"];
 
   if (!values.title) {
     errors.title = 'Required';
@@ -17,6 +19,15 @@ function validate(values) {
     errors.age = 'Required';
   }
 
+  if (values.image) {
+    if (values.image.size > (FILE_SIZE_LIMIT * 1024)) {
+      errors.image = `Must be smaller than ${FILE_SIZE_LIMIT} KB`;
+    }
+
+    if (!FILE_TYPES.includes(values.image.type)) {
+      errors.image = "File type be .jpg, .jpeg or .png"
+    }
+  }
   return errors;
 }
 

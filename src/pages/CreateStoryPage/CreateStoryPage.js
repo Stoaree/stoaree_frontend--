@@ -24,6 +24,10 @@ class CreateStoryPage extends React.Component {
     recording: false
   }
 
+  // onSubmit = (values) => {
+  //   console.log(values);
+  // }
+
   onSubmit = (values) => {
     console.log('Preparing the upload');
 

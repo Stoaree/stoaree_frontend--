@@ -5,14 +5,18 @@ class FormFileInput extends React.Component {
     e => delegate(e.target.files[0])
 
   render() {
-    const { input: { onChange, onBlur } } = this.props;
+    const { input: { onChange, onBlur }, meta: { touched, error } } = this.props;
 
     return (
-      <input
-        onChange={this.adaptFileEventToValue(onChange)}
-        onBlur={this.adaptFileEventToValue(onBlur)}
-        type="file"
-      />
+      <div>
+        <input
+          onChange={this.adaptFileEventToValue(onChange)}
+          onBlur={this.adaptFileEventToValue(onBlur)}
+          type="file"
+        />
+        {touched && error && <span> {error} </span>}
+      </div>
+
     );
   }
 }
