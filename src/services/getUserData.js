@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 export const getUserData = (id) => {
-  // console.log(id);
   return axios.get(`http://localhost:3001/users/${id}`).then((response) => {
     return response;
   }).catch((err) => {

@@ -16,12 +16,15 @@ class StoryCard extends React.Component {
     avatarURL: ''
   }
 
-  user = getUserData(this.props.user._id).then((response) => {
-    const avatarURL = response.data.avatarURL;
-    return this.setState({ avatarURL: avatarURL })
-  }).catch((err) => {
-    console.log(err);
-  });
+  componentDidMount = () => {
+
+    getUserData(this.props.userId).then((response) => {
+      const avatarURL = response.data.avatarURL;
+      return this.setState({ avatarURL: avatarURL })
+      }).catch((err) => {
+        console.log(err);
+    })
+  };
 
   render() {
     return (
@@ -33,6 +36,7 @@ class StoryCard extends React.Component {
         <div className="storyContent">
           <div className="profileImageDiv">
             <ProfileImage avatarURL={this.state.avatarURL} />
+          
           </div>
           <div className="storyTitle">
             <Link className="storyTitle" to={"/stories/" + this.props.story._id}>{this.props.story.title}</Link> 

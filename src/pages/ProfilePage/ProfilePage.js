@@ -4,7 +4,6 @@ import { getUserData } from './../../services/getUserData.js';
 
 // Components
 import ProfileImage from './../../components/ProfileImage/ProfileImage.js';
-import StoryCard from './../../components/StoryCard/StoryCard';
 import ImageUpload from './../../services/imageUpload.js';
 
 class ProfilePage extends React.Component {
@@ -22,7 +21,6 @@ class ProfilePage extends React.Component {
         return story
       })
       this.setState({ userData: response.data, stories: stories, avatarURL: response.data.avatarURL });
-      console.log(this.state)
     }).catch((err) => {
       console.log(err);
     })
