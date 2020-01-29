@@ -58,6 +58,18 @@ class AppRouter extends React.Component {
             handleSearch={this.handleSearch}
           />
           <Switch>
+            <Route
+              path="/search"
+              render={() => {
+                return <SearchPage stories={this.state.filteredStories} />;
+              }}
+            />
+            <Route
+              path="/stories/:id"
+              render={props => {
+                return <StoryPage stories={stories} match={props.match} />;
+              }}
+            />
             <Route path="/search" render={() => {
               return <SearchPage stories={this.state.filteredStories} />
             }} />
