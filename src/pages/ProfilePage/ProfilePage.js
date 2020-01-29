@@ -18,18 +18,21 @@ class ProfilePage extends React.Component {
       const stories = response.data.stories.map((story) => {
         return story
       })
+      
       this.setState({ userData: response.data, stories: stories });
     }) 
   };
 
   render () {
-    console.log(this.state.stories)
+    const {userData} = this.state;
+
     return (
+
       <div>
         <h1> Profile Page </h1>
         <div> 
-          <ProfileImage />
-          <ImageUpload  userId={this.props.match.params.id}/>
+          <ProfileImage userData={userData} />
+          <ImageUpload  userId={this.props.match.params.id} />
           <button> Add/Change Image </button>
         </div>
 

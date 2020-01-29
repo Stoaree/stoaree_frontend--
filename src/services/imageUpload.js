@@ -12,6 +12,11 @@ class ImageUpload extends Component {
   }
   
   handleChange = (ev) => {
+    this.setState({success: false, url : ""});
+  }
+
+  handleUpload = (ev) => {
+
     let file = this.uploadInput.files[0];
     // Split the filename to get the name and type
 
@@ -29,10 +34,12 @@ class ImageUpload extends Component {
       const signedRequest = returnData.signedRequest;
       const url = returnData.url;
       this.setState({url: url})
-      console.log(this.state)
-      
-      console.log('Received a signed request ' + signedRequest);
 
+      console.log('Received a signed request ' + signedRequest);
+      
+      // The below function calls axios put and updates the database
+      updateUserData(this.props.userId, this.state.url)
+      
       const options = {
         headers: {
           'Content-Type': fileType
@@ -48,7 +55,6 @@ class ImageUpload extends Component {
     }).catch(error => {
       alert(JSON.stringify(error));
     })
-    updateUserData(this.props.userId, this.state.url)
   }
 
   render() {
