@@ -1,6 +1,24 @@
 import React from "react";
 import { Field, FieldArray, reduxForm } from "redux-form";
 
+function validate(values) {
+  let errors = {};
+
+  if (!values.title) {
+    errors.title = 'Required';
+  }
+
+  if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.interviewee)) {
+    errors.email = 'Invalid email address'
+  }
+
+  if (!values.age) {
+    errors.age = 'Required';
+  }
+
+  return errors;
+}
+
 class StoryForm extends React.Component {
   renderField({ input, label, placeholder, type, meta: { touched, error } }) {
     return (
@@ -52,7 +70,8 @@ class StoryForm extends React.Component {
 
           <div>
             <Field name="title" component={this.renderField} type="text" label="Title" />
-            <Field name="description" component={this.renderField} type="text" label="Description" />
+            {/* <Field name="description" component={this.renderField} type="text" label="Description" /> */}
+            <label>Description</label> <div><Field name="description" component="textarea" placeholder="Description" /></div>
             <Field name="interviewee" component={this.renderField} type="email" label="Interviewee" placeholder="User's account email" />
             {/* <Field name="tags" component={this.renderField} type="text" label="Tags" placeholder="Tags (separate by commas)" /> */}
             <FieldArray name="tags" component={this.renderTags} />
@@ -61,7 +80,7 @@ class StoryForm extends React.Component {
           </div>
 
           <div>
-            Once you save, you will be redirected to the recording page.
+            Once you save, you will be redirected to the questions so you can start recording.
             <button type="submit"> Save Story </button>
           </div>
         </form>
@@ -70,6 +89,6 @@ class StoryForm extends React.Component {
   }
 }
 
-StoryForm = reduxForm({ form: "story" })(StoryForm);
+StoryForm = reduxForm({ form: "story", validate })(StoryForm);
 
 export default StoryForm;
