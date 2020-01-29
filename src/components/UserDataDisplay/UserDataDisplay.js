@@ -10,7 +10,7 @@ class UserDataDisplay extends React.Component {
     return stories.map((story) => {
       return (
         <div key={story._id}>
-          <StoryCard story={story}/>
+          <StoryCard story={story} user={story.interviewer}/>
         </div>
       )
     })
@@ -27,7 +27,6 @@ class UserDataDisplay extends React.Component {
 
             <h3> Stories </h3>
             {this.handleStories()}
-            
           </ul>
         </div>
       </div>

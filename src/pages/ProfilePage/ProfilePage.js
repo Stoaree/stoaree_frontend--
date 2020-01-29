@@ -18,7 +18,6 @@ class ProfilePage extends React.Component {
       const stories = response.data.stories.map((story) => {
         return story
       })
-      
       this.setState({ userData: response.data, stories: stories });
     }) 
   };

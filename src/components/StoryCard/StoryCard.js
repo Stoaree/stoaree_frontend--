@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+// Axios get
+import {getUserData} from './../../services/getUserData.js';
+
 // CSS 
 import './StoryCard.css';
 
@@ -8,6 +11,16 @@ import './StoryCard.css';
 import ProfileImage from './../ProfileImage/ProfileImage.js';
 
 class StoryCard extends React.Component {
+    
+  state = {
+    avatarURL: ''
+  }
+
+  user = getUserData(this.props.user._id).then((response) => {
+    const avatarURL = response.data.avatarURL;
+    return this.setState({ avatarURL: avatarURL })
+  });
+
   render() {
     return (
       <div className="storyCard">
@@ -17,7 +30,7 @@ class StoryCard extends React.Component {
         </div>
         <div className="storyContent">
           <div className="profileImageDiv">
-            <ProfileImage />
+            <ProfileImage avatarURL={this.state.avatarURL} />
           </div>
           <div className="storyTitle">
             <Link className="storyTitle" to={"/stories/" + this.props.story._id}>{this.props.story.title}</Link> 
