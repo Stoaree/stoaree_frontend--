@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 // Axios get
 import {getUserData} from './../../services/getUserData.js';
 
@@ -35,11 +36,10 @@ class StoryCard extends React.Component {
         </div>
         <div className="storyContent">
           <div className="profileImageDiv">
-            <ProfileImage avatarURL={this.state.avatarURL} />
-          
+            <ProfileImage avatarURL={this.state.avatarURL} />     
           </div>
           <div className="storyTitle">
-            <Link className="storyTitle" to={"/stories/" + this.props.story._id}>{this.props.story.title}</Link> 
+            <Link className="storyTitle" to={"/stories/" + this.props.story._id}>{this.props.story.title}</Link>
           </div>
         </div>
         <div className="storyDescription">
@@ -51,4 +51,3 @@ class StoryCard extends React.Component {
 }
 
 export default StoryCard;
-
