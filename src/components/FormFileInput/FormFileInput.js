@@ -16,7 +16,6 @@ class FormFileInput extends React.Component {
         />
         {touched && error && <span> {error} </span>}
       </div>
-
     );
   }
 }

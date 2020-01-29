@@ -25,7 +25,7 @@ function validate(values) {
     }
 
     if (!FILE_TYPES.includes(values.image.type)) {
-      errors.image = "File type be .jpg, .jpeg or .png"
+      errors.image = "File type must be .jpg, .jpeg or .png"
     }
   }
   return errors;
