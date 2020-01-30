@@ -30,7 +30,7 @@ class StoryCard extends React.Component {
           <p className="descriptionText">{story.description}</p>
         </div>
         <div className="story-tags">
-          <StoryTags tags={this.props.story.tags} />
+          <StoryTags tags={this.props.story.tags} stories={this.props.story} />
         </div>
       </div>
     );
