@@ -3,13 +3,12 @@ import React from 'react';
 class StoryTags extends React.Component {
 
   handleTags() {
-    const tags = this.props.tags;
-    const stories = this.props.stories._id;
-    const uniqueKey = tags + stories;
 
-    return (tags.map((tag) => {
+    const tags = this.props.tags;
+  
+    return (tags.map((tag, index) => {
       return (
-        <div key={uniqueKey}>
+        <div key={`${index}_${this.props.stories}`}>
           <p> {tag} </p>
         </div>
       )
