@@ -35,7 +35,7 @@ class AppRouter extends React.Component {
       });
       this.setState({ stories: stories, filteredStories: stories });
     });
-  }
+  };
 
   // Handles when the user searches
   handleSearch = e => {
