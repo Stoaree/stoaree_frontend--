@@ -40,7 +40,6 @@ class AppRouter extends React.Component {
   // Handles when the user searches
   handleSearch = e => {
     // setState
-
     this.setState({
       filteredStories: this.state.stories.filter(story =>
         story.title.includes(e.target.value)
