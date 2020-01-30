@@ -16,15 +16,14 @@ class StoryPage extends React.Component {
   };
 
   componentDidMount() {
-    const foundStory = this.props.stories.find(story => {
-      return story._id === this.props.match.params.id;
-    });
-
-    this.setState({
-      story: foundStory,
-      comments: foundStory.comments,
-      sounds: foundStory.questions
-    });
+    axiosAPI.get(`stories/${this.props.match.params.id}`).then(res => {
+      const foundStory = res.data;
+      this.setState({
+        story: foundStory,
+        comments: foundStory.comments,
+        sounds: foundStory.questions
+      });
+    })
   }
 
   onCommentSubmit = (values) => {
@@ -38,7 +37,7 @@ class StoryPage extends React.Component {
   }
 
   renderComments() {
-    return this.state.comments.map(comment => <Comment {...comment} />);
+    return this.state.comments.map(comment => <Comment key={comment._id} {...comment} />);
   }
 
   renderSounds() {

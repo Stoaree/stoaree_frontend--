@@ -17,7 +17,7 @@ class Homepage extends React.Component {
     const { latestStories } = this.state;
     if (latestStories) {
       return this.state.latestStories.map(story => {
-        return <StoryCard story={story} />
+        return <StoryCard key={story._id} story={story} />
       });
     }
   }
