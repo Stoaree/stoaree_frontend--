@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import axiosAPI from "../../api/stoareeAPI.js";
 import Cookies from 'universal-cookie';
 
 // Component
@@ -9,7 +9,7 @@ const cookies = new Cookies();
 class SignupPage extends React.Component {
 
   onSubmit = (values) => {
-    axios.post("https://polar-castle-01694.herokuapp.com/signup", {
+    axiosAPI.post("/signup", {
       firstName: values.firstName,
       lastName: values.lastName,
       displayName: values.displayName,
@@ -17,7 +17,7 @@ class SignupPage extends React.Component {
       password: values.password
     }).then(response => {
       if (response.status === 200) {
-        axios.post("https://polar-castle-01694.herokuapp.com/login", {
+        axiosAPI.post("/login", {
           email: values.email,
           password: values.password
         }).then(response => {
@@ -25,6 +25,8 @@ class SignupPage extends React.Component {
           cookies.set(token, true, { path: "/" })
         })
       }
+    }).catch((err) => {
+      console.log(err);
     })
   };
 
