@@ -1,12 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
+// Axios get
+import {getUserData} from './../../services/getUserData.js';
+
 // CSS 
 import './StoryCard.css';
 
-
+// Components
+import ProfileImage from './../ProfileImage/ProfileImage.js';
 
 class StoryCard extends React.Component {
+    
+  state = {
+    avatarURL: ''
+  }
+
+  componentDidMount = () => {
+
+    getUserData(this.props.userId).then((response) => {
+      const avatarURL = response.data.avatarURL;
+      return this.setState({ avatarURL: avatarURL })
+      }).catch((err) => {
+        console.log(err);
+    })
+  };
+
   render() {
     return (
       <div className="storyCard">
@@ -16,10 +36,10 @@ class StoryCard extends React.Component {
         </div>
         <div className="storyContent">
           <div className="profileImageDiv">
-            <img className="profileImage" alt="profileImage" />
+            <ProfileImage avatarURL={this.state.avatarURL} />     
           </div>
           <div className="storyTitle">
-            <Link className="storyTitle" to={"/stories/" + this.props.story._id}>{this.props.story.title}</Link> 
+            <Link className="storyTitle" to={"/stories/" + this.props.story._id}>{this.props.story.title}</Link>
           </div>
         </div>
         <div className="storyDescription">
@@ -31,4 +51,3 @@ class StoryCard extends React.Component {
 }
 
 export default StoryCard;
-

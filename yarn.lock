@@ -7215,6 +7215,19 @@ open@^7.0.0, open@pluma/open#patch-1:
   resolved "https://codeload.github.com/pluma/open/tar.gz/a19460e949cb482dbe72f4be74789b48dd672973"
   dependencies:
     is-wsl "^2.1.0"
+    
+open@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/open/-/open-7.0.0.tgz#7e52999b14eb73f90f0f0807fe93897c4ae73ec9"
+  integrity sha512-K6EKzYqnwQzk+/dzJAQSBORub3xlBTxMz+ntpZpH/LyCa1o6KjXhuN+2npAaI9jaSmU3R1Q8NWf4KUWcyytGsQ==
+  dependencies:
+    is-wsl "^2.1.0"
+
+open@pluma/open#patch-1:
+  version "7.0.0"
+  resolved "https://codeload.github.com/pluma/open/tar.gz/a19460e949cb482dbe72f4be74789b48dd672973"
+  dependencies:
+    is-wsl "^2.1.0"
 
 opn@^5.5.0:
   version "5.5.0"

@@ -1,6 +1,6 @@
 import React from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
+
+// Components
 import StoryShow from "./../../components/StoryShow/StoryShow";
 import Comment from "./../../components/Comment/Comment";
 import Playback from "./../../components/Playback/Playback";
@@ -22,6 +22,7 @@ class StoryPage extends React.Component {
     this.setState({
       story: foundStory,
       comments: foundStory.comments,
+
       sounds: foundStory.questions
     });
 
@@ -40,10 +41,6 @@ class StoryPage extends React.Component {
     const { story } = this.state;
     const { comments } = this.state;
     const { sounds } = this.state;
-    console.log(story);
-    console.log(comments);
-    console.log(sounds);
-
 
     if ((story, comments)) {
       return (
