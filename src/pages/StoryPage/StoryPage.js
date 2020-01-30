@@ -3,11 +3,15 @@ import React from "react";
 // Components
 import StoryShow from "./../../components/StoryShow/StoryShow";
 import Comment from "./../../components/Comment/Comment";
+import Playback from "./../../components/Playback/Playback";
+
+
 
 class StoryPage extends React.Component {
   state = {
     story: null,
-    comments: null
+    comments: null,
+    sounds: null
   };
 
   async componentDidMount() {
@@ -18,16 +22,25 @@ class StoryPage extends React.Component {
     this.setState({
       story: foundStory,
       comments: foundStory.comments,
+
+      sounds: foundStory.questions
     });
+
+  
   }
 
   renderComments() {
     return this.state.comments.map(comment => <Comment {...comment} />);
   }
 
+  renderSounds() {
+    return this.state.sounds.map(sound => <Playback {...sound} />);
+  }
+
   render() {
     const { story } = this.state;
     const { comments } = this.state;
+    const { sounds } = this.state;
 
     if ((story, comments)) {
       return (
@@ -35,6 +48,10 @@ class StoryPage extends React.Component {
           {" "}
           <StoryShow story={story} />
           {this.renderComments()}
+          {this.renderSounds()}
+
+
+
         </div>
       );
     } else {
