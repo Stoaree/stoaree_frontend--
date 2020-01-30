@@ -22,8 +22,8 @@ class StoryPage extends React.Component {
     this.setState({
       story: foundStory,
       comments: foundStory.comments,
+      sounds: foundStory.questions,
 
-      sounds: foundStory.questions
     });
 
   
@@ -33,14 +33,47 @@ class StoryPage extends React.Component {
     return this.state.comments.map(comment => <Comment {...comment} />);
   }
 
+  nextSound = (index) => {
+    const updatedSounds = this.state.sounds.map((sound, i) => {
+      if (i === (index + 1)) {
+        sound.play = true
+        return sound
+      } else {
+        sound.play = false 
+        return sound
+      }
+    })
+    this.setState({
+      sounds: updatedSounds
+    })
+  }
+
+  handlePlay = (index) => {
+    const updatedSounds = this.state.sounds.map((sound, i) => {
+      if (i === index) {
+        sound.play = true
+        return sound
+      } else {
+        sound.play = false 
+        return sound
+      }
+    })
+    this.setState({
+      sounds: updatedSounds
+    })
+  }
+
   renderSounds() {
-    return this.state.sounds.map(sound => <Playback {...sound} />);
+    return this.state.sounds.map((sound, index) => <Playback {...sound} playing={sound.play ? true : false} index={index} handlePlay={this.handlePlay} nextSound={this.nextSound} />);
   }
 
   render() {
     const { story } = this.state;
     const { comments } = this.state;
     const { sounds } = this.state;
+
+    console.log(sounds)
+    
 
     if ((story, comments)) {
       return (
