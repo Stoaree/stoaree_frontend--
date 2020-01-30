@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 // CSS 
 import './StoryCard.css';
 
+
+
 class StoryCard extends React.Component {
   render() {
     return (
