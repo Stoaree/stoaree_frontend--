@@ -1,8 +1,5 @@
 import React from 'react';
 
-// Services
-import {getStories} from './../../services/getStory.js';
-
 class StoryTags extends React.Component {
 
   state = {

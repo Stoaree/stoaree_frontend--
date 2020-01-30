@@ -25,8 +25,8 @@ class SignupPage extends React.Component {
           cookies.set(token, true, { path: "/" })
         })
       }
-    }).catch((error) => {
-      console.log(error);
+    }).catch((err) => {
+      console.log(err);
     })
   };
 

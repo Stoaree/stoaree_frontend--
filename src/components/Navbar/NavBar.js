@@ -11,10 +11,7 @@ class Navbar extends React.Component {
     return (
       <div className="navbar-div">
         <div className="search-bar">
-          <SearchBar
-            stories={this.props.stories}
-            handleSearch={this.props.handleSearch}
-          />
+          <SearchBar />
         </div>
         <div className="text-div">
           <NavLink to="/" className="text" exact={true}>Home</NavLink>
