@@ -40,7 +40,6 @@ class Playback extends React.Component {
   }
 
   render() {
-    console.log(this.props.playing)
     return (
       <div>
         <ReactHowler

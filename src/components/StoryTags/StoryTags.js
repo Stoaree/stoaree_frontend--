@@ -5,10 +5,11 @@ class StoryTags extends React.Component {
   handleTags() {
     const tags = this.props.tags;
     const stories = this.props.stories._id;
+    const uniqueKey = tags + stories;
 
     return (tags.map((tag) => {
       return (
-        <div key={tag + stories}>
+        <div key={uniqueKey}>
           <p> {tag} </p>
         </div>
       )
