@@ -1,9 +1,20 @@
 import React from "react";
 
+// Services
+
+
+// Component
+import ProfileImage from './../ProfileImage/ProfileImage.js'
+
 // CSS 
 import './StoryShow.css';
 
 class StoryShow extends React.Component {
+
+  state = {
+    avatarURL: ''
+  };
+
   render() {
     return (
       <div className="storyShow">
@@ -11,7 +22,7 @@ class StoryShow extends React.Component {
           <div className="heart"></div>        </div>
         <div className="storyContent">
           <div className="profileImageDiv">
-            <img className="profileImage" alt="profileImage" />
+            <ProfileImage avatarURL={this.state.avatarURL}/>
           <p>Story title:</p>
           </div>
           <div className="storyTitle">
@@ -26,7 +37,6 @@ class StoryShow extends React.Component {
           <p>Tags:</p>
           <p className="descriptionText">{this.props.story.tags}</p>
       </div>
-    
     );
   }
 }
