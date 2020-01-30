@@ -1,40 +1,33 @@
 import React from 'react';
 
-// Components
-
-
 // Services
 import {getStories} from './../../services/getStory.js';
 
 class StoryTags extends React.Component {
 
   state = {
-    tags: ''
+    tags: []
   }
 
-  componentDidMount() {
-    getStories().then((response) => {
+  handleTags() {
+    const tags = this.props.tags
 
-      const stories = response.map((story) => {
-        
-        const storyTags = story.tags;
-        return this.setState({tags:storyTags})
-    
-        // storyTags.map((tag) => {
-        //   const storyTags = tag
-        //   return this.setState({tags: storyTags})
-        // })
-      })
-    })
+    return (tags.map((tag) => {
+      return (
+        <div>
+          <p> {tag} </p>
+        </div>
+      )
+    }))
   }
-  
+
   render () {
     return (
       <div>
-        {console.log(this.state.tags)}
+        {this.handleTags()}
       </div>
     )
   }
-}
+};
 
 export default StoryTags;
