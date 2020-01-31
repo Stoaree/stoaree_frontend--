@@ -25,12 +25,6 @@ class AppRouter extends React.Component {
         <div>
           <NavBar />
           <Switch>
-            <Route
-              path="/stories/:id"
-              render={props => {
-                return <StoryPage match={props.match} />;
-              }}
-            />
             <Route path="/search" component={SearchPage} />
             <Route path="/admin" component={AdminPage} />
             <Route path="/stories/new" component={CreateStoryPage} />
