@@ -5,6 +5,7 @@ import StoryShow from "../../components/StoryShow/StoryShow";
 import Comment from "../../components/Comment/Comment";
 import CommentForm from "../../components/CommentForm/CommentForm"
 import Playback from "../../components/Playback/Playback";
+import HeartButton from "../../components/LikeButton/LikeButton";
 
 import axiosAPI from "../../api/stoareeAPI";
 
@@ -21,7 +22,7 @@ class StoryPage extends React.Component {
       this.setState({
         story: foundStory,
         comments: foundStory.comments,
-        sounds: foundStory.questions
+        sounds: foundStory.questions,
       });
     })
   }
@@ -77,9 +78,8 @@ class StoryPage extends React.Component {
   render() {
     const { story } = this.state;
     const { comments } = this.state;
-    // const { sounds } = this.state;
+    const { sounds } = this.state;
 
-    console.log(sounds)
     
 
     if ((story, comments)) {
@@ -88,11 +88,8 @@ class StoryPage extends React.Component {
           {" "}
           <StoryShow story={story} />
           {this.renderSounds()}
-
           {this.renderComments()}
-          <CommentForm onSubmit={this.onCommentSubmit} />
-
-        </div>
+         </div>
       );
     } else {
       return null;
