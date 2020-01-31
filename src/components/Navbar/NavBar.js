@@ -27,11 +27,17 @@ class Navbar extends React.Component {
   };
 
   // handleSignOut = () => {
-  //   const removeCookies = browser.cookies.remove()
+  //   const fullToken = document;
+  //   const cookie = fullToken.split("=");
+  // };
 
-  // }
 
-  // Use the authentication token to check if they're logged in. Must delete auth token when user signs out though.
+  deleteCookie = () => {
+    const now = new Date()
+    now.setTime(now.getTime() - 1)
+    document.cookie = `stoaree=;expires=${now.toUTCString()};path=/`;
+    return window.location.reload();
+}
 
   render() {
     const {token} = this.state;
@@ -45,7 +51,7 @@ class Navbar extends React.Component {
           </div>
           <div className="text-div">
             <NavLink to="/" className="text" exact={true}> Home </NavLink>
-            <NavLink to="/" className="text">Sign out</NavLink>
+            <NavLink className="text" to="/"> <div onClick={this.deleteCookie}>Sign out</div> </NavLink>
             <NavLink to="/record" className="text">Record</NavLink>
           </div>
         </div>

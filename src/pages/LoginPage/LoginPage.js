@@ -1,10 +1,10 @@
 import React from 'react'
 import axiosAPI from "../../api/stoareeAPI";
 import Cookies from 'universal-cookie';
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
-import {setCurrentUser} from "../../redux/userReducer"
-import {getUserData} from "../../services/getUserData"
+import { setCurrentUser } from "../../redux/userReducer"
+import { getUserData } from "../../services/getUserData"
 
 // Component
 import LoginForm from './../../components/LoginForm/LoginForm.js';
@@ -30,12 +30,12 @@ class LoginPage extends React.Component {
 
     }).then(response => {
       const token = response.data.token;
-      cookies.set(token, true, { path: "/" })
+      cookies.set("stoaree", token, { path: "/" })
 
       getUserData(response.data.user_id).then(response => {
         this.props.setCurrentUser(response.data)
       })
-      
+
       axiosAPI.defaults.headers.common['Authorization'] = token;
     }).catch(error => {
       console.error(error);
