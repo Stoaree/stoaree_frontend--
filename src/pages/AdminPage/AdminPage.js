@@ -1,6 +1,8 @@
 import React from 'react';
 import axiosAPI from "../../api/stoareeAPI";
 import Question from "./Question";
+import QuestionForm from "./QuestionForm";
+
 import { connect } from "react-redux";
 import { setAllQuestions } from "../../redux/storyReducer";
 
@@ -21,14 +23,29 @@ class AdminPage extends React.Component {
     });
   }
 
+  addFirstQuestion = (values) => {
+    axiosAPI.post("/questions/admin", {
+      title: values.title,
+      isTopLevel: true,
+      isYesOrNo: values.isYesOrNo,
+      order: 1
+    }).then(res => {
+      this.props.setAllQuestions(res.data);
+    });
+  }
+
   renderQuestions = () => {
     const { allQuestions } = this.props;
-    if (allQuestions) {
+
+    if (allQuestions.length) {
       const topLevelQuestions = allQuestions.filter(question => question.isTopLevel);
       return topLevelQuestions.map((question, index, topLevelQuestions) => {
         const length = topLevelQuestions.length;
         return <Question key={question._id} question={question} allQuestions={allQuestions} setAllQuestions={this.props.setAllQuestions} index={index} length={length} />
       });
+    }
+    else {
+      return <QuestionForm label={"Add first question"} onSubmit={this.addFirstQuestion} />
     }
   }
 

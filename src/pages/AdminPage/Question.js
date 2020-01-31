@@ -8,14 +8,31 @@ class Question extends React.Component {
     editing: false
   }
 
+  onAddSubQuestion = (values) => {
+    const { question } = this.props;
+
+    axiosAPI.post("/questions/admin", {
+      title: values.title,
+      isYesOrNo: values.isYesOrNo,
+      order: 1,
+      parentQuestionId: question._id
+    }).then(res => {
+      this.props.setAllQuestions(res.data);
+      this.cancel();
+    });
+  }
+
   renderSubQuestions = () => {
     const { question, allQuestions } = this.props;
-    if (question.subQuestions) {
+    if (question.subQuestions.length) {
       return question.subQuestions.map((subQuestionId, index, subQuestions) => {
         const childQuestion = allQuestions.find(foundQuestion => foundQuestion._id === subQuestionId);
         const length = subQuestions.length;
         return <Question key={childQuestion._id} question={childQuestion} allQuestions={allQuestions} parent={question} setAllQuestions={this.props.setAllQuestions} index={index} length={length} />
       });
+    }
+    else if (question.isYesOrNo) {
+      return <QuestionForm label={"Add child question"} onSubmit={this.onAddSubQuestion} />
     }
   }
 
