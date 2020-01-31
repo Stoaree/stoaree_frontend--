@@ -18,7 +18,6 @@ class Navbar extends React.Component {
   }
 
   componentDidMount() {
-
     return axiosAPI.get().then((response) => {
 
       const token = response.config.headers.Authorization;
@@ -26,18 +25,12 @@ class Navbar extends React.Component {
     })
   };
 
-  // handleSignOut = () => {
-  //   const fullToken = document;
-  //   const cookie = fullToken.split("=");
-  // };
-
-
   deleteCookie = () => {
     const now = new Date()
     now.setTime(now.getTime() - 1)
     document.cookie = `stoaree=;expires=${now.toUTCString()};path=/`;
     return window.location.reload();
-}
+  }
 
   render() {
     const {token} = this.state;

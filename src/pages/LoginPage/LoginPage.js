@@ -2,6 +2,7 @@ import React from 'react'
 import axiosAPI from "../../api/stoareeAPI";
 import Cookies from 'universal-cookie';
 import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 import { setCurrentUser } from "../../redux/userReducer"
 import { getUserData } from "../../services/getUserData"
@@ -35,6 +36,7 @@ class LoginPage extends React.Component {
       getUserData(response.data.user_id).then(response => {
         this.props.setCurrentUser(response.data)
       })
+
 
       axiosAPI.defaults.headers.common['Authorization'] = token;
     }).catch(error => {

@@ -3,6 +3,9 @@ import React from "react";
 // CSS
 import './StoryShow.css';
 
+// Component 
+import ProfileImage from './../ProfileImage/ProfileImage.js';
+
 class StoryShow extends React.Component {
 
   state = {
@@ -18,7 +21,7 @@ class StoryShow extends React.Component {
           <div className="heart"></div>        </div>
         <div className="storyContent">
           <div className="profileImageDiv">
-            <img className="profileImage" alt="profileImage" src={story.interviewer.avatarURL} />
+            <ProfileImage />
             <p>Story title:</p>
           </div>
           <div className="storyTitle">
