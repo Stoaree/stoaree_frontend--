@@ -1,40 +1,42 @@
 import React from "react";
-import axios from "axios";
+import axiosAPI from "../../api/stoareeAPI";
 import Question from "../../components/Question/Question";
+import LinkButton from "../../components/LinkButton/LinkButton"
 import { connect } from "react-redux";
 
-import { setAllQuestions, nextQuestion } from "../../redux/storyReducer";
+import { setAllQuestions, nextQuestion, setCurrentStory } from "../../redux/storyReducer";
 
 function mapStateToProps(state) {
+  const { currentQuestion, currentQuestionSubset, currentStory } = state.storyReducer;
   return {
-    allQuestions: state.storyReducer.allQuestions,
-    currentQuestion: state.storyReducer.currentQuestion,
-    currentQuestionSubset: state.storyReducer.currentQuestionSubset
+    currentQuestion,
+    currentQuestionSubset,
+    currentStory
   };
 }
 
 const mapDispatchToProps = {
-  setAllQuestions, nextQuestion
+  setAllQuestions, nextQuestion, setCurrentStory
 }
 
 class RecordPage extends React.Component {
   componentDidMount() {
-    axios.get("http://localhost:3001/questions/all").then(response => this.props.setAllQuestions(response.data));
+    axiosAPI.get("/questions/all").then(response => this.props.setAllQuestions(response.data));
   }
 
   renderCurrentQuestion = () => {
-    const { allQuestions, currentQuestion } = this.props;
+    const { currentQuestion, currentStory } = this.props;
     if (currentQuestion) {
       if (currentQuestion === "finished") {
         return (
           <div>
             <h2>No more questions!</h2>
-            <button>Finish Story</button>
+            <LinkButton to={`/stories/${currentStory}`}>Finish Story</LinkButton>
           </div>
         )
       }
       else {
-        return <Question question={currentQuestion} allQuestions={allQuestions} nextQuestion={this.nextQuestion} />
+        return <Question question={currentQuestion} story={currentStory} />
       }
     }
   }

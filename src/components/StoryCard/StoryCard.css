@@ -1,27 +1,27 @@
-.storyCard {
+.story-card {
   border: var(--main-grey) 1px solid;
   margin-top: 1rem;
   padding-top: 1rem;
 }
 
-.storyContent {
+.story-content {
   display: flex;
   flex-direction: row;
 }
 
-.storyTitle {
-  color: red;
+.story-title {
+  color: green;
   margin-top: 0;
   margin-left: 0.5rem;
 }
 
-.descriptionText {
+.description-text {
   color: var(--main-green);
   margin-top: 0;
   margin-left: 3rem;
 }
 
-.profileImage {
+.profile-image {
   border: tomato 1px solid;
   border-radius: 50%;
   padding: 1rem;

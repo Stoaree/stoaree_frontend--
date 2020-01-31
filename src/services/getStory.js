@@ -1,13 +1,17 @@
-import axios from 'axios';
+import axiosAPI from "../api/stoareeAPI"
 
 export const getStory = () => {
-  return axios.get("http://localhost:3001/stories/5e2669e5480c6704e31f39bd").then((response) => {
+  return axiosAPI.get("/stories").then((response) => {
     return response.data;
+  }).catch((err) => {
+    console.log(err);
   })
 };
 
 export const getStories = () => {
-  return axios.get("http://localhost:3001/stories").then((response) => {
+  return axiosAPI.get("/stories").then((response) => {
     return response.data;
+  }).catch((err) => {
+    console.log(err);
   })
 };
