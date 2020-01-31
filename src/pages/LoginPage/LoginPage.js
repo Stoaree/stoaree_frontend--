@@ -29,7 +29,6 @@ class LoginPage extends React.Component {
       password: values.password
 
     }).then(response => {
-      console.log(response)
       const token = response.data.token;
       cookies.set(token, true, { path: "/" })
 
@@ -38,7 +37,6 @@ class LoginPage extends React.Component {
       })
       
       axiosAPI.defaults.headers.common['Authorization'] = token;
-      console.log(cookies.get(token))
     }).catch(error => {
       console.error(error);
     })
@@ -49,7 +47,6 @@ class LoginPage extends React.Component {
       <div>
         <h3> Login Page </h3>
         <LoginForm onSubmit={this.onSubmit} />
-        {this.props.currentUser.displayName}
       </div>
     )
   };
