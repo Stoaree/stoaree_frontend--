@@ -36,16 +36,10 @@ class Playback extends React.Component {
     this.setState({
       playing: true,
       loop: true,
-        });
+    });
   }
 
-  // doSomething = (e) => {
-  //   console.log(e)
-  //   console.log('here')
-  // }
-
   render() {
-    console.log(this.props.playing)
     return (
       <div>
         <ReactHowler

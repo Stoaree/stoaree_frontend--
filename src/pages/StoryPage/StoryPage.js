@@ -71,16 +71,13 @@ class StoryPage extends React.Component {
   }
 
   renderSounds() {
-    return this.state.sounds.map((sound, index) => <Playback {...sound} playing={sound.play ? true : false} index={index} handlePlay={this.handlePlay} nextSound={this.nextSound} />);
+    return this.state.sounds.map((sound, index) => <Playback {...sound} playing={sound.play ? true : false} index={index} handlePlay={this.handlePlay} nextSound={this.nextSound} key={sound._id} />);
   }
 
   render() {
     const { story } = this.state;
     const { comments } = this.state;
     const { sounds } = this.state;
-
-    console.log(sounds)
-
 
     if ((story, comments)) {
       return (

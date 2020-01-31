@@ -9,7 +9,7 @@ export const getUserData = (id) => {
 };
 
 export const updateUserData = (id, url) => {
-  return axiosAPI.put(`http://localhost:3001/users/avatar_update/${id}`, {
+  return axiosAPI.put(`/users/avatar_update/${id}`, {
     avatarURL: url
   }).then(function (response) {
     console.log(response);

@@ -4,6 +4,11 @@ import React from "react";
 import './StoryShow.css';
 
 class StoryShow extends React.Component {
+
+  state = {
+    avatarURL: ''
+  };
+
   render() {
     const { story } = this.props;
 
@@ -28,7 +33,6 @@ class StoryShow extends React.Component {
         <p>Tags:</p>
         <p className="descriptionText">{story.tags}</p>
       </div>
-
     );
   }
 }

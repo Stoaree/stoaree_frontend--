@@ -6,13 +6,14 @@ import './StoryCard.css';
 
 // Components
 import ProfileImage from './../ProfileImage/ProfileImage.js';
+import StoryTags from './../StoryTags/StoryTags.js';
 
 class StoryCard extends React.Component {
   render() {
     const { story } = this.props;
 
     return (
-      <div className="storyCard">
+      <div className="story-card">
         <div className="story-image">
           <div className="heart"></div>
           <div className="play-button"></div>
@@ -27,6 +28,9 @@ class StoryCard extends React.Component {
         </div>
         <div className="storyDescription">
           <p className="descriptionText">{story.description}</p>
+        </div>
+        <div className="story-tags">
+          <StoryTags tags={this.props.story.tags} stories={this.props.story} />
         </div>
       </div>
     );
