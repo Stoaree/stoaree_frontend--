@@ -2,7 +2,8 @@ const initialState = {
   currentStory: "",
   allQuestions: [],
   currentQuestion: "",
-  currentQuestionSubset: []
+  currentQuestionSubset: [],
+  uploadComplete: false
 };
 
 function getTopLevelQuestions(questions) {
@@ -30,6 +31,14 @@ function setCurrentStory(storyId) {
   return { type: "SET_CURRENT_STORY", storyId };
 }
 
+function confirmUploadComplete() {
+  return { type: "SET_UPLOAD_STATUS", uploadStatus: true };
+}
+
+function resetUploadStatus() {
+  return { type: "SET_UPLOAD_STATUS", uploadStatus: false };
+}
+
 export function storyReducer(state = initialState, action) {
   let newState = { ...state };
 
@@ -50,10 +59,13 @@ export function storyReducer(state = initialState, action) {
     case "SET_CURRENT_STORY":
       newState.currentStory = action.storyId;
       break;
+    case "SET_UPLOAD_STATUS":
+      newState.uploadComplete = action.uploadStatus;
+      break;
     default:
       break;
   }
   return newState;
 }
 
-export { setAllQuestions, enterSubQuestions, nextQuestion, setCurrentStory };
+export { setAllQuestions, enterSubQuestions, nextQuestion, setCurrentStory, confirmUploadComplete, resetUploadStatus };
