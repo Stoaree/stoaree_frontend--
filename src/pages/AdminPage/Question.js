@@ -19,6 +19,10 @@ class Question extends React.Component {
     }
   }
 
+  cancel = () => {
+    this.setState({ adding: false, editing: false });
+  }
+
   onAdd = (values) => {
     const { question, parent, length } = this.props;
 
@@ -30,12 +34,27 @@ class Question extends React.Component {
       parentQuestionId: parent ? parent._id : null
     }).then(res => {
       this.props.setAllQuestions(res.data);
-      this.setState({ adding: false });
+      this.cancel();
     });
   }
 
-  cancel = () => {
-    this.setState({ adding: false, editing: false });
+  onEdit = (values) => {
+    const { question } = this.props;
+
+    axiosAPI.put(`/questions/admin/${question._id}`, {
+      title: values.title,
+      isYesOrNo: values.isYesOrNo,
+    }).then(res => {
+      this.props.setAllQuestions(res.data);
+      this.cancel();
+    });
+  }
+
+  onDelete = () => {
+    const { question } = this.props;
+    axiosAPI.delete(`/questions/admin/${question._id}`).then(res => {
+      this.props.setAllQuestions(res.data);
+    })
   }
 
   setAdding = () => {
@@ -60,7 +79,7 @@ class Question extends React.Component {
 
   renderEditForm = () => {
     if (this.state.editing) {
-      return <QuestionForm label={"Edit question"} onSubmit={this.onAdd} cancel={this.cancel} />
+      return <QuestionForm label={"Edit question"} onSubmit={this.onEdit} cancel={this.cancel} initialValues={this.props.question} />
     }
   }
 
@@ -75,7 +94,7 @@ class Question extends React.Component {
 
     return (
       <div style={{ marginLeft: 50 }}>
-        <h3>{title} {this.renderEditButton()}</h3>
+        <h3>{title} {this.renderEditButton()} <button onClick={this.onDelete}>Delete</button></h3>
         {this.renderEditForm()}
         {this.renderSubQuestions()}
         {this.renderAddButtonOrForm()}

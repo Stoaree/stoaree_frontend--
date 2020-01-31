@@ -17,8 +17,8 @@ class QuestionForm extends React.Component {
     return (
       <div>
         <form onSubmit={this.props.handleSubmit}>
-          <Field name="title" component={this.renderField} type="text" label={this.props.label} />
-          <Field name="isYesOrNo" component={this.renderField} type="checkbox" label="Yes or no question?" />
+          <Field name="title" component={this.renderField} type="text" label={this.props.label} value={this.props.title} />
+          <Field name="isYesOrNo" component={this.renderField} type="checkbox" label="Yes or no question?" value={this.props.isYesOrNo} />
           <button type="submit">Save</button> <button onClick={this.props.cancel}>Cancel</button>
         </form>
       </div>
