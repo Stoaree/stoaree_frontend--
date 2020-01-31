@@ -36,9 +36,6 @@ class LoginPage extends React.Component {
       getUserData(response.data.user_id).then(response => {
         this.props.setCurrentUser(response.data)
       })
-
-
-      axiosAPI.defaults.headers.common['Authorization'] = token;
     }).catch(error => {
       console.error(error);
     })
