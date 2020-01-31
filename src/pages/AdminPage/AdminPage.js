@@ -51,7 +51,11 @@ class AdminPage extends React.Component {
 
   render() {
     return (
-      <div>{this.renderQuestions()}</div>
+      <div>
+        <h1>Admin Dashboard</h1>
+        <h2>Question Master List</h2>
+        {this.renderQuestions()}
+      </div>
     )
   }
 }

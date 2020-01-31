@@ -5,7 +5,8 @@ import axiosAPI from "../../api/stoareeAPI";
 class Question extends React.Component {
   state = {
     adding: false,
-    editing: false
+    editing: false,
+    addingChild: false
   }
 
   onAddSubQuestion = (values) => {
@@ -31,13 +32,10 @@ class Question extends React.Component {
         return <Question key={childQuestion._id} question={childQuestion} allQuestions={allQuestions} parent={question} setAllQuestions={this.props.setAllQuestions} index={index} length={length} />
       });
     }
-    else if (question.isYesOrNo) {
-      return <QuestionForm label={"Add child question"} onSubmit={this.onAddSubQuestion} />
-    }
   }
 
   cancel = () => {
-    this.setState({ adding: false, editing: false });
+    this.setState({ adding: false, editing: false, addingChild: false });
   }
 
   onAdd = (values) => {
@@ -82,6 +80,10 @@ class Question extends React.Component {
     this.setState({ editing: true, adding: false });
   }
 
+  setAddingChild = () => {
+    this.setState({ addingChild: true });
+  }
+
   renderAddButtonOrForm = () => {
     const { index, length } = this.props;
     if (index === (length - 1)) {
@@ -89,7 +91,7 @@ class Question extends React.Component {
         return <QuestionForm label={"Add question"} onSubmit={this.onAdd} cancel={this.cancel} />
       }
       else {
-        return <button onClick={this.setAdding}>Add Question</button>
+        return <button onClick={this.setAdding}>Add Next Question</button>
       }
     }
   }
@@ -106,6 +108,17 @@ class Question extends React.Component {
     }
   }
 
+  renderAddChildFormOrButton = () => {
+    const { question } = this.props;
+
+    if (this.state.addingChild) {
+      return <QuestionForm label={"Add child question"} onSubmit={this.onAddSubQuestion} cancel={this.cancel} />
+    }
+    else if (!question.subQuestions.length && question.isYesOrNo) {
+      return <button onClick={this.setAddingChild}>Add Follow-up Question</button>
+    }
+  }
+
   render() {
     const { title } = this.props.question;
 
@@ -114,6 +127,7 @@ class Question extends React.Component {
         <h3>{title} {this.renderEditButton()} <button onClick={this.onDelete}>Delete</button></h3>
         {this.renderEditForm()}
         {this.renderSubQuestions()}
+        {this.renderAddChildFormOrButton()}
         {this.renderAddButtonOrForm()}
       </div>
     )
