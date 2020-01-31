@@ -1,25 +1,33 @@
 import React from 'react';
 import axiosAPI from "../../api/stoareeAPI";
 import Question from "./Question";
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
+import { setAllQuestions } from "../../redux/storyReducer";
+
+function mapStateToProps(state) {
+  return {
+    allQuestions: state.storyReducer.allQuestions
+  };
+}
+
+const mapDispatchToProps = {
+  setAllQuestions
+}
 
 class AdminPage extends React.Component {
-  state = {
-    questions: []
-  }
-
   componentDidMount() {
-    axiosAPI.get("/questions/admin/").then(response => {
-      this.setState({ questions: response.data });
-    })
+    axiosAPI.get("/questions/admin/").then(res => {
+      this.props.setAllQuestions(res.data);
+    });
   }
 
   renderQuestions = () => {
-    const { questions } = this.state;
-    if (questions) {
-      const topLevelQuestions = questions.filter(question => question.isTopLevel);
-      return topLevelQuestions.map(question => {
-        return <Question key={question._id} question={question} questions={questions} />
+    const { allQuestions } = this.props;
+    if (allQuestions) {
+      const topLevelQuestions = allQuestions.filter(question => question.isTopLevel);
+      return topLevelQuestions.map((question, index, topLevelQuestions) => {
+        const lastIndex = topLevelQuestions.length - 1
+        return <Question key={question._id} question={question} allQuestions={allQuestions} setAllQuestions={setAllQuestions} isLast={index === lastIndex} />
       });
     }
   }
@@ -31,4 +39,4 @@ class AdminPage extends React.Component {
   }
 }
 
-export default AdminPage;
+export default connect(mapStateToProps, mapDispatchToProps)(AdminPage);
