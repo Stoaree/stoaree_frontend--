@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from "axios";
+import axiosAPI from "../../api/stoareeAPI";
 import Question from "./Question";
 // import { connect } from "react-redux";
 
@@ -9,7 +9,7 @@ class AdminPage extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:3001/questions/admin/").then(response => {
+    axiosAPI.get("/questions/admin/").then(response => {
       this.setState({ questions: response.data });
     })
   }
