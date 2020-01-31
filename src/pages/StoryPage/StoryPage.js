@@ -77,8 +77,7 @@ class StoryPage extends React.Component {
   render() {
     const { story } = this.state;
     const { comments } = this.state;
-    const { sounds } = this.state;
-
+ 
     if ((story, comments)) {
       return (
         <div>
