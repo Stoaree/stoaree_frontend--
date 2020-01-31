@@ -13,21 +13,20 @@ class Question extends React.Component {
     if (question.subQuestions) {
       return question.subQuestions.map((subQuestionId, index, subQuestions) => {
         const childQuestion = allQuestions.find(foundQuestion => foundQuestion._id === subQuestionId);
-        const lastIndex = subQuestions.length - 1;
-        return <Question key={childQuestion._id} question={childQuestion} allQuestions={allQuestions} parent={question} setAllQuestions={this.props.setAllQuestions} isLast={index === lastIndex} />
+        const length = subQuestions.length;
+        return <Question key={childQuestion._id} question={childQuestion} allQuestions={allQuestions} parent={question} setAllQuestions={this.props.setAllQuestions} index={index} length={length} />
       });
     }
   }
 
   onAdd = (values) => {
-    const { question, parent } = this.props;
-
-    // get the order no.
+    const { question, parent, length } = this.props;
 
     axiosAPI.post("/questions/admin", {
       title: values.title,
       isTopLevel: question.isTopLevel,
       isYesOrNo: values.isYesOrNo,
+      order: length + 1,
       parentQuestionId: parent ? parent._id : null
     }).then(res => {
       this.props.setAllQuestions(res.data);
@@ -40,29 +39,33 @@ class Question extends React.Component {
   }
 
   setAdding = () => {
-    this.setState({ adding: true });
+    this.setState({ adding: true, editing: false });
   }
 
   setEditing = () => {
-    this.setState({ editing: true });
+    this.setState({ editing: true, adding: false });
   }
 
   renderAddButtonOrForm = () => {
-    if (this.props.isLast) {
+    const { index, length } = this.props;
+    if (index === (length - 1)) {
       if (this.state.adding) {
         return <QuestionForm label={"Add question"} onSubmit={this.onAdd} cancel={this.cancel} />
       }
       else {
-        return <button onClick={this.setAdding}>Add</button>
+        return <button onClick={this.setAdding}>Add Question</button>
       }
     }
   }
 
-  renderEditButtonOrForm = () => {
+  renderEditForm = () => {
     if (this.state.editing) {
-      return <QuestionForm label={"Add question"} onSubmit={this.onAdd} cancel={this.cancel} />
+      return <QuestionForm label={"Edit question"} onSubmit={this.onAdd} cancel={this.cancel} />
     }
-    else {
+  }
+
+  renderEditButton = () => {
+    if (!this.state.editing) {
       return <button onClick={this.setEditing}>Edit</button>
     }
   }
@@ -72,8 +75,8 @@ class Question extends React.Component {
 
     return (
       <div style={{ marginLeft: 50 }}>
-        <h3>{title}</h3>
-        {this.renderEditButtonOrForm()}
+        <h3>{title} {this.renderEditButton()}</h3>
+        {this.renderEditForm()}
         {this.renderSubQuestions()}
         {this.renderAddButtonOrForm()}
       </div>

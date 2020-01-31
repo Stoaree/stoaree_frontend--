@@ -26,8 +26,8 @@ class AdminPage extends React.Component {
     if (allQuestions) {
       const topLevelQuestions = allQuestions.filter(question => question.isTopLevel);
       return topLevelQuestions.map((question, index, topLevelQuestions) => {
-        const lastIndex = topLevelQuestions.length - 1
-        return <Question key={question._id} question={question} allQuestions={allQuestions} setAllQuestions={setAllQuestions} isLast={index === lastIndex} />
+        const length = topLevelQuestions.length;
+        return <Question key={question._id} question={question} allQuestions={allQuestions} setAllQuestions={this.props.setAllQuestions} index={index} length={length} />
       });
     }
   }
