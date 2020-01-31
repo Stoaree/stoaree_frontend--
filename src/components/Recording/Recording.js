@@ -3,6 +3,7 @@ import { ReactMic } from "react-mic";
 import axios from "axios";
 import axiosAPI from "../../api/stoareeAPI";
 import { connect } from "react-redux";
+import { confirmUploadComplete, resetUploadStatus } from "../../redux/storyReducer";
 
 // CSS
 import "./../../css/main.css";
@@ -15,12 +16,16 @@ function mapStateToProps(state) {
   };
 }
 
+const mapDispatchToProps = {
+  confirmUploadComplete,
+  resetUploadStatus
+}
+
 class Recording extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      record: false,
-      uploadComplete: false
+      record: false
     };
   }
 
@@ -74,7 +79,7 @@ class Recording extends React.Component {
               question: this.props.currentQuestion,
               audioFileURL: returnData.url
             }).then(response => {
-              this.setState({ uploadComplete: true });
+              this.props.confirmUploadComplete();
             });
           });
       })
@@ -100,10 +105,9 @@ class Recording extends React.Component {
         <button onClick={this.stopRecording} type="button">
           Stop
         </button>
-        {this.state.uploadComplete && "Audio uploaded successfully"}
       </div>
     );
   }
 }
 
-export default connect(mapStateToProps)(Recording);
+export default connect(mapStateToProps, mapDispatchToProps)(Recording);

@@ -46,7 +46,7 @@ class StoryPage extends React.Component {
         sound.play = true
         return sound
       } else {
-        sound.play = false 
+        sound.play = false
         return sound
       }
     })
@@ -61,7 +61,7 @@ class StoryPage extends React.Component {
         sound.play = true
         return sound
       } else {
-        sound.play = false 
+        sound.play = false
         return sound
       }
     })
@@ -77,7 +77,7 @@ class StoryPage extends React.Component {
   render() {
     const { story } = this.state;
     const { comments } = this.state;
-    // const { sounds } = this.state;
+    const { sounds } = this.state;
 
     if ((story, comments)) {
       return (
