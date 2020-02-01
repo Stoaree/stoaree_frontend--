@@ -37,8 +37,7 @@ class LoginPage extends React.Component {
         this.props.setCurrentUser(response.data)
       })
 
-      axiosAPI.defaults.headers.common['Authorization'] = token;
-      console.log(cookies.get(token))
+    
     }).catch(error => {
       console.error(error);
     })
