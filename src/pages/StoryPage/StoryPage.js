@@ -5,7 +5,7 @@ import StoryShow from "../../components/StoryShow/StoryShow";
 import Comment from "../../components/Comment/Comment";
 import CommentForm from "../../components/CommentForm/CommentForm"
 import Playback from "../../components/Playback/Playback";
-import HeartButton from "../../components/LikeButton/LikeButton";
+import LikeButton from "../../components/LikeButton/LikeButton";
 
 import axiosAPI from "../../api/stoareeAPI";
 
@@ -13,7 +13,8 @@ class StoryPage extends React.Component {
   state = {
     story: null,
     comments: null,
-    sounds: null
+    sounds: null,
+    currentIndex: 0
   };
 
   componentDidMount() {
@@ -41,23 +42,9 @@ class StoryPage extends React.Component {
     return this.state.comments.map(comment => <Comment key={comment._id} {...comment} />);
   }
 
-  nextSound = (index) => {
-    const updatedSounds = this.state.sounds.map((sound, i) => {
-      if (i === (index + 1)) {
-        sound.play = true
-        return sound
-      } else {
-        sound.play = false
-        return sound
-      }
-    })
-    this.setState({
-      sounds: updatedSounds
-    })
-  }
-
-  handlePlay = (index) => {
-    const updatedSounds = this.state.sounds.map((sound, i) => {
+  handlePlay = (index = 0) => {
+    const { sounds } = this.state;
+    const updatedSounds = sounds.map((sound, i) => {
       if (i === index) {
         sound.play = true
         return sound
@@ -66,13 +53,38 @@ class StoryPage extends React.Component {
         return sound
       }
     })
+
+    this.setState({
+      sounds: updatedSounds,
+      currentIndex: index >= sounds.length - 1 ? 0 : index
+    })
+  }
+
+  handlePause = (index) => {
+    const updatedSounds = this.state.sounds.map((sound, i) => {
+      sound.play = false
+      return sound
+    })
     this.setState({
       sounds: updatedSounds
     })
   }
 
   renderSounds() {
-    return this.state.sounds.map((sound, index) => <Playback {...sound} playing={sound.play ? true : false} index={index} handlePlay={this.handlePlay} nextSound={this.nextSound} key={sound._id} />);
+    return <div>
+      {this.state.sounds.map((sound, index) => 
+        <Playback {...sound} 
+          playing={sound.play ? true : false} 
+          index={index} 
+          handlePlay={this.handlePlay} 
+          key={sound._id} />
+      )}
+      <button onClick={() => this.handlePlay(this.state.currentIndex)}>
+        Play
+      </button>
+      <button onClick={this.handlePause}>Pause</button>
+    </div>
+
   }
 
   render() {
@@ -80,13 +92,14 @@ class StoryPage extends React.Component {
     const { comments } = this.state;
     const { sounds } = this.state;
 
-    if ((story, comments)) {
+    if ((story && comments)) {
       return (
         <div>
           {" "}
           <StoryShow story={story} />
           {this.renderSounds()}
           {this.renderComments()}
+          <LikeButton story={story} />
          </div>
       );
     } else {
