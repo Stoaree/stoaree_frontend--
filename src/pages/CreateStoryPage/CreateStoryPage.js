@@ -41,7 +41,7 @@ class CreateStoryPage extends React.Component {
     if (values.image) {
       console.log('Preparing the upload');
 
-      axios.post("http://localhost:3001/sign_s3", {
+      axiosAPI.post("/sign_s3", {
         fileName: Math.random().toString() + "/" + values.image.name,
         fileType: values.image.type
       }).then(response => {
