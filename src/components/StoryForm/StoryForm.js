@@ -1,6 +1,7 @@
 import React from "react";
 import { Field, FieldArray, reduxForm } from "redux-form";
 import FormFileInput from "../FormFileInput/FormFileInput"
+import FormField from "../FormField/FormField";
 
 function validate(values) {
   let errors = {};
@@ -32,19 +33,6 @@ function validate(values) {
 }
 
 class StoryForm extends React.Component {
-  renderField({ input, label, placeholder, type, meta: { touched, error } }) {
-    return (
-      <div>
-        <label>{label}</label>
-
-        <div>
-          <input {...input} placeholder={placeholder || label} type={type} />
-          {touched && error && <span> {error} </span>}
-        </div>
-      </div>
-    )
-  };
-
   renderTags = ({ fields, meta: { error } }) => (
     <div>
       <label>Tags</label>
@@ -80,12 +68,12 @@ class StoryForm extends React.Component {
         <form onSubmit={this.props.handleSubmit}>
 
           <div>
-            <Field name="title" component={this.renderField} type="text" label="Title" />
+            <Field name="title" component={FormField} type="text" label="Title" />
             <label>Description</label>
             <div><Field name="description" component="textarea" placeholder="Description" /></div>
-            <Field name="interviewee" component={this.renderField} type="email" label="Interviewee" placeholder="User's account email" />
+            <Field name="interviewee" component={FormField} type="email" label="Interviewee" placeholder="User's account email" />
             <FieldArray name="tags" component={this.renderTags} />
-            <Field name="public" component={this.renderField} type="checkbox" label="Make public?" />
+            <Field name="public" component={FormField} type="checkbox" label="Make public?" />
             <label>Header image</label>
             <div><Field name="image" component={FormFileInput} /></div>
           </div>
