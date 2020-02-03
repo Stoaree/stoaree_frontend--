@@ -33,8 +33,9 @@ const SearchBar = (props) => {
   return (
     <div>
       <div className="search-div">
-        <div className="inside-search-bar">
-          <input onChange={handleSearch} name="searchInput" type="text" placeholder="Try searching for..." onKeyPress={handleSearchButton} />
+        <div className="search-bar">
+          <input onChange={handleSearch} name="searchInput" type="text" placeholder="Search for a story..." onKeyPress={handleSearchButton} className="input-field" />
+          <i className="search-icon"></i>
         </div>
       </div>
     </div>
