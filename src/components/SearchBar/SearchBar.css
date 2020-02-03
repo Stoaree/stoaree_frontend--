@@ -1,7 +1,30 @@
-.search-div {
-  padding-right: 2rem;
-  padding-left: 2rem;
-  border: solid 3px var(--main-grey);
-  border-radius: 0.5rem;
+.search-bar i {
+  position: absolute;
 }
+
+.search-bar {
+  margin-bottom: 10px;
+}
+
+.input-field {
+  width: 100%;
+  border-radius: 5px;
+  padding: 0.5rem;
+  padding-right: 10rem;
+  border-color: var(--main-grey);
+}
+
+.search-icon {
+  background: url("./../../assets/icons/searchIcon.svg");
+  margin-top: 0.3rem;
+  margin-left: 17rem;
+  padding-top: 5rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  display: block;
+  background-repeat: no-repeat;
+}
+
+
+
 

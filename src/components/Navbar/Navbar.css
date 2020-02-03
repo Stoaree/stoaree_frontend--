@@ -3,18 +3,32 @@
   justify-content: space-between;
   flex-direction: row;
   background: var(--main-white);
+  border-bottom: var(--main-grey) solid 1px;
+
 }
 
 .text-div {
   display: flex;
   justify-content: flex-end;
+  padding-top: 1%;
 }
+
+.text:hover {
+  color: var(--main-green);
+}
+
 .text {
-  padding-right: 0.5rem;
-  color: var(--main-orange);
+  padding-right: 1rem;
+  color: var(--main-grey);
+  text-decoration: none;
+  font-family: var(--main-font);
+  font-weight: bold;
 }
 
 .search-bar {
   display: flex;
   justify-content: flex-start;
+  padding-top: 0.5%;
+  margin-left: 1%;
 }
+
