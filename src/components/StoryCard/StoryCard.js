@@ -9,9 +9,25 @@ import ProfileImage from './../ProfileImage/ProfileImage.js';
 import StoryTags from './../StoryTags/StoryTags.js';
 
 class StoryCard extends React.Component {
+
+  handlingImageURL() {
+
+    const {story} = this.props;
+
+    if (story.imageURL) {
+      return (
+        <img src={story.imageURL} className="image-header-card" alt="Header" />
+      )
+    } else if (!story.imageURL) {
+      return (
+       <img src={story.imageURL} className="image-header-card" alt="Header" />
+      )
+    } 
+  }
+
   render() {
     const { story } = this.props;
-
+    
     return (
       <div className="story-card">
         <div className="story-image-container">
@@ -29,7 +45,7 @@ class StoryCard extends React.Component {
           <div className="story-description-card">
             <p className="description-text-card">{story.description}</p>
           </div>
-          <div className="story-tags-card">
+          <div>
             <StoryTags tags={this.props.story.tags} stories={this.props.story} />
           </div>
         </div>

@@ -4,14 +4,18 @@
 }
 
 .image-header-card {
-  width: 35%;
+  width: 20vw;
+  height: 20vh;
   border-radius: 10%;
+  display: block;
+  object-fit: cover;
+  border: solid 1px var(--main-grey);
 }
 
 .story-content-card {
   display: flex;
   align-items: flex-start;
-  /* align-content: flex-start; */
+  margin-top: 1rem;
 }
 
 .story-title-card {
@@ -27,7 +31,31 @@
 
 .description-text-card {
   color: var(--main-grey);
+  margin-top: 5px;
+}
 
+.story-tags-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.story-tag-div-card {
+  margin-right: 0.5rem;
+}
+
+.story-tag {
+  color: var(--main-grey);
+  font-size: 0.9rem;
+  border: solid 1px var(--main-grey);
+  border-radius: 0.3rem;
+  padding: 0.3rem;
+}
+
+.story-tag:hover {
+  color: var(--main-white);
+  background: var(--main-green);
+  cursor: default;
 }
 
 
