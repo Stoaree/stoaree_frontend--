@@ -1,5 +1,6 @@
 .story-card {
   margin-top: 1rem;
+  margin-left: 1rem; 
   padding-top: 1rem;
 }
 
@@ -19,14 +20,19 @@
 }
 
 .story-title-card {
-  color: green;
+  color: var(--main-green);
   margin-top: 0;
   margin-left: 0.5rem;
+  text-decoration: none;
 }
 
 .story-description-card {
   margin-left: -14rem;
   margin-top: 24px;
+}
+
+.story-image-container {
+  width: 20.2%;
 }
 
 .description-text-card {

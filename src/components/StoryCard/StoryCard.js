@@ -16,11 +16,15 @@ class StoryCard extends React.Component {
 
     if (story.imageURL) {
       return (
-        <img src={story.imageURL} className="image-header-card" alt="Header" />
+        <Link to={"/stories/" + story._id}> 
+          <img src={story.imageURL} className="image-header-card" alt="Header"/>
+        </Link>
       )
     } else if (!story.imageURL) {
       return (
-       <img src={story.imageURL} className="image-header-card" alt="Header" />
+        <Link to={"/stories/" + story._id}> 
+          <img src={story.imageURL} className="image-header-card" alt="HELLO THERE" /> 
+        </Link>
       )
     } 
   }
@@ -31,7 +35,7 @@ class StoryCard extends React.Component {
     return (
       <div className="story-card">
         <div className="story-image-container">
-          <img src={story.imageURL} className="image-header-card" alt="Header" />
+          {this.handlingImageURL()}
         </div>
         <div className="heart"> </div>
         <div className="play-button-card"> </div>
@@ -44,9 +48,6 @@ class StoryCard extends React.Component {
           </div>
           <div className="story-description-card">
             <p className="description-text-card">{story.description}</p>
-          </div>
-          <div>
-            <StoryTags tags={this.props.story.tags} stories={this.props.story} />
           </div>
         </div>
       </div>
