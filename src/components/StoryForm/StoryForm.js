@@ -106,7 +106,7 @@ class StoryForm extends React.Component {
             <div><Field name="description" component="textarea" placeholder="Description" /></div>
             <Field name="interviewee" component={FormField} type="email" label="Interviewee" placeholder="User's account email" />
             <FieldArray name="tags" component={this.renderTags} />
-            <Field name="public" component={FormField} type="checkbox" label="Make public?" />
+            <Field name="isPublic" component={FormField} type="checkbox" label="Make public?" />
             <label>Header image</label>
             <div>
               {imageURL && <img src={imageURL} alt="Current story header" />}
