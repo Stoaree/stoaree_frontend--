@@ -29,15 +29,12 @@ class LoginPage extends React.Component {
       password: values.password
 
     }).then(response => {
-      console.log(response)
       const token = response.data.token;
       cookies.set("stoaree", token, { path: "/" })
 
       getUserData(response.data.user_id).then(response => {
         this.props.setCurrentUser(response.data)
       })
-
-    
     }).catch(error => {
       console.error(error);
     })
@@ -48,7 +45,6 @@ class LoginPage extends React.Component {
       <div>
         <h3> Login Page </h3>
         <LoginForm onSubmit={this.onSubmit} />
-        {this.props.currentUser.displayName}
       </div>
     )
   };
