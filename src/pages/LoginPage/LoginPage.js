@@ -4,7 +4,6 @@ import Cookies from 'universal-cookie';
 import { connect } from "react-redux";
 
 import { setCurrentUser } from "../../redux/userReducer"
-import { getUserData } from "../../services/getUserData"
 
 // Component
 import LoginForm from './../../components/LoginForm/LoginForm.js';
@@ -32,9 +31,9 @@ class LoginPage extends React.Component {
       const token = response.data.token;
       cookies.set("stoaree", token, { path: "/" })
 
-      getUserData(response.data.user_id).then(response => {
-        this.props.setCurrentUser(response.data)
-      })
+      return window.location.reload();
+
+
     }).catch(error => {
       console.error(error);
     })
