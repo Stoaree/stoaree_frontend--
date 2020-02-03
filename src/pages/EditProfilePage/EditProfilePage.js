@@ -21,7 +21,7 @@ class EditProfilePage extends React.Component {
   }
 
   componentDidMount() {
-    if (Object.entries(this.props.currentUser).length === 0) {
+    if (!Object.entries(this.props.currentUser).length) {
       axiosAPI.get("/users/current").then(res => {
         this.props.setCurrentUser(res.data);
       });
