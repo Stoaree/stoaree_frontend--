@@ -28,11 +28,10 @@ class LikeButton extends React.Component {
   }
 
   onLikeClick() {
-    const { storyId, bookmarks, likes } = this.state;
+    const { storyId, bookmarks } = this.state;
 
     addLike(storyId)
       .then(resp => {
-        console.log("Yay the like succeeded");
         // Optimistic state update
         // Its pretty safe to assume that since this API call succeeded that the likes/bookmarks were updated
         // We will get the authoritive state on refresh
@@ -46,14 +45,11 @@ class LikeButton extends React.Component {
   }
 
   render() {
-    console.log(this.state.storyId);
-    console.log(this.state.bookmarks);
-    console.log(this.state.likes);
 
     const { storyId, bookmarks, likes } = this.state;
     const { currentUser } = this.props;
 
-    if (currentUser == undefined || bookmarks.includes(storyId)) {
+    if (currentUser.bookmarks === undefined || bookmarks.includes(storyId)) {
       return <div>{likes}</div>;
     } else {
       return <button onClick={this.onLikeClick}>Like</button>;

@@ -14,23 +14,24 @@ class StoryCard extends React.Component {
 
     return (
       <div className="story-card">
-        <div className="story-image">
-          <div className="heart"></div>
-          <div className="play-button"></div>
+        <div className="story-image-container">
+          <img src={story.imageURL} className="image-header-card" alt="Header" />
         </div>
-        <div className="storyContent">
-          <div className="profileImageDiv">
-            <ProfileImage avatarURL={story.interviewer.avatarURL} />
+        <div className="heart"> </div>
+        <div className="play-button-card"> </div>
+        <div className="story-content-card">
+          <div className="profile-image-div-card">
+            <ProfileImage avatarURL={story.interviewer.avatarURL} className="profile-image-card"/>
           </div>
-          <div className="storyTitle">
-            <Link className="storyTitle" to={"/stories/" + story._id}>{story.title}</Link>
+          <div className="story-title-div-card">
+            <Link className="story-title-card" to={"/stories/" + story._id}>{story.title}</Link>
           </div>
-        </div>
-        <div className="storyDescription">
-          <p className="descriptionText">{story.description}</p>
-        </div>
-        <div className="story-tags">
-          <StoryTags tags={this.props.story.tags} stories={this.props.story} />
+          <div className="story-description-card">
+            <p className="description-text-card">{story.description}</p>
+          </div>
+          <div className="story-tags-card">
+            <StoryTags tags={this.props.story.tags} stories={this.props.story} />
+          </div>
         </div>
       </div>
     );

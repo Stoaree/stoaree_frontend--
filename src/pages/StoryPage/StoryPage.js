@@ -3,7 +3,6 @@ import React from "react";
 // Components
 import StoryShow from "../../components/StoryShow/StoryShow";
 import Comment from "../../components/Comment/Comment";
-import CommentForm from "../../components/CommentForm/CommentForm"
 import Playback from "../../components/Playback/Playback";
 import LikeButton from "../../components/LikeButton/LikeButton";
 
@@ -90,7 +89,7 @@ class StoryPage extends React.Component {
   render() {
     const { story } = this.state;
     const { comments } = this.state;
-    const { sounds } = this.state;
+
 
     if ((story && comments)) {
       return (
