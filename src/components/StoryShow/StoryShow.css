@@ -1,28 +1,86 @@
-.storyCard {
+
+
+.story-show-Card {
   border: var(--main-grey) 1px solid;
   margin-top: 1rem;
   padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  /* justify-content: space-around; */
+
+}
+.story-header-image {
+
+  height: 40%;
+  width: 60%;
 }
 
-.storyContent {
+
+
+.story-show-Content {
   display: flex;
   flex-direction: row;
 }
 
-.storyTitle {
-  color: red;
+.story-show-title {
+  font-size: 30px;
   margin-top: 0;
   margin-left: 0.5rem;
 }
 
-.descriptionText {
+.description-show-Text {
   color: var(--main-green);
   margin-top: 0;
   margin-left: 3rem;
+}
+
+.profile-image-div {
+  display: flex;
+  flex-wrap: nowrap;
+
 }
 
 .profileImage {
   border: tomato 1px solid;
   border-radius: 50%;
   padding: 1rem;
+}
+
+html.gr__localhost body div#root div div div button {
+  background-color: #ef6248;
+  height: 25px;
+  width: 65px;
+  font-weight: 700;
+  font-size: 8px;
+}
+
+.profile-image {
+  width: 20px;
+  height: 20px;
+}
+
+.profile-box {
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 25%;
+}
+
+.banner { 
+background-color: #ef6248;
+width: 100%;
+height: 50px;
+
+
+}
+
+.story-show-title { 
+  display: flex;
+  flex-wrap: nowrap;
+
 }

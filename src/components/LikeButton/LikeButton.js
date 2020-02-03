@@ -53,7 +53,7 @@ class LikeButton extends React.Component {
     const { storyId, bookmarks, likes } = this.state;
     const { currentUser } = this.props;
 
-    if (currentUser == undefined || bookmarks.includes(storyId)) {
+    if (currentUser.bookmarks == undefined || bookmarks.includes(storyId)) {
       return <div>{likes}</div>;
     } else {
       return <button onClick={this.onLikeClick}>Like</button>;

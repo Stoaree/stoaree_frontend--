@@ -100,6 +100,10 @@ class StoryPage extends React.Component {
           {this.renderSounds()}
           {this.renderComments()}
           <LikeButton story={story} />
+          <CommentForm onSubmit={this.onCommentSubmit} />
+
+
+
          </div>
       );
     } else {
