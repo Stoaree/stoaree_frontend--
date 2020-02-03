@@ -22,8 +22,9 @@ class LikeButton extends React.Component {
 
   onLikeClick() {
     const { likes } = this.state;
+    const { story } = this.props;
 
-    addLike(this.props.story._id)
+    addLike(story._id)
       .then(resp => {
         console.log("Yay the like succeeded");
         // Optimistic state update
@@ -41,7 +42,7 @@ class LikeButton extends React.Component {
     const { likes } = this.state;
     const { story, currentUser } = this.props;
 
-    if (currentUser && currentUser.bookmarks && currentUser.bookmarks.includes(story._id)) {
+    if (currentUser && !currentUser.bookmarks.includes(story._id)) {
       return <button onClick={this.onLikeClick}>Like</button>;
     }
     else {

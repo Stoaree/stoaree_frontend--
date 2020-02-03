@@ -20,14 +20,6 @@ class EditProfilePage extends React.Component {
     updateSuccess: false
   }
 
-  componentDidMount() {
-    if (!Object.entries(this.props.currentUser).length) {
-      axiosAPI.get("/users/current").then(res => {
-        this.props.setCurrentUser(res.data);
-      });
-    }
-  }
-
   sendUpdate = (values, url = "") => {
     axiosAPI.put("/users/profile", { ...values, avatarURL: url }).then(res => {
       if (res.status === 200) {
@@ -73,7 +65,7 @@ class EditProfilePage extends React.Component {
 
   renderForm = () => {
     const { currentUser } = this.props;
-    if (Object.entries(currentUser).length) {
+    if (currentUser) {
       return <ProfileForm initialValues={currentUser} onSubmit={this.onSubmit} avatarURL={currentUser.avatarURL} />
     }
   }
