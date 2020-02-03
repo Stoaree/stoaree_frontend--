@@ -33,6 +33,19 @@ function validate(values) {
 }
 
 class StoryForm extends React.Component {
+  renderField({ input, label, placeholder, type, meta: { touched, error } }) {
+    return (
+      <div>
+        <label>{label}</label>
+
+        <div>
+          <input {...input} placeholder={placeholder || label} type={type} />
+          {touched && error && <span> {error} </span>}
+        </div>
+      </div>
+    )
+  };
+
   renderTags = ({ fields, meta: { error } }) => (
     <div>
       <label>Tags</label>
@@ -62,6 +75,24 @@ class StoryForm extends React.Component {
     </div>
   )
 
+  renderSubmit = () => {
+    if (this.props.editing) {
+      return (
+        <div>
+          <button type="submit">Update Story</button>
+        </div>
+      )
+    }
+    else {
+      return (
+        <div>
+          Once you save, you will be redirected to the questions so you can start recording.<br />
+          <button type="submit"> Save Story </button>
+        </div>
+      )
+    }
+  }
+
   render() {
     return (
       <div>
@@ -78,10 +109,7 @@ class StoryForm extends React.Component {
             <div><Field name="image" component={FormFileInput} /></div>
           </div>
 
-          <div>
-            Once you save, you will be redirected to the questions so you can start recording.<br />
-            <button type="submit"> Save Story </button>
-          </div>
+          {this.renderSubmit()}
         </form>
       </div>
     )

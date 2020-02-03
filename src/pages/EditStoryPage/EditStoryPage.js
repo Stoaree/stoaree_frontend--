@@ -22,7 +22,7 @@ class EditStoryPage extends React.Component {
         interviewee: story.interviewee,
         isPublic: story.isPublic,
         imageURL: story.imageURL
-      }} />
+      }} editing={true} />
     }
   }
 
