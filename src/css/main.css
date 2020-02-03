@@ -4,9 +4,12 @@
 @import url("./../components/Recording/Recording.css");
 
 
+/* Font */
+@import url('https://fonts.googleapis.com/css?family=Roboto:700&display=swap');
+
 :root {
   --main-orange: #ef6248;
-  --main-grey: #232323;
+  --main-grey: #424242;
   --main-green: #1f9397;
   --main-white: white;
 }

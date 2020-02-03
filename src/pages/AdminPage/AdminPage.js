@@ -1,34 +1,63 @@
 import React from 'react';
-import axios from "axios";
+import axiosAPI from "../../api/stoareeAPI";
 import Question from "./Question";
-// import { connect } from "react-redux";
+import QuestionForm from "./QuestionForm";
+
+import { connect } from "react-redux";
+import { setAllQuestions } from "../../redux/storyReducer";
+
+function mapStateToProps(state) {
+  return {
+    allQuestions: state.storyReducer.allQuestions
+  };
+}
+
+const mapDispatchToProps = {
+  setAllQuestions
+}
 
 class AdminPage extends React.Component {
-  state = {
-    questions: []
+  componentDidMount() {
+    axiosAPI.get("/questions/admin/").then(res => {
+      this.props.setAllQuestions(res.data);
+    });
   }
 
-  componentDidMount() {
-    axios.get("http://localhost:3001/questions/admin/").then(response => {
-      this.setState({ questions: response.data });
-    })
+  addFirstQuestion = (values) => {
+    axiosAPI.post("/questions/admin", {
+      title: values.title,
+      isTopLevel: true,
+      isYesOrNo: values.isYesOrNo,
+      order: 1
+    }).then(res => {
+      this.props.setAllQuestions(res.data);
+    });
   }
 
   renderQuestions = () => {
-    const { questions } = this.state;
-    if (questions) {
-      const topLevelQuestions = questions.filter(question => question.isTopLevel);
-      return topLevelQuestions.map(question => {
-        return <Question key={question._id} question={question} questions={questions} />
+    const { allQuestions } = this.props;
+
+    if (allQuestions.length) {
+      const topLevelQuestions = allQuestions.filter(question => question.isTopLevel);
+      return topLevelQuestions.map((question, index, topLevelQuestions) => {
+        const length = topLevelQuestions.length;
+        return <Question key={question._id} question={question} allQuestions={allQuestions} setAllQuestions={this.props.setAllQuestions} index={index} length={length} />
       });
+    }
+    else {
+      return <QuestionForm label={"Add first question"} onSubmit={this.addFirstQuestion} />
     }
   }
 
   render() {
     return (
-      <div>{this.renderQuestions()}</div>
+      <div>
+        <h1>Admin Dashboard</h1>
+        <h2>Question Master List</h2>
+        {this.renderQuestions()}
+      </div>
     )
   }
 }
 
-export default AdminPage;
+export default connect(mapStateToProps, mapDispatchToProps)(AdminPage);
