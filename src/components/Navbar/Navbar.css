@@ -1,6 +1,7 @@
 .navbar-div {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-direction: row;
   background: var(--main-white);
   border-bottom: var(--main-grey) solid 0.5px;
@@ -12,6 +13,19 @@
   padding-top: 1%;
   margin-top: 5px;
   height: 19.05px;
+}
+
+.user-div {
+  display: flex;
+  align-items: center;
+}
+
+.user-div img {
+  width: 30px;
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 50%;
+  margin-right: 5px;
 }
 
 .text:hover {
@@ -33,4 +47,3 @@
   margin-left: 1%;
   margin-top: 2px;
 }
-

@@ -12,51 +12,40 @@ class LikeButton extends React.Component {
   constructor(props) {
     super(props);
 
-    const { story, currentUser } = this.props;
+    const { story } = this.props;
 
-    // TODO: How do we fetch the currentUser if we don't know the user ID
-    // The redux store does not persist after refreshes so currentUser keeps becoming undefined
-
-    this.state = {
-      likes: story.likes,
-      bookmarks: currentUser === undefined ? [] : currentUser.bookmarks,
-      storyId: story._id
-    };
+    this.state = { likes: story.likes };
 
     // This binding is necessary to make `this` work in the callback
     this.onLikeClick = this.onLikeClick.bind(this);
   }
 
   onLikeClick() {
-    const { storyId, bookmarks, likes } = this.state;
+    const { likes } = this.state;
 
-    addLike(storyId)
+    addLike(this.props.story._id)
       .then(resp => {
         console.log("Yay the like succeeded");
         // Optimistic state update
         // Its pretty safe to assume that since this API call succeeded that the likes/bookmarks were updated
         // We will get the authoritive state on refresh
-        let newCount = this.state.likes + 1;
+        let newCount = likes + 1;
         this.setState({
-          likes: newCount,
-          bookmarks: [...bookmarks, storyId]
+          likes: newCount
         });
       })
       .catch(err => console.error(err));
   }
 
   render() {
-    console.log(this.state.storyId);
-    console.log(this.state.bookmarks);
-    console.log(this.state.likes);
+    const { likes } = this.state;
+    const { story, currentUser } = this.props;
 
-    const { storyId, bookmarks, likes } = this.state;
-    const { currentUser } = this.props;
-
-    if (currentUser == undefined || bookmarks.includes(storyId)) {
-      return <div>{likes}</div>;
-    } else {
+    if (currentUser && currentUser.bookmarks && currentUser.bookmarks.includes(story._id)) {
       return <button onClick={this.onLikeClick}>Like</button>;
+    }
+    else {
+      return <div>{likes || "0"} Likes</div>;
     }
   }
 }

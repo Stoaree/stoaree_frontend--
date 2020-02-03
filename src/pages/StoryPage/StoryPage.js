@@ -18,14 +18,15 @@ class StoryPage extends React.Component {
   };
 
   componentDidMount() {
-    axiosAPI.get(`stories/${this.props.match.params.id}`).then(res => {
+    axiosAPI.get(`/stories/${this.props.match.params.id}`).then(res => {
       const foundStory = res.data;
       this.setState({
         story: foundStory,
         comments: foundStory.comments,
         sounds: foundStory.questions,
       });
-    })
+    });
+    // axiosAPI.get(`/`)
   }
 
   onCommentSubmit = (values) => {
@@ -72,11 +73,11 @@ class StoryPage extends React.Component {
 
   renderSounds() {
     return <div>
-      {this.state.sounds.map((sound, index) => 
-        <Playback {...sound} 
-          playing={sound.play ? true : false} 
-          index={index} 
-          handlePlay={this.handlePlay} 
+      {this.state.sounds.map((sound, index) =>
+        <Playback {...sound}
+          playing={sound.play ? true : false}
+          index={index}
+          handlePlay={this.handlePlay}
           key={sound._id} />
       )}
       <button onClick={() => this.handlePlay(this.state.currentIndex)}>
@@ -90,7 +91,7 @@ class StoryPage extends React.Component {
   render() {
     const { story } = this.state;
     const { comments } = this.state;
-    const { sounds } = this.state;
+    // const { sounds } = this.state;
 
     if ((story && comments)) {
       return (
@@ -99,8 +100,9 @@ class StoryPage extends React.Component {
           <StoryShow story={story} />
           {this.renderSounds()}
           {this.renderComments()}
+          <CommentForm onSubmit={this.onCommentSubmit} />
           <LikeButton story={story} />
-         </div>
+        </div>
       );
     } else {
       return null;
