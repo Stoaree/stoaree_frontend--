@@ -72,8 +72,9 @@ class EditProfilePage extends React.Component {
   }
 
   renderForm = () => {
-    if (Object.entries(this.props.currentUser).length) {
-      return <ProfileForm initialValues={this.props.currentUser} onSubmit={this.onSubmit} />
+    const { currentUser } = this.props;
+    if (Object.entries(currentUser).length) {
+      return <ProfileForm initialValues={currentUser} onSubmit={this.onSubmit} avatarURL={currentUser.avatarURL} />
     }
   }
 

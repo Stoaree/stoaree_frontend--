@@ -5,7 +5,7 @@ import FormField from "../FormField/FormField";
 
 class ProfileForm extends React.Component {
   render() {
-    const { avatarURL } = this.props.initialValues;
+    const { avatarURL } = this.props;
     return (
       <div>
         <form onSubmit={this.props.handleSubmit}>

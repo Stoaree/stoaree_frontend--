@@ -94,6 +94,8 @@ class StoryForm extends React.Component {
   }
 
   render() {
+    const { imageURL } = this.props;
+
     return (
       <div>
         <form onSubmit={this.props.handleSubmit}>
@@ -106,7 +108,9 @@ class StoryForm extends React.Component {
             <FieldArray name="tags" component={this.renderTags} />
             <Field name="public" component={FormField} type="checkbox" label="Make public?" />
             <label>Header image</label>
-            <div><Field name="image" component={FormFileInput} /></div>
+            <div>
+              {imageURL && <img src={imageURL} alt="Current story header" />}
+              <Field name="image" component={FormFileInput} /></div>
           </div>
 
           {this.renderSubmit()}
