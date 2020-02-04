@@ -13,10 +13,17 @@ class LoginForm extends React.Component {
         <form onSubmit={this.props.handleSubmit}>
 
           <div className="login-container">
-            <Field name="email" component={FormField} type="email" label="Email Address" className="input-field"/>
-            <Field name="password" component={FormField} type="password" label="Password" className="input-field"/>
-          
-            <button type="submit"> Login </button>
+
+            <div className="login-container-field">
+              <Field name="email" component={FormField} type="email" label="Email Address" />
+            </div>
+
+            <div className="login-container-field">
+              <Field name="password" component={FormField} type="password" label="Password" />
+            </div>
+            <div className="login-button-container">
+              <button type="submit" className="login-button"> Login </button>
+            </div>
           </div>
         </form>
       </div>
