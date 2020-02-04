@@ -9,6 +9,9 @@ import { setAlert, resetAlert } from "../../redux/alertReducer";
 // Component
 import LoginForm from './../../components/LoginForm/LoginForm.js';
 
+// CSS
+import "./LoginPage.css";
+
 const cookies = new Cookies();
 
 function mapStateToProps(state) {
@@ -45,10 +48,13 @@ class LoginPage extends React.Component {
 
   render() {
     return (
-      <div>
-        <h3> Lets start hearing your stories... </h3>
-        <p>  Login</p>
-        <LoginForm onSubmit={this.onSubmit} />
+      <div className="login-container-page">
+        <div className="login-text-container-page">
+          <h3 className="login-text-page"> Let's start hearing your stories... </h3>
+          <p className="login-text-page">  Login </p>
+          {this.renderError()}
+          <LoginForm onSubmit={this.onSubmit} className="login-test" />
+        </div>
       </div>
     )
   }

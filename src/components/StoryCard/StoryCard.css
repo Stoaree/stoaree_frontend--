@@ -1,6 +1,6 @@
 .story-card {
   margin-top: 1rem;
-  margin-left: 1rem; 
+  margin-left: 1rem;
   padding-top: 1rem;
 }
 
@@ -21,7 +21,7 @@
 .story-text-container-card {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; 
+  align-items: flex-start;
   margin-left: 1rem;
   width: 216px;
 }
@@ -35,7 +35,3 @@
   color: var(--main-grey);
   font-size: small;
 }
-
-
-
-
