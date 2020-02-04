@@ -6,7 +6,7 @@ import './StoryCard.css';
 
 // Components
 import ProfileImage from './../ProfileImage/ProfileImage.js';
-import StoryTags from './../StoryTags/StoryTags.js';
+
 
 class StoryCard extends React.Component {
 
@@ -40,13 +40,9 @@ class StoryCard extends React.Component {
         <div className="heart"> </div>
         <div className="play-button-card"> </div>
         <div className="story-content-card">
-          <div className="profile-image-div-card">
-            <ProfileImage avatarURL={story.interviewer.avatarURL} className="profile-image-card"/>
-          </div>
-          <div className="story-title-div-card">
+          <ProfileImage avatarURL={story.interviewer.avatarURL} className="profile-image-card"/>
+          <div className="story-text-container-card">
             <Link className="story-title-card" to={"/stories/" + story._id}>{story.title}</Link>
-          </div>
-          <div className="story-description-card">
             <p className="description-text-card">{story.description}</p>
           </div>
         </div>

@@ -1,35 +1,21 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import FormField from "../FormField/FormField";
+
+// CSS
+import "./LoginForm.css";
 
 class LoginForm extends React.Component {
-
-  renderField({ input, label, type, meta: {touched, error}}) {
-    return (
-      <div>
-        <label> {label} </label>
-
-        <div>
-          <input {...input} placeholder={label} type={type} />
-          {
-            touched && ((error && <span> {error} </span>))
-          }
-        </div>
-      </div>
-    )
-  };
-
   render() {
-    
+
     return (
       <div>
         <form onSubmit={this.props.handleSubmit}>
 
-          <div>
-            <Field name="email" component={this.renderField} type="email" label="Email Address" />
-            <Field name="password" component={this.renderField} type="password" label="Password" />
-          </div>
-
-          <div>
+          <div className="login-container">
+            <Field name="email" component={FormField} type="email" label="Email Address" className="input-field"/>
+            <Field name="password" component={FormField} type="password" label="Password" className="input-field"/>
+          
             <button type="submit"> Login </button>
           </div>
         </form>
@@ -38,9 +24,6 @@ class LoginForm extends React.Component {
   }
 };
 
-LoginForm = reduxForm({form: 'login'})(LoginForm);
+LoginForm = reduxForm({ form: 'login' })(LoginForm);
 
 export default LoginForm;
-
-
-
