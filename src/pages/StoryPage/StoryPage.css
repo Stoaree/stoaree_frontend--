@@ -1,0 +1,21 @@
+.story-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.button-box {
+  margin-left: 3rem;
+}
+
+.comment-like-box {
+  margin-left: 3rem;
+}
+
+.like-box {
+  padding-top: 7%;
+  margin-left: 3rem;
+
+
+}

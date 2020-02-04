@@ -1,0 +1,9 @@
+.like-button {
+    display: block;
+    height: 50px;
+    width: 50px;
+    background: #ef6248;
+    border: 2px solid rgba(33, 68, 72, 0.59);
+
+
+}
