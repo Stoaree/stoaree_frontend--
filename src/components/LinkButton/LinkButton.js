@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router'
+import Button from "../Button/Button"
 
 const LinkButton = (props) => {
   const {
@@ -13,7 +14,7 @@ const LinkButton = (props) => {
     children
   } = props
   return (
-    <button
+    <Button
       children={children}
       onClick={(event) => {
         onClick && onClick(event)
