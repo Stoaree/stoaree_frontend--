@@ -26,7 +26,6 @@ class LikeButton extends React.Component {
 
     addLike(story._id)
       .then(resp => {
-        console.log("Yay the like succeeded");
         // Optimistic state update
         // Its pretty safe to assume that since this API call succeeded that the likes/bookmarks were updated
         // We will get the authoritive state on refresh

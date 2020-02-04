@@ -38,7 +38,6 @@ class LoginPage extends React.Component {
       cookies.set("stoaree", token, { path: "/" })
 
       return window.location.reload();
-
     }).catch(error => {
       console.error(error.response.data);
       this.setState({ loginError: error.response.data });
@@ -59,7 +58,8 @@ class LoginPage extends React.Component {
   render() {
     return (
       <div>
-        <h3> Login Page </h3>
+        <h3> Lets start hearing your stories... </h3>
+        <p>  Login</p>
         {this.renderError()}
         <LoginForm onSubmit={this.onSubmit} />
       </div>

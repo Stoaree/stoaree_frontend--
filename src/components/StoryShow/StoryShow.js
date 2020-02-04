@@ -28,7 +28,6 @@ class StoryShow extends React.Component {
             <img src={story.imageURL} alt="Story" className="story-header-image" />
           </div>
           <div className="story-title">
-            {console.log(story)};
             {story.title}
           </div>
         </div>
