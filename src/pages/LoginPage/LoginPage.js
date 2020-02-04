@@ -4,7 +4,6 @@ import Cookies from 'universal-cookie';
 import { connect } from "react-redux";
 
 import { setCurrentUser } from "../../redux/userReducer"
-import { setAlert, resetAlert } from "../../redux/alertReducer";
 
 // Component
 import LoginForm from './../../components/LoginForm/LoginForm.js';
@@ -21,14 +20,15 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-  setCurrentUser,
-  setAlert,
-  resetAlert
+  setCurrentUser
 }
 
 class LoginPage extends React.Component {
-  onSubmit = (values) => {
+  state = {
+    loginError: null
+  }
 
+  onSubmit = (values) => {
     axiosAPI.post("/login", {
       email: values.email,
       password: values.password
@@ -36,15 +36,25 @@ class LoginPage extends React.Component {
     }).then(response => {
       const token = response.data.token;
       cookies.set("stoaree", token, { path: "/" })
-
-      this.props.resetAlert();
       window.location.assign("/");
 
     }).catch(error => {
       console.error(error.response.data);
-      this.props.setAlert(error.response.data);
+      this.setState({ loginError: error.response.data });
     })
   };
+
+  renderError = () => {
+    const { loginError } = this.state;
+
+    if (loginError) {
+      return (
+        <div className="error">
+          ERROR: {loginError}
+        </div>
+      )
+    }
+  }
 
   render() {
     return (

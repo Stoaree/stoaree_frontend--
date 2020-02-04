@@ -19,7 +19,6 @@ import EditStoryPage from "../pages/EditStoryPage/EditStoryPage";
 
 // Components
 import NavBar from "./../components/Navbar/NavBar.js";
-import Alert from "../components/Alert/Alert";
 
 class AppRouter extends React.Component {
   render() {
@@ -27,7 +26,6 @@ class AppRouter extends React.Component {
       <Router>
         <div>
           <NavBar />
-          <Alert />
           <Switch>
             <Route path="/search" component={SearchPage} />
             <Route path="/admin" component={AdminPage} />
