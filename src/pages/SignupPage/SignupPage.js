@@ -36,9 +36,11 @@ class SignupPage extends React.Component {
   render() {
     return (
       <div className="signup-container-page">
-        <h3> Let's hear about your stories... </h3>
-        <p> Signup or login below</p>
-        <SignupForm onSubmit={this.onSubmit} initialValues={this.data} />
+        <div className="signup-text-container-page">
+          <h3 className="signnup-text-page"> Let's hear about your stories... </h3>
+          <p className="signnup-text-page"> Please fill in the information below </p>
+          <SignupForm onSubmit={this.onSubmit} initialValues={this.data} />
+        </div>
       </div>
     )
   }

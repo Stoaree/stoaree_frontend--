@@ -33,4 +33,5 @@
 
 .login-button:hover {
   background: var(--main-green);
+  cursor: pointer;
 }
