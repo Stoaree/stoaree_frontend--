@@ -1,11 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
 import { addLike } from "../../services/postLike";
+import { setCurrentUser } from "../../redux/userReducer";
+import Button from "../Button/Button";
 
 function mapStateToProps(state) {
   return {
     currentUser: state.userReducer.currentUser
   };
+}
+
+const mapDispatchToProps = {
+  setCurrentUser
 }
 
 class LikeButton extends React.Component {
@@ -33,6 +39,7 @@ class LikeButton extends React.Component {
         this.setState({
           likes: newCount
         });
+        this.props.setCurrentUser(resp);
       })
       .catch(err => console.error(err));
   }
@@ -42,7 +49,7 @@ class LikeButton extends React.Component {
     const { story, currentUser } = this.props;
 
     if (currentUser && !currentUser.bookmarks.includes(story._id)) {
-      return <button onClick={this.onLikeClick}>Like</button>;
+      return <Button onClick={this.onLikeClick}>Like</Button>;
     }
     else {
       return <div>{likes || "0"} Likes</div>;
@@ -50,4 +57,4 @@ class LikeButton extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(LikeButton);
+export default connect(mapStateToProps, mapDispatchToProps)(LikeButton);

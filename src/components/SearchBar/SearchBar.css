@@ -1,11 +1,6 @@
 .search-bar i {
   position: absolute;
 }
-
-.search-bar {
-  margin-bottom: 10px;
-}
-
 .input-field {
   width: 100%;
   border-radius: 5px;
@@ -23,7 +18,3 @@
   display: block;
   background-repeat: no-repeat;
 }
-
-
-
-

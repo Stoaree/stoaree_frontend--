@@ -15,10 +15,10 @@ import ProfilePage from "../pages/ProfilePage/ProfilePage.js";
 import AdminPage from '../pages/AdminPage/AdminPage';
 import CreateStoryPage from "../pages/CreateStoryPage/CreateStoryPage";
 import EditProfilePage from "../pages/EditProfilePage/EditProfilePage";
+import EditStoryPage from "../pages/EditStoryPage/EditStoryPage";
 
 // Components
 import NavBar from "./../components/Navbar/NavBar.js";
-import EditStoryPage from "../pages/EditStoryPage/EditStoryPage";
 
 class AppRouter extends React.Component {
   render() {

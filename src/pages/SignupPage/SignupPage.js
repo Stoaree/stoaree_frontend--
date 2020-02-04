@@ -5,7 +5,7 @@ import Cookies from 'universal-cookie';
 // Component
 import SignupForm from '../../components/SignupForm/SignupForm.js';
 
-// CSS 
+// CSS
 import "./SignupPage.css";
 
 const cookies = new Cookies();
@@ -25,7 +25,8 @@ class SignupPage extends React.Component {
           password: values.password
         }).then(response => {
           const token = response.data.token;
-          cookies.set(token, true, { path: "/" })
+          cookies.set("stoaree", token, { path: "/" })
+          window.location.assign("/");
         })
       }
     }).catch((err) => {

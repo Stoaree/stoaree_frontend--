@@ -5,14 +5,12 @@
   flex-direction: row;
   background: var(--main-white);
   border-bottom: var(--main-grey) solid 0.5px;
+  height: 56px;
 }
 
 .text-div {
   display: flex;
   justify-content: flex-end;
-  padding-top: 1%;
-  margin-bottom: 17px;
-  height: 19.05px;
 }
 
 .user-div {
@@ -43,7 +41,5 @@
 .search-bar {
   display: flex;
   justify-content: flex-start;
-  padding-top: 0.5%;
   margin-left: 1%;
-  margin-top: 2px;
 }

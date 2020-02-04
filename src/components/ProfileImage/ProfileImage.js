@@ -9,28 +9,22 @@ import './ProfileImage.css'
 class ProfileImage extends React.Component {
 
   imageDisplay = (state) => {
-    
+
     if (this.props.avatarURL === undefined) {
       return (
-        <div>
-          <img src={defaultImage} alt="DefaultImage" className="profile-image" style={{width: "50px"}} />
-        </div>
+        <img src={defaultImage} alt="DefaultImage" className="profile-image" />
       )
     } else {
       return (
-        <div>
-          <img src={this.props.avatarURL} alt="profileImage" className="profile-image" style={{ width: "50px" }}/> 
-        </div>
+        <img src={this.props.avatarURL} alt="profileImage" className="profile-image" />
       )
     }
   }
-  
+
   render() {
     return (
-      <div>
-        <div className="profile-image-div">
-          {this.imageDisplay()}
-        </div>
+      <div className="profile-image-div">
+        {this.imageDisplay()}
       </div>
     )
   }
