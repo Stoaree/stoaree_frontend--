@@ -8,7 +8,7 @@ import { setCurrentUser } from "../../redux/userReducer"
 // Component
 import LoginForm from './../../components/LoginForm/LoginForm.js';
 
-// CSS 
+// CSS
 import "./LoginPage.css";
 
 const cookies = new Cookies();
@@ -29,18 +29,15 @@ class LoginPage extends React.Component {
   }
 
   onSubmit = (values) => {
-
     axiosAPI.post("/login", {
       email: values.email,
       password: values.password
 
     }).then(response => {
-      console.log(response);
-
       const token = response.data.token;
       cookies.set("stoaree", token, { path: "/" })
+      window.location.assign("/");
 
-      return window.location.reload();
     }).catch(error => {
       console.error(error.response.data);
       this.setState({ loginError: error.response.data });
@@ -49,9 +46,10 @@ class LoginPage extends React.Component {
 
   renderError = () => {
     const { loginError } = this.state;
+
     if (loginError) {
       return (
-        <div>
+        <div className="error">
           ERROR: {loginError}
         </div>
       )
@@ -66,9 +64,9 @@ class LoginPage extends React.Component {
           <p className="login-text-page">  Login </p>
           {this.renderError()}
           <LoginForm onSubmit={this.onSubmit} className="login-test" />
-        </div>  
+        </div>
       </div>
     )
-  };
+  }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

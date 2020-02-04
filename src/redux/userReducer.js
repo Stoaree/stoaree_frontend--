@@ -1,5 +1,5 @@
 const initialState = {
-  currentUser: {}
+  currentUser: undefined
 }
 
 function setCurrentUser(user) {
@@ -9,7 +9,7 @@ function setCurrentUser(user) {
 export function userReducer(state = initialState, action) {
   let newState = { ...state };
 
-  switch(action.type) {
+  switch (action.type) {
     case "SET_CURRENT_USER":
       newState.currentUser = action.user;
       break;
