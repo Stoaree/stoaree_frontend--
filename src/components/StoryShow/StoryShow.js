@@ -16,33 +16,32 @@ class StoryShow extends React.Component {
 
     return (
       <div className="story-show-card">
-        <div className="banner"></div>
-        <div className="story-image">
-          <div className="heart"></div>{" "}
+       <div className = "banner"></div>
+
+        <div
+          className="story-image-show-container"
+          style={{ backgroundImage: `url(${story.imageURL})`, height: "30vh" }}
+        >
+          {console.log(story.imageURL)}
         </div>
-        <div className="story-content"></div>
-        <div className="story-image">
-          <img
-            src={story.imageURL}
-            alt="Story"
-            className="story-header-image"
-          />
-        </div>
-        <div className="profile-box">
-          <div className="profile-image-div">
+        <div className="story-content">
+          <div className="profile-box">
             <ProfileImage />
             <div className="story-show-title">
               {console.log(story)}
               {story.title}
             </div>
           </div>
+          <div className="story-description">
+            <p className="description-text">Description:</p>
+            <p className="description-text">{story.description}</p>
+          </div>
+          <div className="tag-description">
+            <p>Tags:</p>
+            <p className="descriptionText">{story.tags}</p>
+            <div className="heart"></div>{" "}
+          </div>
         </div>
-        <div className="story-description">
-          <p>Description:</p>
-          <p className="description-text">{story.description}</p>
-        </div>
-        <p>Tags:</p>
-        <p className="descriptionText">{story.tags}</p>
       </div>
     );
   }
