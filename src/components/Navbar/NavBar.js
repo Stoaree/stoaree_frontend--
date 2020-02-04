@@ -38,6 +38,9 @@ class Navbar extends React.Component {
         else {
           this.props.setCurrentUser(null);
         }
+      }).catch(err => {
+        this.setState({ dataIsLoaded: true });
+        this.props.setCurrentUser(null);
       });
     }
   }
