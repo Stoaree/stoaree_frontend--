@@ -41,10 +41,6 @@ class LoginPage extends React.Component {
       cookies.set("stoaree", token, { path: "/" })
 
       return window.location.reload();
-<<<<<<< HEAD
-=======
-
->>>>>>> 27d248c7f200b85cdd81968451e223d20c8e8c9b
     }).catch(error => {
       console.error(error.response.data);
       this.setState({ loginError: error.response.data });
