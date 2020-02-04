@@ -27,24 +27,16 @@ class SignupForm extends React.Component {
     return (
       <div>
         <form onSubmit={this.props.handleSubmit}>
-
-          <div>
+          <div className="signup-container">
             <Field name="firstName" component={FormField} type="text" label="First Name" />
             <Field name="lastName" component={FormField} type="text" label="Last Name" />
             <Field name="displayName" component={FormField} type="text" label="Display Name" />
-          </div>
-
-          <div>
             <Field name="email" component={FormField} type="email" label="Email Address" />
-          </div>
-
-          <div>
             <Field name="password" component={FormField} type="password" label="Password" />
             <Field name="confirmPassword" component={FormField} type="password" label="Confirm Password" />
-          </div>
-
-          <div>
-            <button type="submit" disabled={this.props.submitting}> Sign Up </button>
+            <div className="signup-button-container">
+              <button className="signup-button" type="submit" disabled={this.props.submitting}> Sign Up </button>
+            </div>
           </div>
         </form>
       </div>

@@ -1,0 +1,8 @@
+.signup-container-field input {
+  border: solid 1px var(--main-grey);
+  border-radius: 0.4rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  height: 2.8rem;
+  width: 29rem;
+}

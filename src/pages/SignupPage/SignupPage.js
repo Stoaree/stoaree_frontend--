@@ -5,6 +5,9 @@ import Cookies from 'universal-cookie';
 // Component
 import SignupForm from '../../components/SignupForm/SignupForm.js';
 
+// CSS 
+import "./SignupPage.css";
+
 const cookies = new Cookies();
 class SignupPage extends React.Component {
 
@@ -32,7 +35,7 @@ class SignupPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="signup-container-page">
         <h3> SignUp Page </h3>
         <SignupForm onSubmit={this.onSubmit} initialValues={this.data} />
       </div>
