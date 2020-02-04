@@ -1,13 +1,15 @@
 import React from 'react'
 import axiosAPI from "../../api/stoareeAPI";
 import Cookies from 'universal-cookie';
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
-import {setCurrentUser} from "../../redux/userReducer"
-import {getUserData} from "../../services/getUserData"
+import { setCurrentUser } from "../../redux/userReducer"
 
 // Component
 import LoginForm from './../../components/LoginForm/LoginForm.js';
+
+// CSS 
+import "./LoginPage.css";
 
 const cookies = new Cookies();
 
@@ -20,7 +22,11 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
   setCurrentUser
 }
+
 class LoginPage extends React.Component {
+  state = {
+    loginError: null
+  }
 
   onSubmit = (values) => {
 
@@ -29,27 +35,38 @@ class LoginPage extends React.Component {
       password: values.password
 
     }).then(response => {
-      console.log(response)
-      const token = response.data.token;
-      cookies.set(token, true, { path: "/" })
+      console.log(response);
 
-      getUserData(response.data.user_id).then(response => {
-        this.props.setCurrentUser(response.data)
-      })
-      
-      axiosAPI.defaults.headers.common['Authorization'] = token;
-      console.log(cookies.get(token))
+      const token = response.data.token;
+      cookies.set("stoaree", token, { path: "/" })
+
+      return window.location.reload();
     }).catch(error => {
-      console.error(error);
+      console.error(error.response.data);
+      this.setState({ loginError: error.response.data });
     })
   };
 
+  renderError = () => {
+    const { loginError } = this.state;
+    if (loginError) {
+      return (
+        <div>
+          ERROR: {loginError}
+        </div>
+      )
+    }
+  }
+
   render() {
     return (
-      <div>
-        <h3> Login Page </h3>
-        <LoginForm onSubmit={this.onSubmit} />
-        {this.props.currentUser.displayName}
+      <div className="login-container-page">
+        <div className="login-text-container-page">
+          <h3 className="login-text-page"> Let's start hearing your stories... </h3>
+          <p className="login-text-page">  Login </p>
+          {this.renderError()}
+          <LoginForm onSubmit={this.onSubmit} className="login-test" />
+        </div>  
       </div>
     )
   };

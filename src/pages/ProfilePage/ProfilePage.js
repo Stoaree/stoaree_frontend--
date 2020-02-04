@@ -4,7 +4,6 @@ import { getUserData } from './../../services/getUserData.js';
 
 // Components
 import ProfileImage from './../../components/ProfileImage/ProfileImage.js';
-import ImageUpload from './../../services/imageUpload.js';
 
 class ProfilePage extends React.Component {
 
@@ -15,7 +14,7 @@ class ProfilePage extends React.Component {
   }
 
   componentDidMount() {
-    
+
     getUserData(this.props.match.params.id).then((response) => {
       const stories = response.data.stories.map((story) => {
         return story
@@ -25,18 +24,17 @@ class ProfilePage extends React.Component {
       console.log(err);
     })
   };
-  
-  render () {
+
+  render() {
     return (
 
       <div>
         <h1> {this.state.userData.displayName} </h1>
-        <div> 
-          <ProfileImage avatarURL={this.state.avatarURL}/>
-          <ImageUpload  userId={this.state.userData._id} />
+        <div>
+          <ProfileImage avatarURL={this.state.avatarURL} />
         </div>
 
-        <UserDataDisplay userData={this.state.userData} stories={this.state.stories} avatarURL={this.state.avatarURL} />    
+        <UserDataDisplay userData={this.state.userData} stories={this.state.stories} avatarURL={this.state.avatarURL} />
       </div>
     )
   }

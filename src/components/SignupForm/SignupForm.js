@@ -1,5 +1,9 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import FormField from "../FormField/FormField";
+
+// CSS
+import "./SignupFrom.css";
 
 function validate(values) {
   let errors = {}
@@ -22,45 +26,33 @@ function validate(values) {
 };
 
 class SignupForm extends React.Component {
-
-  renderField({ input, label, type, meta: {touched, error }}) {
-    return (
-      <div>
-        <label> {label} </label>
-
-        <div>
-          <input {...input} placeholder={label} type={type} />
-          {
-            touched && ((error && <span> {error} </span>))
-          }
-        </div>
-      </div>
-
-    )
-  };
-  
   render() {
     return (
       <div>
         <form onSubmit={this.props.handleSubmit}>
-        
-          <div>
-            <Field name="firstName" component={this.renderField} type="text" label="First Name" />
-            <Field name="lastName" component={this.renderField} type="text" label="Last Name" />
-            <Field name= "displayName" component={this.renderField} type="text" label="Display Name" />
-          </div>
+          <div className="signup-container">
+            <div className="signup-input-container">
+              <Field name="firstName" component={FormField} type="text" label="First Name" />
+            </div>
+            <div className="signup-input-container">
+              <Field name="lastName" component={FormField} type="text" label="Last Name" />
+            </div>
+            <div className="signup-input-container">
+              <Field name="displayName" component={FormField} type="text" label="Display Name" />
+            </div>
 
-          <div>
-            <Field name="email" component={this.renderField} type="email" label="Email Address" />
-          </div>
+            <div className="signup-input-container">
+              <Field name="email" component={FormField} type="email" label="Email Address" />
+            </div>
 
-          <div>
-            <Field name="password" component={this.renderField} type="password" label="Password" />
-            <Field name="confirmPassword" component={this.renderField} type="password" label="Confirm Password" />
-          </div>
-
-          <div>
-            <button type="submit" disabled={this.props.submitting}> Sign Up </button>
+            <div className="signup-input-container">
+              <Field name="password" component={FormField} type="password" label="Password" />
+              <Field name="confirmPassword" component={FormField} type="password" label="Confirm Password" />
+            </div>
+            
+            <div className="signup-button-container">
+              <button className="signup-button" type="submit" disabled={this.props.submitting}> Sign Up </button>
+            </div>
           </div>
         </form>
       </div>

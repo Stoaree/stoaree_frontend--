@@ -1,49 +1,50 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
-// Axios get
-import {getUserData} from './../../services/getUserData.js';
-
-// CSS 
+// CSS
 import './StoryCard.css';
 
 // Components
 import ProfileImage from './../ProfileImage/ProfileImage.js';
 
+
 class StoryCard extends React.Component {
-    
-  state = {
-    avatarURL: ''
+
+  handlingImageURL() {
+
+    const {story} = this.props;
+
+    if (story.imageURL) {
+      return (
+        <Link to={"/stories/" + story._id}> 
+          <img src={story.imageURL} className="image-header-card" alt="Header"/>
+        </Link>
+      )
+    } else if (!story.imageURL) {
+      return (
+        <Link to={"/stories/" + story._id}> 
+          <img src={story.imageURL} className="image-header-card" alt="HELLO THERE" /> 
+        </Link>
+      )
+    } 
   }
 
-  componentDidMount = () => {
-
-    getUserData(this.props.userId).then((response) => {
-      const avatarURL = response.data.avatarURL;
-      return this.setState({ avatarURL: avatarURL })
-      }).catch((err) => {
-        console.log(err);
-    })
-  };
-
   render() {
+    const { story } = this.props;
+    
     return (
-      <div className="storyCard">
-        <div className="story-image">
-          <div className="heart"></div>
-          <div className="play-button"></div>
+      <div className="story-card">
+        <div className="story-image-container">
+          {this.handlingImageURL()}
         </div>
-        <div className="storyContent">
-          <div className="profileImageDiv">
-            <ProfileImage avatarURL={this.state.avatarURL} />     
+        <div className="heart"> </div>
+        <div className="play-button-card"> </div>
+        <div className="story-content-card">
+          <ProfileImage avatarURL={story.interviewer.avatarURL} className="profile-image-card"/>
+          <div className="story-text-container-card">
+            <Link className="story-title-card" to={"/stories/" + story._id}>{story.title}</Link>
+            <p className="description-text-card">{story.description}</p>
           </div>
-          <div className="storyTitle">
-            <Link className="storyTitle" to={"/stories/" + this.props.story._id}>{this.props.story.title}</Link>
-          </div>
-        </div>
-        <div className="storyDescription">
-          <p className="descriptionText">{this.props.story.description}</p>
         </div>
       </div>
     );

@@ -2,19 +2,20 @@ import React from "react";
 import { connect } from "react-redux";
 
 import Recording from "../Recording/Recording";
-import { enterSubQuestions, nextQuestion } from "../../redux/storyReducer";
+import { enterSubQuestions, nextQuestion, resetUploadStatus } from "../../redux/storyReducer";
 
 function mapStateToProps(state) {
-  const { allQuestions, currentQuestion, currentQuestionSubset } = state.storyReducer;
+  const { allQuestions, currentQuestion, currentQuestionSubset, uploadComplete } = state.storyReducer;
   return {
     allQuestions,
     currentQuestion,
-    currentQuestionSubset
+    currentQuestionSubset,
+    uploadComplete
   };
 }
 
 const mapDispatchToProps = {
-  enterSubQuestions, nextQuestion
+  enterSubQuestions, nextQuestion, resetUploadStatus
 }
 
 class Question extends React.Component {
@@ -77,6 +78,7 @@ class Question extends React.Component {
       }
     }
 
+    this.props.resetUploadStatus();
     this.props.nextQuestion(nextQuestion, nextQuestionSubset);
   }
 
@@ -91,10 +93,12 @@ class Question extends React.Component {
       )
     }
     else {
+      const { uploadComplete } = this.props;
       return (
         <div>
           <Recording />
-          <button onClick={this.nextQuestion}>Next</button>
+          {uploadComplete && "Audio uploaded successfully"}
+          <button onClick={this.nextQuestion} disabled={!uploadComplete}>Next</button>
         </div>
       )
     }

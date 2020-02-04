@@ -1,32 +1,47 @@
 import React from "react";
 
-// CSS 
-import './StoryShow.css';
+// CSS
+import "./StoryShow.css";
+
+// Component
+import ProfileImage from "./../ProfileImage/ProfileImage.js";
 
 class StoryShow extends React.Component {
+  state = {
+    avatarURL: ""
+  };
+
   render() {
+    const { story } = this.props;
+
     return (
-      <div className="storyShow">
-        <div className="story-image">
-          <div className="heart"></div>        </div>
-        <div className="storyContent">
-          <div className="profileImageDiv">
-            <img className="profileImage" alt="profileImage" />
-          <p>Story title:</p>
+      <div className="story-show-card">
+       <div className = "banner"></div>
+
+        <div
+          className="story-image-show-container"
+          style={{ backgroundImage: `url(${story.imageURL})`, height: "30vh" }}
+        >
+          {console.log(story.imageURL)}
+        </div>
+        <div className="story-content">
+          <div className="profile-box">
+            <ProfileImage />
+            <div className="story-show-title">
+              {story.title}
+            </div>
           </div>
-          <div className="storyTitle">
-            <p>Image</p>
-              {this.props.story.title}
+          <div className="story-description">
+            <p className="description-text">Description:</p>
+            <p className="description-text">{story.description}</p>
+          </div>
+          <div className="tag-description">
+            <p>Tags:</p>
+            <p className="descriptionText">{story.tags}</p>
+            <div className="heart"></div>{" "}
           </div>
         </div>
-        <div className="storyDescription">
-          <p>Description:</p>
-          <p className="descriptionText">{this.props.story.description}</p>
-        </div>
-          <p>Tags:</p>
-          <p className="descriptionText">{this.props.story.tags}</p>
       </div>
-    
     );
   }
 }

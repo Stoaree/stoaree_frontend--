@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { getStories } from "./../services/getStory.js";
 
 // CSS
 import "./../css/main.css";
@@ -15,66 +14,25 @@ import StoryPage from "../pages/StoryPage/StoryPage.js";
 import ProfilePage from "../pages/ProfilePage/ProfilePage.js";
 import AdminPage from '../pages/AdminPage/AdminPage';
 import CreateStoryPage from "../pages/CreateStoryPage/CreateStoryPage";
+import EditProfilePage from "../pages/EditProfilePage/EditProfilePage";
 
 // Components
 import NavBar from "./../components/Navbar/NavBar.js";
+import EditStoryPage from "../pages/EditStoryPage/EditStoryPage";
 
 class AppRouter extends React.Component {
-  // Handles state for search
-  state = {
-    stories: null,
-    filteredStories: null
-  };
-
-  // Handles search results
-  componentDidMount() {
-    getStories().then(response => {
-      const stories = response.map(story => {
-        story.title = story.title.toLowerCase();
-        return story;
-      });
-      this.setState({ stories: stories, filteredStories: stories });
-    });
-  }
-
-  // Handles when the user searches
-  handleSearch = e => {
-    // setState
-    this.setState({
-      filteredStories: this.state.stories.filter(story =>
-        story.title.includes(e.target.value)
-      )
-    });
-  };
-
   render() {
-    const { stories } = this.state;
-    return stories ? (
+    return (
       <Router>
         <div>
-          <NavBar
-            stories={this.state.filteredStories}
-            handleSearch={this.handleSearch}
-          />
+          <NavBar />
           <Switch>
-            <Route
-              path="/search"
-              render={() => {
-                return <SearchPage stories={this.state.filteredStories} />;
-              }}
-            />
-            <Route
-              path="/stories/:id"
-              render={props => {
-                return <StoryPage stories={stories} match={props.match} />;
-              }}
-            />
-            <Route path="/search" render={() => {
-              return <SearchPage stories={this.state.filteredStories} />
-            }} />
+            <Route path="/search" component={SearchPage} />
             <Route path="/admin" component={AdminPage} />
             <Route path="/stories/new" component={CreateStoryPage} />
+            <Route path="/stories/edit/:id" component={EditStoryPage} />
             <Route path="/stories/:id" component={StoryPage} />
+            <Route path="/profile/update" component={EditProfilePage} />
             <Route path="/profile/:id" component={ProfilePage} />
             <Route path="/question" component={QuestionsPage} />
             <Route path="/signup" component={SignupPage} />
@@ -83,7 +41,7 @@ class AppRouter extends React.Component {
           </Switch>
         </div>
       </Router>
-    ) : null;
+    )
   }
 }
 
