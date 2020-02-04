@@ -6,6 +6,7 @@ import Comment from "../../components/Comment/Comment";
 import CommentForm from "./../../components/CommentForm/CommentForm.js";
 import Playback from "../../components/Playback/Playback";
 import LikeButton from "../../components/LikeButton/LikeButton";
+import Button from "../../components/Button/Button";
 
 // CSS
 import "./StoryPage.css";
@@ -89,15 +90,17 @@ class StoryPage extends React.Component {
             key={sound._id}
           />
         ))}
-        <button
+        {/* <button
           className="play-pause-button"
           onClick={() => this.handlePlay(this.state.currentIndex)}
         >
           Play
-        </button>
-        <button className="play-pause-button" onClick={this.handlePause}>
+        </button> */}
+        {/* <button className="play-pause-button" onClick={this.handlePause}>
           Pause
-        </button>
+        </button> */}
+        <Button onClick={() => this.handlePlay(this.state.currentIndex)}>Play</Button>
+        <Button onClick={this.handlePause}>Pause</Button>
       </div>
     );
   }
@@ -114,7 +117,7 @@ class StoryPage extends React.Component {
           {this.renderSounds()}
           {this.renderComments()}
           <div className="comment-like-box">
-            <CommentForm  onSubmit={this.onCommentSubmit} />
+            <CommentForm onSubmit={this.onCommentSubmit} />
             <div className="like-box">
               <LikeButton story={story} />
             </div>
