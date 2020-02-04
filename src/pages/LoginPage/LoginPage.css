@@ -1,0 +1,13 @@
+.login-container-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-text-page {
+  color: var(--main-grey);
+}
+
+.login-text-container-page p {
+  font-weight: thin;
+}

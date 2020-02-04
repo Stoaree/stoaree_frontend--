@@ -3,8 +3,7 @@ import React from "react";
 // Components
 import StoryShow from "../../components/StoryShow/StoryShow";
 import Comment from "../../components/Comment/Comment";
-
-import CommentForm from "./../../components/CommentForm/CommentForm";
+import CommentForm from "./../../components/CommentForm/CommentForm.js";
 import Playback from "../../components/Playback/Playback";
 import LikeButton from "../../components/LikeButton/LikeButton";
 
