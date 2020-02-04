@@ -60,19 +60,13 @@ class LoginPage extends React.Component {
 
   render() {
     return (
-<<<<<<< HEAD
       <div className="login-container-page">
         <div className="login-text-container-page">
           <h3 className="login-text-page"> Let's start hearing your stories... </h3>
           <p className="login-text-page">  Login </p>
+          {this.renderError()}
           <LoginForm onSubmit={this.onSubmit} className="login-test" />
         </div>  
-=======
-      <div>
-        <h3> Login Page </h3>
-        {this.renderError()}
-        <LoginForm onSubmit={this.onSubmit} />
->>>>>>> 27d248c7f200b85cdd81968451e223d20c8e8c9b
       </div>
     )
   };

@@ -2,4 +2,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 20px;
+}
+
+.signup-container-page h3 {
+  color: var(--main-grey);
+}
+
+.signup-container-page p {
+  color: var(--main-grey);
 }
