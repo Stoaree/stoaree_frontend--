@@ -90,15 +90,6 @@ class StoryPage extends React.Component {
             key={sound._id}
           />
         ))}
-        {/* <button
-          className="play-pause-button"
-          onClick={() => this.handlePlay(this.state.currentIndex)}
-        >
-          Play
-        </button> */}
-        {/* <button className="play-pause-button" onClick={this.handlePause}>
-          Pause
-        </button> */}
         <Button onClick={() => this.handlePlay(this.state.currentIndex)}>Play</Button>
         <Button onClick={this.handlePause}>Pause</Button>
       </div>
