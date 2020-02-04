@@ -23,8 +23,8 @@
 .story-image-show-container {
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center; 
-  
+  background-position: center;
+
 }
 
 .story-show-title {
@@ -59,11 +59,6 @@
   font-size: 8px;
 }
 
-.profile-image {
-  width: 20px;
-  height: 20px;
-}
-
 .profile-box {
 
   display: flex;
@@ -75,7 +70,7 @@
 
 }
 
-.banner { 
+.banner {
 background-color: #ef6248;
 width: 100%;
 height: 50px;
@@ -83,7 +78,7 @@ height: 50px;
 
 }
 
-.story-show-title { 
+.story-show-title {
   display: flex;
   flex-wrap: nowrap;
 
