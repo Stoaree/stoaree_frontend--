@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 function mapStateToProps(state) {
   return {
     searchQuery: state.searchReducer.searchQuery
-  }
+  };
 }
 
 class SearchPage extends React.Component {
@@ -14,7 +14,7 @@ class SearchPage extends React.Component {
     allStories: [],
     filteredStories: [],
     previousQuery: ""
-  }
+  };
 
   filterStories = () => {
     const { searchQuery } = this.props;
@@ -22,14 +22,16 @@ class SearchPage extends React.Component {
 
     if (searchQuery !== previousQuery) {
       const filteredStories = allStories.filter(story => {
-        const regex = new RegExp(searchQuery, 'i');
+        const regex = new RegExp(searchQuery, "i");
         const testTags = story.tags.some(tag => regex.test(tag));
-        return regex.test(story.title) || regex.test(story.description) || testTags;
+        return (
+          regex.test(story.title) || regex.test(story.description) || testTags
+        );
       });
 
       this.setState({ filteredStories, previousQuery: searchQuery });
     }
-  }
+  };
 
   componentDidMount() {
     axiosAPI.get("/stories").then(res => {
@@ -45,7 +47,7 @@ class SearchPage extends React.Component {
     const { filteredStories } = this.state;
 
     if (filteredStories) {
-      return filteredStories.map((story) => {
+      return filteredStories.map(story => {
         return (
           <div key={story._id}>
             <StoryCard story={story} userId={story.interviewer._id} />
@@ -59,7 +61,7 @@ class SearchPage extends React.Component {
     return (
       <div>
         <h1> Search Page! </h1>
-        {this.renderStories()}
+        <div className="cardDiv">{this.renderStories()}</div>
       </div>
     );
   }
