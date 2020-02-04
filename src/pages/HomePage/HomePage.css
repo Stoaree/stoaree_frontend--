@@ -1,4 +1,4 @@
-.about-stoaree {
+.about-stoaree-page-container {
   background-color: #ef6248;
   color: white;
 }
@@ -9,8 +9,17 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   flex-shrink: 0;
-  
+}
 
+.about-stoaree-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+}
+
+.stoaree-text {
+  align-content: center;
+  margin: 10px;
 }
