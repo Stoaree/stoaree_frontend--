@@ -38,6 +38,9 @@ class Navbar extends React.Component {
         else {
           this.props.setCurrentUser(null);
         }
+      }).catch(err => {
+        this.setState({ dataIsLoaded: true });
+        this.props.setCurrentUser(null);
       });
     }
   }
@@ -65,8 +68,8 @@ class Navbar extends React.Component {
           </div>
           <div className="text-div">
             <NavLink to="/" className="text" exact={true}> Home </NavLink>
-            <NavLink className="text" to="/"> <div onClick={this.deleteCookie}>Sign out</div> </NavLink>
             <NavLink to="/stories/new" className="text">Create your story</NavLink>
+            <NavLink className="text" to="/"> <div onClick={this.deleteCookie}>Sign out</div></NavLink>
           </div>
         </div>
       );

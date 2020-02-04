@@ -59,7 +59,7 @@ class EditStoryPage extends React.Component {
 
   renderForm = () => {
     const { story } = this.state;
-    if (Object.entries(story).length) {
+    if (!story || Object.entries(story).length) {
       return <StoryForm initialValues={story} editing={true} onSubmit={this.onSubmit} imageURL={story.imageURL} />
     }
   }

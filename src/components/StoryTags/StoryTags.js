@@ -8,8 +8,8 @@ class StoryTags extends React.Component {
   
     return (tags.map((tag, index) => {
       return (
-        <div key={`${index}_${this.props.stories}`}>
-          <p> {tag} </p>
+        <div className="story-tag-div-card" key={`${index}_${this.props.stories}`}>
+          <p className="story-tag"> {tag} </p>
         </div>
       )
     }))
@@ -17,7 +17,7 @@ class StoryTags extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className="story-tags-card">
         {this.handleTags()}
       </div>
     )

@@ -19,7 +19,11 @@ function mapStateToProps(state) {
 const mapDispatchToProps = {
   setCurrentUser
 }
+
 class LoginPage extends React.Component {
+  state = {
+    loginError: null
+  }
 
   onSubmit = (values) => {
 
@@ -28,22 +32,36 @@ class LoginPage extends React.Component {
       password: values.password
 
     }).then(response => {
+      console.log(response);
+
       const token = response.data.token;
       cookies.set("stoaree", token, { path: "/" })
 
       return window.location.reload();
-
-
     }).catch(error => {
-      console.error(error);
+      console.error(error.response.data);
+      this.setState({ loginError: error.response.data });
     })
   };
+
+  renderError = () => {
+    const { loginError } = this.state;
+    if (loginError) {
+      return (
+        <div>
+          ERROR: {loginError}
+        </div>
+      )
+    }
+  }
 
   render() {
     return (
       <div>
-        <h3> Login Page </h3>
-        <LoginForm onSubmit={this.onSubmit} />
+        <h3> Lets start hearing your stories... </h3>
+        <p>  Login</p>
+        <LoginForm onSubmit={this.onSubmit} className="login-test" />
+        {this.renderError()}
       </div>
     )
   };

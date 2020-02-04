@@ -13,13 +13,13 @@ class ProfileImage extends React.Component {
     if (this.props.avatarURL === undefined) {
       return (
         <div>
-          <img src={defaultImage} alt="DefaultImage" className="profile-image"/>
+          <img src={defaultImage} alt="DefaultImage" className="profile-image" style={{width: "50px"}} />
         </div>
       )
     } else {
       return (
         <div>
-          <img src={this.props.avatarURL} alt="profileImage" className="profile-image"/> 
+          <img src={this.props.avatarURL} alt="profileImage" className="profile-image" style={{ width: "50px" }}/> 
         </div>
       )
     }
@@ -28,7 +28,7 @@ class ProfileImage extends React.Component {
   render() {
     return (
       <div>
-        <div>
+        <div className="profile-image-div">
           {this.imageDisplay()}
         </div>
       </div>

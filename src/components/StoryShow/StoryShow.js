@@ -28,7 +28,6 @@ class StoryShow extends React.Component {
           <div className="profile-box">
             <ProfileImage />
             <div className="story-show-title">
-              {console.log(story)}
               {story.title}
             </div>
           </div>
