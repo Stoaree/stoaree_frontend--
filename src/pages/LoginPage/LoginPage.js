@@ -4,6 +4,7 @@ import Cookies from 'universal-cookie';
 import { connect } from "react-redux";
 
 import { setCurrentUser } from "../../redux/userReducer"
+import { setAlert, resetAlert } from "../../redux/alertReducer";
 
 // Component
 import LoginForm from './../../components/LoginForm/LoginForm.js';
@@ -17,14 +18,12 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-  setCurrentUser
+  setCurrentUser,
+  setAlert,
+  resetAlert
 }
 
 class LoginPage extends React.Component {
-  state = {
-    loginError: null
-  }
-
   onSubmit = (values) => {
 
     axiosAPI.post("/login", {
@@ -32,38 +31,26 @@ class LoginPage extends React.Component {
       password: values.password
 
     }).then(response => {
-      console.log(response);
-
       const token = response.data.token;
       cookies.set("stoaree", token, { path: "/" })
 
-      return window.location.reload();
+      this.props.resetAlert();
+      window.location.assign("/");
+
     }).catch(error => {
       console.error(error.response.data);
-      this.setState({ loginError: error.response.data });
+      this.props.setAlert(error.response.data);
     })
   };
-
-  renderError = () => {
-    const { loginError } = this.state;
-    if (loginError) {
-      return (
-        <div>
-          ERROR: {loginError}
-        </div>
-      )
-    }
-  }
 
   render() {
     return (
       <div>
         <h3> Lets start hearing your stories... </h3>
         <p>  Login</p>
-        {this.renderError()}
         <LoginForm onSubmit={this.onSubmit} />
       </div>
     )
-  };
+  }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

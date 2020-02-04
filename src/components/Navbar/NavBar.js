@@ -29,15 +29,10 @@ class Navbar extends React.Component {
   }
 
   componentDidMount() {
-    if (!this.props.currentUser || !Object.entries(this.props.currentUser).length) {
+    if (typeof (this.props.currentUser) === "undefined") {
       axiosAPI.get("/users/current").then(res => {
         this.setState({ dataIsLoaded: true });
-        if (res.data.success) {
-          this.props.setCurrentUser(res.data);
-        }
-        else {
-          this.props.setCurrentUser(null);
-        }
+        this.props.setCurrentUser(res.data);
       }).catch(err => {
         this.setState({ dataIsLoaded: true });
         this.props.setCurrentUser(null);
