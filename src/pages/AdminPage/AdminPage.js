@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import axiosAPI from "../../api/stoareeAPI";
 import Question from "./Question";
 import QuestionForm from "./QuestionForm";
@@ -14,7 +14,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = {
   setAllQuestions
-}
+};
 
 class AdminPage extends React.Component {
   componentDidMount() {
@@ -23,31 +23,49 @@ class AdminPage extends React.Component {
     });
   }
 
-  addFirstQuestion = (values) => {
-    axiosAPI.post("/questions/admin", {
-      title: values.title,
-      isTopLevel: true,
-      isYesOrNo: values.isYesOrNo,
-      order: 1
-    }).then(res => {
-      this.props.setAllQuestions(res.data);
-    });
-  }
+  addFirstQuestion = values => {
+    axiosAPI
+      .post("/questions/admin", {
+        title: values.title,
+        isTopLevel: true,
+        isYesOrNo: values.isYesOrNo,
+        order: 1
+      })
+      .then(res => {
+        this.props.setAllQuestions(res.data);
+      });
+  };
 
   renderQuestions = () => {
     const { allQuestions } = this.props;
 
+    console.log(allQuestions);
     if (allQuestions.length) {
-      const topLevelQuestions = allQuestions.filter(question => question.isTopLevel);
+      const topLevelQuestions = allQuestions.filter(
+        question => question.isTopLevel
+      );
       return topLevelQuestions.map((question, index, topLevelQuestions) => {
         const length = topLevelQuestions.length;
-        return <Question key={question._id} question={question} allQuestions={allQuestions} setAllQuestions={this.props.setAllQuestions} index={index} length={length} />
+        return (
+          <Question
+            key={question._id}
+            question={question}
+            allQuestions={allQuestions}
+            setAllQuestions={this.props.setAllQuestions}
+            index={index}
+            length={length}
+          />
+        );
       });
+    } else {
+      return (
+        <QuestionForm
+          label={"Add first question"}
+          onSubmit={this.addFirstQuestion}
+        />
+      );
     }
-    else {
-      return <QuestionForm label={"Add first question"} onSubmit={this.addFirstQuestion} />
-    }
-  }
+  };
 
   render() {
     return (
@@ -56,7 +74,7 @@ class AdminPage extends React.Component {
         <h2>Question Master List</h2>
         {this.renderQuestions()}
       </div>
-    )
+    );
   }
 }
 
