@@ -11,29 +11,34 @@ function mapStateToProps(state) {
 
 class SearchPage extends React.Component {
   state = {
+    allStories: [],
     filteredStories: [],
     previousQuery: ""
   }
 
-  getStories = () => {
+  filterStories = () => {
     const { searchQuery } = this.props;
-    const { previousQuery } = this.state;
+    const { allStories, previousQuery } = this.state;
 
     if (searchQuery !== previousQuery) {
-      axiosAPI.get(`search/${searchQuery}`).then(res => {
-        if (JSON.stringify(this.state.stories) !== JSON.stringify(res.data)) {
-          this.setState({ filteredStories: res.data, previousQuery: searchQuery });
-        }
+      const filteredStories = allStories.filter(story => {
+        const regex = new RegExp(searchQuery, 'i');
+        const testTags = story.tags.some(tag => regex.test(tag));
+        return regex.test(story.title) || regex.test(story.description) || testTags;
       });
+
+      this.setState({ filteredStories, previousQuery: searchQuery });
     }
   }
 
   componentDidMount() {
-    this.getStories();
+    axiosAPI.get("/stories").then(res => {
+      this.setState({ allStories: res.data });
+    });
   }
 
   componentDidUpdate() {
-    this.getStories();
+    this.filterStories();
   }
 
   renderStories = () => {
