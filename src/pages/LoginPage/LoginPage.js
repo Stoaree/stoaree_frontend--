@@ -60,8 +60,8 @@ class LoginPage extends React.Component {
       <div>
         <h3> Lets start hearing your stories... </h3>
         <p>  Login</p>
+        <LoginForm onSubmit={this.onSubmit} className="login-test" />
         {this.renderError()}
-        <LoginForm onSubmit={this.onSubmit} />
       </div>
     )
   };
