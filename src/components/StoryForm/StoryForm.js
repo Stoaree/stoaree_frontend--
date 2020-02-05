@@ -99,9 +99,11 @@ class StoryForm extends React.Component {
     return (
       <div>
         <form onSubmit={this.props.handleSubmit}>
-
+        <div className="story-signup-container">
           <div>
+            <div className="signup-input-container">
             <Field name="title" component={FormField} type="text" label="Title" />
+            </div>
             <label>Description</label>
             <div><Field name="description" component="textarea" placeholder="Description" /></div>
             <Field name="interviewee" component={FormField} type="email" label="Interviewee" placeholder="User's account email" />
@@ -112,7 +114,7 @@ class StoryForm extends React.Component {
               {imageURL && <img src={imageURL} alt="Current story header" />}
               <Field name="image" component={FormFileInput} /></div>
           </div>
-
+          </div>
           {this.renderSubmit()}
         </form>
       </div>
