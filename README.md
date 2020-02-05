@@ -45,13 +45,13 @@
 
 The first diagram is an overview of data flow throughout the whole app, while the other diagrams go into further detail about processes occurring within the app.
 
-![Data Flow Diagram - Overview](images/dataFlowDiagram/data_flow_diagram_0.png)
-![Data Flow Diagram - Story Processes](images/dataFlowDiagram/data_flow_diagram_1a.png)
-![Data Flow Diagram - User Processes](images/dataFlowDiagram/data_flow_diagram_1b.png)
+![Data Flow Diagram - Overview](./assets/images/dataFlowDiagram/data_flow_diagram_0.png)
+![Data Flow Diagram - Story Processes](./assets/images/dataFlowDiagram/data_flow_diagram_1a.png)
+![Data Flow Diagram - User Processes](./assets/images/dataFlowDiagram/data_flow_diagram_1b.png)
 
 ## Application Architecture Diagram
 
-![Application Architecture Diagram](./images/ApplicationArchitectureDiagram/asf.png)
+![Application Architecture Diagram](./assets/images/ApplicationArchitectureDiagram/asf.png)
 
 ## User Stories
 
@@ -116,75 +116,75 @@ The first diagram is an overview of data flow throughout the whole app, while th
 - Note: This application was designed for mobile first.
 - Below is the wire frames for a mobile device:
 
-![Mobile Design](./images/mobileDesigns/01_mobile_design.png)
+![Mobile Design](./assets/images/mobileDesigns/01_mobile_design.png)
 
-![Mobile Design](./images/mobileDesigns/02_mobile_design.png)
+![Mobile Design](./assets/images/mobileDesigns/02_mobile_design.png)
 
-![Mobile Design](./images/mobileDesigns/03_mobile_design.png)
+![Mobile Design](./assets/images/mobileDesigns/03_mobile_design.png)
 
-![Mobile Design](./images/mobileDesigns/04_mobile_design.png)
+![Mobile Design](./assets/images/mobileDesigns/04_mobile_design.png)
 
-![Mobile Design](./images/mobileDesigns/05_mobile_design.png)
+![Mobile Design](./assets/images/mobileDesigns/05_mobile_design.png)
 
-![Mobile Design](./images/mobileDesigns/06_mobile_design.png)
+![Mobile Design](./assets/images/mobileDesigns/06_mobile_design.png)
 
-![Mobile Design](./images/mobileDesigns/07_mobile_design.png)
+![Mobile Design](./assets/images/mobileDesigns/07_mobile_design.png)
 
-![Mobile Design](./images/mobileDesigns/08_mobile_design.png)
+![Mobile Design](./assets/images/mobileDesigns/08_mobile_design.png)
 
-![Mobile Design](./images/mobileDesigns/09_mobile_design.png)
+![Mobile Design](./assets/images/mobileDesigns/09_mobile_design.png)
 
-![Mobile Design](./images/mobileDesigns/10_mobile_design.png)
+![Mobile Design](./assets/images/mobileDesigns/10_mobile_design.png)
 
-![Mobile Design](./images/mobileDesigns/11_mobile_design.png)
+![Mobile Design](./assets/images/mobileDesigns/11_mobile_design.png)
 
-![Mobile Design](./images/mobileDesigns/12_mobile_design.png)
+![Mobile Design](./assets/images/mobileDesigns/12_mobile_design.png)
 
 - The below is designs for desktop:
 
-![Desktop Design](./images/desktopDesigns/01_desktop_design.png)
+![Desktop Design](./assets/images/desktopDesigns/01_desktop_design.png)
 
-![Desktop Design](./images/desktopDesigns/02_desktop_design.png)
+![Desktop Design](./assets/images/desktopDesigns/02_desktop_design.png)
 
-![Desktop Design](./images/desktopDesigns/03_desktop_design.png)
+![Desktop Design](./assets/images/desktopDesigns/03_desktop_design.png)
 
-![Desktop Design](./images/desktopDesigns/04_desktop_design.png)
+![Desktop Design](./assets/images/desktopDesigns/04_desktop_design.png)
 
-![Desktop Design](./images/desktopDesigns/05_desktop_design.png)
+![Desktop Design](./assets/images/desktopDesigns/05_desktop_design.png)
 
-![Desktop Design](./images/desktopDesigns/06_desktop_design.png)
+![Desktop Design](./assets/images/desktopDesigns/06_desktop_design.png)
 
-![Desktop Design](./images/desktopDesigns/07_desktop_design.png)
+![Desktop Design](./assets/images/desktopDesigns/07_desktop_design.png)
 
-![Desktop Design](./images/desktopDesigns/08_desktop_design.png)
+![Desktop Design](./assets/images/desktopDesigns/08_desktop_design.png)
 
 ## Screenshots of your Jira board throughout the duration of the project
 
-![Jira Progress](./images/jiraProgress/01-jira-progress.png)
+![Jira Progress](./assets/images/jiraProgress/01-jira-progress.png)
 
-![Jira Progress](./images/jiraProgress/02-jira-progress.png)
+![Jira Progress](./assets/images/jiraProgress/02-jira-progress.png)
 
-![Jira Progress](./images/jiraProgress/03-jira-progress.png)
+![Jira Progress](./assets/images/jiraProgress/03-jira-progress.png)
 
-![Jira Progress](./images/jiraProgress/04-jira-progress.png)
+![Jira Progress](./assets/images/jiraProgress/04-jira-progress.png)
 
-![Jira Progress](./images/jiraProgress/05-jira-progress.png)
+![Jira Progress](./assets/images/jiraProgress/05-jira-progress.png)
 
-![Jira Progress](./images/jiraProgress/06-jira-progress.png)
+![Jira Progress](./assets/images/jiraProgress/06-jira-progress.png)
 
-![Jira Progress](./images/jiraProgress/07-jira-progress.png)
+![Jira Progress](./assets/images/jiraProgress/07-jira-progress.png)
 
-![Jira Progress](./images/jiraProgress/08-jira-progress.png)
+![Jira Progress](./assets/images/jiraProgress/08-jira-progress.png)
 
-![Jira Progress](./images/jiraProgress/09-jira-progress.png)
+![Jira Progress](./assets/images/jiraProgress/09-jira-progress.png)
 
-![Jira Progress](./images/jiraProgress/10-jira-progress.png)
+![Jira Progress](./assets/images/jiraProgress/10-jira-progress.png)
 
-![Jira Progress](./images/jiraProgress/11-jira-progress.png)
+![Jira Progress](./assets/images/jiraProgress/11-jira-progress.png)
 
-![Jira Progress](./images/jiraProgress/12-jira-progress.png)
+![Jira Progress](./assets/images/jiraProgress/12-jira-progress.png)
 
-![Jira Progress](./images/jiraProgress/13-jira-progress.png)  
+![Jira Progress](./assets/images/jiraProgress/13-jira-progress.png)  
 ## Available Scripts
 
 In the project directory, you can run:
