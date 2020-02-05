@@ -36,6 +36,8 @@
   text-decoration: none;
   font-family: var(--main-font);
   font-weight: bold;
+  display: flex;
+  align-items: center;
 }
 
 .search-bar {
