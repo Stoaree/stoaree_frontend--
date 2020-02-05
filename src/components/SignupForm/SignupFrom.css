@@ -1,3 +1,8 @@
+.signup-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .signup-input-container input {
   border: solid 1px var(--main-grey);
   border-radius: 0.4rem;
@@ -28,7 +33,7 @@
   font-size: 15px;
 }
 
-
 .signup-button:hover {
   background: var(--main-green);
+  cursor: pointer;
 }

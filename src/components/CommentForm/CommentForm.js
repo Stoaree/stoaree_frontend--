@@ -1,5 +1,6 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
+import Button from "../Button/Button";
 import "./CommentForm.css";
 
 function validate(values) {
@@ -36,9 +37,9 @@ class CommentForm extends React.Component {
             component={this.renderField}
             placeholder="Write your comment here..."
           />
-          <button className="comment-button" type="submit">
+          <Button type="submit">
             Post Comment
-          </button>
+          </Button>
         </form>
       </div>
     );
