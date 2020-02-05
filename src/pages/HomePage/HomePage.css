@@ -1,25 +1,27 @@
-.about-stoaree-page-container {
+.about-stoaree-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   background-color: #ef6248;
   color: white;
+  padding-bottom: 1rem;
+}
+
+.stoaree-text {
+  margin: 0px auto;
+  margin: 10px;
+  width: 900px;
 }
 
 .cardDiv {
-  height: 50%;
-  width: 100%;
+  height: 100%;
+  max-width: 1250px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
-  flex-shrink: 0;
+  margin: 0px auto;
 }
 
-.about-stoaree-text-container {
-  display: flex;
-  flex-direction: column;
-  justify-items: center;
-}
 
-.stoaree-text {
-  align-content: center;
-  margin: 10px;
-}

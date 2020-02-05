@@ -26,7 +26,7 @@ class Homepage extends React.Component {
   render() {
     return (
       <div>
-        <div className="about-stoaree-page-container">
+        <div>
           <div className="about-stoaree-text-container">
             <h1 className="stoaree-text"> Stoaree </h1>
             <p className="stoaree-text"> 
@@ -48,7 +48,10 @@ class Homepage extends React.Component {
             </p>
           </div>
         </div>
-        <div className="cardDiv">{this.displayStories()}</div>
+        <div className="card-div-container">
+          <div className="cardDiv">{this.displayStories()}</div>
+        </div>
+        
       </div>
     );
   }
