@@ -16,7 +16,7 @@ class StoryShow extends React.Component {
 
     return (
       <div className="story-show-card">
-       <div className = "banner"></div>
+        <div className="banner"></div>
 
         <div
           className="story-image-show-container"
@@ -37,7 +37,7 @@ class StoryShow extends React.Component {
           </div>
           <div className="tag-description">
             <p>Tags:</p>
-            <p className="descriptionText">{story.tags}</p>
+            <p className="descriptionText">{story.tags.join(", ")}</p>
             <div className="heart"></div>{" "}
           </div>
         </div>
