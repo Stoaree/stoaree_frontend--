@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux"
 
 // Components
 import StoryShow from "../../components/StoryShow/StoryShow";
@@ -12,6 +13,12 @@ import Button from "../../components/Button/Button";
 import "./StoryPage.css";
 
 import axiosAPI from "../../api/stoareeAPI";
+
+function mapStateToProps(state) {
+  return {
+    currentUser: state.userReducer.currentUser
+  }
+}
 
 class StoryPage extends React.Component {
   state = {
@@ -96,6 +103,19 @@ class StoryPage extends React.Component {
     );
   }
 
+  renderForms = () => {
+    if (this.props.currentUser) {
+      return (
+        <div className="comment-like-box">
+          <CommentForm onSubmit={this.onCommentSubmit} />
+          <div className="like-box">
+            <LikeButton story={this.state.story} />
+          </div>
+        </div>
+      )
+    }
+  }
+
   render() {
     const { story } = this.state;
     const { comments } = this.state;
@@ -107,12 +127,7 @@ class StoryPage extends React.Component {
           <StoryShow story={story} />
           {this.renderSounds()}
           {this.renderComments()}
-          <div className="comment-like-box">
-            <CommentForm onSubmit={this.onCommentSubmit} />
-            <div className="like-box">
-              <LikeButton story={story} />
-            </div>
-          </div>
+          {this.renderForms()}
         </div>
       );
     } else {
@@ -121,4 +136,4 @@ class StoryPage extends React.Component {
   }
 }
 
-export default StoryPage;
+export default connect(mapStateToProps)(StoryPage);
