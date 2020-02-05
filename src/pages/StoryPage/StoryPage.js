@@ -116,6 +116,18 @@ class StoryPage extends React.Component {
     }
   }
 
+  renderEditButton = () => {
+    const { story } = this.state;
+    const { currentUser } = this.props;
+    if (currentUser && currentUser._id === story.interviewer._id) {
+      return (
+        <div className="button-box">
+          <Button to={`/story/edit/${story._id}`}>Edit Story</Button>
+        </div>
+      )
+    }
+  }
+
   render() {
     const { story } = this.state;
     const { comments } = this.state;
@@ -125,6 +137,7 @@ class StoryPage extends React.Component {
         <div className="story-content">
           {" "}
           <StoryShow story={story} />
+          {this.renderEditButton()}
           {this.renderSounds()}
           {this.renderComments()}
           {this.renderForms()}
