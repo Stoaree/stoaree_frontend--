@@ -2,7 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { addLike } from "../../services/postLike";
 import { setCurrentUser } from "../../redux/userReducer";
-import Button from "../Button/Button";
+
+// CSS
+import "./LikeButton.css";
 
 function mapStateToProps(state) {
   return {
@@ -49,10 +51,10 @@ class LikeButton extends React.Component {
     const { story, currentUser } = this.props;
 
     if (currentUser && !currentUser.bookmarks.includes(story._id)) {
-      return <Button onClick={this.onLikeClick}>Like</Button>;
+      return <i className="far fa-heart like-button" onClick={this.onLikeClick}></i>
     }
     else {
-      return <div>{likes || "0"} Likes</div>;
+      return <i class="fas fa-heart like-button">{likes || "0"}</i>;
     }
   }
 }

@@ -5,7 +5,7 @@ import StoryShow from "../../components/StoryShow/StoryShow";
 import Comment from "../../components/Comment/Comment";
 import CommentForm from "./../../components/CommentForm/CommentForm.js";
 import Playback from "../../components/Playback/Playback";
-import LikeButton from "../../components/LikeButton/LikeButton";
+
 import Button from "../../components/Button/Button";
 
 // CSS
@@ -109,9 +109,6 @@ class StoryPage extends React.Component {
           {this.renderComments()}
           <div className="comment-like-box">
             <CommentForm onSubmit={this.onCommentSubmit} />
-            <div className="like-box">
-              <LikeButton story={story} />
-            </div>
           </div>
         </div>
       );

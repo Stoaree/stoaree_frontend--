@@ -5,6 +5,7 @@ import "./StoryShow.css";
 
 // Component
 import ProfileImage from "./../ProfileImage/ProfileImage.js";
+import LikeButton from "../../components/LikeButton/LikeButton";
 
 class StoryShow extends React.Component {
   state = {
@@ -15,20 +16,18 @@ class StoryShow extends React.Component {
     const { story } = this.props;
 
     return (
-      <div className="story-show-card">
-       <div className = "banner"></div>
-
-        <div
-          className="story-image-show-container"
-          style={{ backgroundImage: `url(${story.imageURL})`, height: "30vh" }}
-        >
-          {console.log(story.imageURL)}
+      <div className="story-page-container">
+        <div className="story-page-image-show-container">
+          <img className="story-page-image" src={story.imageURL} alt="header" />
         </div>
-        <div className="story-content">
-          <div className="profile-box">
-            <ProfileImage />
-            <div className="story-show-title">
-              {story.title}
+        <div className="story-page-content-container">
+          <div className="story-page-title-profile-image">
+            <ProfileImage avatarURL={story.interviewer.avatarURL} />
+            <h2 className="story-page-title"> {story.title} </h2>
+            <div className="heart">
+              <div className="like-box">
+                <LikeButton story={story} />
+              </div>
             </div>
           </div>
           <div className="story-description">
@@ -38,7 +37,6 @@ class StoryShow extends React.Component {
           <div className="tag-description">
             <p>Tags:</p>
             <p className="descriptionText">{story.tags}</p>
-            <div className="heart"></div>{" "}
           </div>
         </div>
       </div>
