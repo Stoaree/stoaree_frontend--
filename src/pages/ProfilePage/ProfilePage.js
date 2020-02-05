@@ -1,9 +1,13 @@
 import React from 'react';
 import UserDataDisplay from './../../components/UserDataDisplay/UserDataDisplay.js';
 import { getUserData } from './../../services/getUserData.js';
+import { NavLink } from "react-router-dom";
 
 // Components
 import ProfileImage from './../../components/ProfileImage/ProfileImage.js';
+
+// CSS
+import "./ProfilePage.css";
 
 class ProfilePage extends React.Component {
 
@@ -28,7 +32,8 @@ class ProfilePage extends React.Component {
   render() {
     return (
 
-      <div>
+      <div className="profile-page-container">
+        <NavLink to="/profile/update"> <i className="fas fa-user-edit user-edit-icon"></i> </NavLink>
         <h1> {this.state.userData.displayName} </h1>
         <div>
           <ProfileImage avatarURL={this.state.avatarURL} />
