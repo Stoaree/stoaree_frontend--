@@ -77,8 +77,8 @@ class Recording extends React.Component {
           backgroundColor="#e2725b"
         />
         
-        <div className="mic-icon-container">
-          <i className="fas fa-microphone mic-icon" onClick={this.startRecording} ></i>
+        <div className="mic-icon-container" onClick={this.startRecording}>
+          <i className="fas fa-microphone mic-icon"></i>
         </div>
         <button onClick={this.stopRecording} type="button" className="stop-recording">Stop and Save Recording</button>
       </div>
