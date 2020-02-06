@@ -8,6 +8,7 @@ import CommentForm from "./../../components/CommentForm/CommentForm.js";
 import Playback from "../../components/Playback/Playback";
 
 import Button from "../../components/Button/Button";
+import LinkButton from "../../components/LinkButton/LinkButton";
 
 // CSS
 import "./StoryPage.css";
@@ -132,7 +133,7 @@ class StoryPage extends React.Component {
     if (currentUser && currentUser._id === story.interviewer._id) {
       return (
         <div className="story-page-buttons-container">
-          <Button to={`/story/edit/${story._id}`}>Edit Story</Button>
+          <LinkButton to={`/stories/edit/${story._id}`}>Edit Story</LinkButton>
           <Button onClick={this.deleteStory}>Delete Story</Button>
         </div>
       )
