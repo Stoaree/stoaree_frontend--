@@ -1,3 +1,25 @@
-.storyDescription {
-  margin-left: 3rem;
+.comment-container {
+  margin-left: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--main-grey);
+  margin-right: 1rem;
+}
+
+.comment-content-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+
+}
+
+.comment-content-container p {
+  margin: 0px;
+}
+
+.comment-content-container h4 {
+  margin-top: 0px;
 }

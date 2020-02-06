@@ -80,7 +80,7 @@ class StoryPage extends React.Component {
 
   renderSounds() {
     return (
-      <div className="button-box">
+      <div className="button-box-container">
         {this.state.sounds.map((sound, index) => (
           <Playback
             {...sound}
@@ -90,7 +90,7 @@ class StoryPage extends React.Component {
             key={sound._id}
           />
         ))}
-        <Button onClick={() => this.handlePlay(this.state.currentIndex)}>Play</Button>
+        <Button onClick={() => this.handlePlay(this.state.currentIndex)}>Play Story</Button>
         <Button onClick={this.handlePause}>Pause</Button>
       </div>
     );
