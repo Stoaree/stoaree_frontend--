@@ -94,17 +94,9 @@ describe("1.0_User-Logged-Out", function() {
     cy.get("input[name=searchInput]").type("sport{enter}");
     cy.wait(500);
     cy.contains("Test STORY Howie").click();
+    cy.get("p[class=descriptionText]").should("have.text", "Sport");
     cy.get("input[name=searchInput]").clear();
-    cy.get("input[name=searchInput]").type("sport{enter}");
-    cy.wait(500);
-    cy.contains("TEST").click();
-    cy.wait(500);
-    cy.get("input[name=searchInput]").type("ball!{enter}");
-    cy.wait(500);
-    cy.contains("My dad won the 1981 VFL Grand Final").click();
-    cy.get("p[class=descriptionText]").should("have.text", "VFLFootballHigh Score BALL!");
-    cy.get("input[name=searchInput]").clear();
-
+    
 
   });
 
