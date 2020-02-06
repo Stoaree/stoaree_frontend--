@@ -53,6 +53,7 @@
 - **redux** and **react-redux** - Redux is a framework that provides a central "store" of values that can be accessed and modified from anywhere in the app. This negates the need for unnecessary props being passed down a line of React components.
 - **redux-form** - This library is used to create responsive forms, allowing the handling of form validation.
 - **universal-cookie** - This library provides a way to store and retrieve cookies for a React app.
+- **Cypress** - Cypress is a end-to-end testing framework that makes user testing easy to implement and record your results.
 
 #### Back-end
 - **express** - The server was built primarily in Express as per the assignment specifications. Express is used to define the back-end routes and communicates with the database to retrieve and process data.
@@ -100,6 +101,7 @@
 - Admin users have access to the admin dashboard at `/admin` where the master list of questions can be manipulated.
 
 ## Manual Testing
+
 
 ### User Screen Testing 
 
