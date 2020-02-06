@@ -116,6 +116,17 @@ class StoryPage extends React.Component {
     }
   }
 
+  deleteStory = () => {
+    const confirm = window.confirm("Are you sure you want to delete this story?");
+    if (confirm) {
+      axiosAPI.delete(`/stories/${this.state.story._id}`).then(res => {
+        if (res.status === 200) {
+          window.location.assign("/");
+        }
+      })
+    }
+  }
+
   renderEditButton = () => {
     const { story } = this.state;
     const { currentUser } = this.props;
@@ -123,6 +134,7 @@ class StoryPage extends React.Component {
       return (
         <div className="button-box">
           <Button to={`/story/edit/${story._id}`}>Edit Story</Button>
+          <Button onClick={this.deleteStory}>Delete Story</Button>
         </div>
       )
     }
