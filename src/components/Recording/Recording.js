@@ -53,9 +53,7 @@ class Recording extends React.Component {
   }
 
   onStop = (recordedBlob) => {
-    console.log("recordedBlob is: ", recordedBlob);
 
-    // const file = this.uploadInput.files[0];
     // Split the filename to get the name and type
 
     const fileName = Math.random().toString() + ".webm";
