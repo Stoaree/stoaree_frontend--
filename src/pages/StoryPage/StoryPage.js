@@ -97,8 +97,10 @@ class StoryPage extends React.Component {
             key={sound._id}
           />
         ))}
-        <Button onClick={() => this.handlePlay(this.state.currentIndex)}>Play Story</Button>
-        <Button onClick={this.handlePause}>Pause</Button>
+        <div className="story-page-buttons-container">
+          <Button onClick={() => this.handlePlay(this.state.currentIndex)}>Play Story</Button>
+          <Button onClick={this.handlePause}>Pause</Button>
+        </div>
       </div>
     );
   }
@@ -129,7 +131,7 @@ class StoryPage extends React.Component {
     const { currentUser } = this.props;
     if (currentUser && currentUser._id === story.interviewer._id) {
       return (
-        <div className="button-box">
+        <div className="story-page-buttons-container">
           <Button to={`/story/edit/${story._id}`}>Edit Story</Button>
           <Button onClick={this.deleteStory}>Delete Story</Button>
         </div>
