@@ -1,10 +1,12 @@
 import React from "react";
+import { connect } from "react-redux"
 
 // Components
 import StoryShow from "../../components/StoryShow/StoryShow";
 import Comment from "../../components/Comment/Comment";
 import CommentForm from "./../../components/CommentForm/CommentForm.js";
 import Playback from "../../components/Playback/Playback";
+import LikeButton from "./../../components/LikeButton/LikeButton.js";
 
 import Button from "../../components/Button/Button";
 
@@ -12,6 +14,12 @@ import Button from "../../components/Button/Button";
 import "./StoryPage.css";
 
 import axiosAPI from "../../api/stoareeAPI";
+
+function mapStateToProps(state) {
+  return {
+    currentUser: state.userReducer.currentUser
+  }
+}
 
 class StoryPage extends React.Component {
   state = {
@@ -96,6 +104,16 @@ class StoryPage extends React.Component {
     );
   }
 
+  renderForms = () => {
+    if (this.props.currentUser) {
+      return (
+        <div className="comment-like-box">
+          <CommentForm onSubmit={this.onCommentSubmit} />
+        </div>
+      )
+    }
+  }
+
   render() {
     const { story } = this.state;
     const { comments } = this.state;
@@ -107,9 +125,7 @@ class StoryPage extends React.Component {
           <StoryShow story={story} />
           {this.renderSounds()}
           {this.renderComments()}
-          <div className="comment-like-box">
-            <CommentForm onSubmit={this.onCommentSubmit} />
-          </div>
+          {this.renderForms()}
         </div>
       );
     } else {
@@ -118,4 +134,4 @@ class StoryPage extends React.Component {
   }
 }
 
-export default StoryPage;
+export default connect(mapStateToProps)(StoryPage);

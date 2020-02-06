@@ -8,6 +8,14 @@ import "./SignupFrom.css";
 function validate(values) {
   let errors = {}
 
+  if (!values.firstName) {
+    errors.firstName = "Required";
+  }
+
+  if (!values.lastName) {
+    errors.lastName = "Required";
+  }
+
   if (!values.displayName) {
     errors.displayName = 'Required';
   } else if (values.displayName.length < 2) {
@@ -20,9 +28,15 @@ function validate(values) {
     errors.email = 'Invalid Email';
   };
 
-  if (values.password !== values.confirmPassword) {
-    errors.email = 'Passwords don\'t match'
+  if (!values.password) {
+    errors.password = "Required";
   }
+
+  if (values.password !== values.confirmPassword) {
+    errors.confirmPassword = 'Passwords don\'t match'
+  }
+
+  return errors;
 };
 
 class SignupForm extends React.Component {
@@ -49,7 +63,7 @@ class SignupForm extends React.Component {
               <Field name="password" component={FormField} type="password" label="Password" />
               <Field name="confirmPassword" component={FormField} type="password" label="Confirm Password" />
             </div>
-            
+
             <div className="signup-button-container">
               <button className="signup-button" type="submit" disabled={this.props.submitting}> Sign Up </button>
             </div>
