@@ -6,7 +6,6 @@ import StoryShow from "../../components/StoryShow/StoryShow";
 import Comment from "../../components/Comment/Comment";
 import CommentForm from "./../../components/CommentForm/CommentForm.js";
 import Playback from "../../components/Playback/Playback";
-import LikeButton from "./../../components/LikeButton/LikeButton.js";
 
 import Button from "../../components/Button/Button";
 
@@ -114,6 +113,30 @@ class StoryPage extends React.Component {
     }
   }
 
+  deleteStory = () => {
+    const confirm = window.confirm("Are you sure you want to delete this story?");
+    if (confirm) {
+      axiosAPI.delete(`/stories/${this.state.story._id}`).then(res => {
+        if (res.status === 200) {
+          window.location.assign("/");
+        }
+      })
+    }
+  }
+
+  renderEditButton = () => {
+    const { story } = this.state;
+    const { currentUser } = this.props;
+    if (currentUser && currentUser._id === story.interviewer._id) {
+      return (
+        <div className="button-box">
+          <Button to={`/story/edit/${story._id}`}>Edit Story</Button>
+          <Button onClick={this.deleteStory}>Delete Story</Button>
+        </div>
+      )
+    }
+  }
+
   render() {
     const { story } = this.state;
     const { comments } = this.state;
@@ -123,6 +146,7 @@ class StoryPage extends React.Component {
         <div className="story-content">
           {" "}
           <StoryShow story={story} />
+          {this.renderEditButton()}
           {this.renderSounds()}
           {this.renderComments()}
           {this.renderForms()}
