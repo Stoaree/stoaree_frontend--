@@ -34,14 +34,16 @@ class CommentForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="comment-form-container">
         <form onSubmit={this.props.handleSubmit}>
           <h3>Add Comment</h3>
-          <Field
-            name="text"
-            component={this.renderField}
-            placeholder="Write your comment here..."
-          />
+          <div className="input-field-container">
+            <Field
+              name="text"
+              component={this.renderField}
+              placeholder="Write your comment here..."
+            />
+          </div>
           <Button type="submit">
             Post Comment
           </Button>
