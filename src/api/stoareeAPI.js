@@ -5,6 +5,6 @@ const cookies = new Cookies();
 const token = cookies.get("stoaree");
 
 export default axios.create({
-  baseURL: 'http://localhost:3001/',
+  baseURL: 'https://polar-castle-01694.herokuapp.com/',
   headers: { Authorization: token }
 });
