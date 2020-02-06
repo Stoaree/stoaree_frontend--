@@ -33,12 +33,11 @@ class ProfilePage extends React.Component {
     return (
 
       <div className="profile-page-container">
-        <NavLink to="/profile/update"> <i className="fas fa-user-edit user-edit-icon"></i> </NavLink>
-        <h1> {this.state.userData.displayName} </h1>
-        <div>
-          <ProfileImage avatarURL={this.state.avatarURL} />
+        <div className="profile-page-image-name-edit-container">
+          <ProfileImage avatarURL={this.state.avatarURL} className="profile-page-image"/>
+          <h1> {this.state.userData.displayName} </h1>
+          <NavLink to="/profile/update"> <i className="fas fa-user-edit user-edit-icon"></i> </NavLink>
         </div>
-
         <UserDataDisplay userData={this.state.userData} stories={this.state.stories} avatarURL={this.state.avatarURL} />
       </div>
     )

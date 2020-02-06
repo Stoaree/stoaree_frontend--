@@ -1,6 +1,10 @@
 import React from 'react';
 import StoryCard from './../StoryCard/StoryCard.js';
+
+// CSS 
+import "./UserDataDisplay.css"
 import '../StoryCard/StoryCard.css';
+
 
 class UserDataDisplay extends React.Component {
 
@@ -24,18 +28,28 @@ class UserDataDisplay extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          <ul>
-            <p> Full Name: </p>
-            <li>{this.props.userData.firstName} {this.props.userData.lastName}</li>
-            <p> Display Name: </p>
-            <li>{this.props.userData.displayName}</li>
-            <p> Location: </p>
-            <li>{this.props.userData.location}</li>
-
-            <h3> Stories: </h3>
-            {this.handleStories()}
+        <div className="user-data-container">
+          <ul className="user-data-text-container">
+            <div className="user-data">
+              <p> Full Name: </p>
+              <ol>{this.props.userData.firstName} {this.props.userData.lastName}</ol>
+            </div>
+            <div className="user-data">
+              <p> Display Name: </p>
+              <ol>{this.props.userData.displayName}</ol>
+            </div>
+            <div className="user-data">
+              <p> Location: </p>
+              <ol>{this.props.userData.location}</ol>
+            </div>
           </ul>
+
+          <hr />
+
+          <h3> Stories: </h3>
+          <div className="story-container">
+            {this.handleStories()} 
+          </div>  
         </div>
       </div>
     )

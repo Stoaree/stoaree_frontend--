@@ -1,4 +1,22 @@
 .fa-user-edit {
   color: var(--main-grey);
+  margin-left: 1rem;
 }
 
+.profile-page-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-page-image-name-edit-container {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.profile-page-image-name-edit-container h1 {
+  margin-left: 1rem;
+  color: var(--main-green);
+}
