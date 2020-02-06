@@ -85,7 +85,8 @@
 - `cd` into stoaree_backend-- and run `npm start`
 - In another instance of terminal - `cd` into stoaree_frontend-- and run `yarn run cypress open`
 - A new browser instance will be opened in Cypress. Click the 'run all specs' button to run all tests.
-- A score of the total coverage is stored in /coverage/lcov-report/index.html
+- A score of the total coverage is stored in ./coverage/lcov-report/index/index.html
+- Open this in your browser to read the score.
 
 ### Running backend tests
 
