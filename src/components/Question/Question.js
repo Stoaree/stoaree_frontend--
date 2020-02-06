@@ -4,6 +4,9 @@ import { connect } from "react-redux";
 import Recording from "../Recording/Recording";
 import { enterSubQuestions, nextQuestion, resetUploadStatus } from "../../redux/storyReducer";
 
+// CSS
+import "./Question.css";
+
 function mapStateToProps(state) {
   const { allQuestions, currentQuestion, currentQuestionSubset, uploadComplete } = state.storyReducer;
   return {
@@ -86,19 +89,20 @@ class Question extends React.Component {
     const { isYesOrNo } = this.props.question;
     if (isYesOrNo) {
       return (
-        <div>
-          <button onClick={this.enterSubQuestions}>Yes</button>
-          <button onClick={this.nextQuestion}>No</button>
+        <div className="question-button-container">
+          <button className="question-button-yes" onClick={this.enterSubQuestions}>Yes</button>
+          <h4> OR </h4>
+          <button className="question-button-no" onClick={this.nextQuestion}>No</button>
         </div>
       )
     }
     else {
       const { uploadComplete } = this.props;
       return (
-        <div>
+        <div className="question-button-container">
           <Recording />
           {uploadComplete && "Audio uploaded successfully"}
-          <button onClick={this.nextQuestion} disabled={!uploadComplete}>Next</button>
+          <button onClick={this.nextQuestion} disabled={!uploadComplete} className="question-next-button">Next Question</button>
         </div>
       )
     }
@@ -108,8 +112,8 @@ class Question extends React.Component {
     const { title } = this.props.question;
 
     return (
-      <div>
-        <h2>{title}</h2>
+      <div className="question-container"> 
+        <h2 className="question-title">{title}</h2>
         {this.renderQuestionType()}
       </div>
     )
