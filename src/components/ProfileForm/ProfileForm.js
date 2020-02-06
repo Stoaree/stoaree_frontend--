@@ -3,6 +3,8 @@ import { Field, reduxForm } from "redux-form";
 import FormFileInput from "../FormFileInput/FormFileInput";
 import FormField from "../FormField/FormField";
 
+// CSS 
+import "./ProfileForm.css";
 class ProfileForm extends React.Component {
   render() {
     const { avatarURL } = this.props;
@@ -10,18 +12,35 @@ class ProfileForm extends React.Component {
       <div>
         <form onSubmit={this.props.handleSubmit}>
 
-          <div>
-            <Field name="email" component={FormField} type="email" label="Email" />
-            <Field name="firstName" component={FormField} type="text" label="First Name" />
-            <Field name="lastName" component={FormField} type="text" label="Last Name" />
-            <Field name="displayName" component={FormField} type="text" label="Display Name" />
-            <Field name="location" component={FormField} type="text" label="Location" />
+          <div className="profile-form-container">
+            <div className="profile-form-input-container">
+              <Field name="email" component={FormField} type="email" label="Email"  />
+            </div>
+
+            <div className="profile-form-input-container">
+              <Field name="firstName" component={FormField} type="text" label="First Name" />
+            </div>
+
+            <div className="profile-form-input-container">
+              <Field name="lastName" component={FormField} type="text" label="Last Name" />
+            </div>
+
+            <div className="profile-form-input-container">
+              <Field name="displayName" component={FormField} type="text" label="Display Name" />
+            </div>
+
+            <div className="profile-form-input-container">
+              <Field name="location" component={FormField} type="text" label="Location" />
+            </div>
+          </div>
+          
+          <div className="profile-form-avatar-container">
             <label>Avatar</label>
             <div>
               {avatarURL && <img src={avatarURL} alt="Current avatar" />}
               <Field name="avatar" component={FormFileInput} />
             </div>
-            <button type="submit">Update Profile</button>
+            <button type="submit" className="profile-form-submit-button">Update Profile</button>
           </div>
         </form>
       </div>
