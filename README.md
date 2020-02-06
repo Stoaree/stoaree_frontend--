@@ -85,7 +85,8 @@
 - `cd` into stoaree_backend-- and run `npm start`
 - In another instance of terminal - `cd` into stoaree_frontend-- and run `yarn run cypress open`
 - A new browser instance will be opened in Cypress. Click the 'run all specs' button to run all tests.
-- A score of the total coverage is stored in /coverage/lcov-report/index.html
+- A score of the total coverage is stored in ./coverage/lcov-report/index/index.html
+- Open this in your browser to read the score.
 
 ### Running backend tests
 
@@ -97,6 +98,17 @@
 
 - A user has to be manually given admin status directly through Mongo, by adding the field `isAdmin: true` to a user in the database.
 - Admin users have access to the admin dashboard at `/admin` where the master list of questions can be manipulated.
+
+## Manual Testing
+
+### User Screen Testing 
+
+https://drive.google.com/file/d/1-zd7On6dKVZQ_IvPOkyTYmLPkB1IgVFZ/view
+
+### Local Host Manual Testing
+
+https://docs.google.com/spreadsheets/d/1uJVx9yiprLXbfZ7UL2CqtfBrna3eH9KC-rPHkKgzr2k/edit?usp=sharing
+
 
 ## Data Flow Diagram
 
@@ -253,3 +265,4 @@ The first diagram is an overview of data flow throughout the whole app, while th
 ![Jira Progress](./assets/images/jiraProgress/18-jira-progress.png)
 
 ![Jira Progress](./assets/images/jiraProgress/19-jira-progress.png)
+
