@@ -128,7 +128,7 @@ class StoryForm extends React.Component {
               </ol>
 
               <ol className="story-form-click-ables">
-                <label for="imageHeader"> Header Image </label>
+                <label htmlFor="imageHeader"> Header Image </label>
                 {imageURL && <img src={imageURL} alt="Current story header" />}
                 <Field name="image" label="Header Image" component={FormFileInput} id="imageHeader" />
               </ol>

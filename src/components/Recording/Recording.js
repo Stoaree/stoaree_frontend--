@@ -7,7 +7,7 @@ import { confirmUploadComplete, resetUploadStatus } from "../../redux/storyReduc
 import fileUpload from "../../services/fileUpload";
 
 // CSS
-import "./../../css/main.css";
+import "./Recording.css";
 
 function mapStateToProps(state) {
   const { currentStory, currentQuestion } = state.storyReducer;
@@ -53,9 +53,7 @@ class Recording extends React.Component {
   }
 
   onStop = (recordedBlob) => {
-    console.log("recordedBlob is: ", recordedBlob);
 
-    // const file = this.uploadInput.files[0];
     // Split the filename to get the name and type
 
     const fileName = Math.random().toString() + ".webm";
@@ -78,12 +76,11 @@ class Recording extends React.Component {
           strokeColor="#000000"
           backgroundColor="#e2725b"
         />
-        <button onClick={this.startRecording} type="button">
-          Start
-        </button>
-        <button onClick={this.stopRecording} type="button">
-          Stop
-        </button>
+        
+        <div className="mic-icon-container" onClick={this.startRecording}>
+          <i className="fas fa-microphone mic-icon"></i>
+        </div>
+        <button onClick={this.stopRecording} type="button" className="stop-recording">Stop and Save Recording</button>
       </div>
     );
   }

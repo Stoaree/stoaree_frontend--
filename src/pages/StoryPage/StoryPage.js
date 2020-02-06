@@ -6,8 +6,8 @@ import StoryShow from "../../components/StoryShow/StoryShow";
 import Comment from "../../components/Comment/Comment";
 import CommentForm from "./../../components/CommentForm/CommentForm.js";
 import Playback from "../../components/Playback/Playback";
-
 import Button from "../../components/Button/Button";
+import LinkButton from "../../components/LinkButton/LinkButton";
 
 // CSS
 import "./StoryPage.css";
@@ -97,8 +97,10 @@ class StoryPage extends React.Component {
             key={sound._id}
           />
         ))}
-        <Button onClick={() => this.handlePlay(this.state.currentIndex)}>Play Story</Button>
-        <Button onClick={this.handlePause}>Pause</Button>
+        <div className="story-page-buttons-container">
+          <Button onClick={() => this.handlePlay(this.state.currentIndex)}>Play Story</Button>
+          <Button onClick={this.handlePause}>Pause</Button>
+        </div>
       </div>
     );
   }
@@ -129,8 +131,8 @@ class StoryPage extends React.Component {
     const { currentUser } = this.props;
     if (currentUser && currentUser._id === story.interviewer._id) {
       return (
-        <div className="button-box">
-          <Button to={`/story/edit/${story._id}`}>Edit Story</Button>
+        <div className="story-page-buttons-container">
+          <LinkButton to={`/stories/edit/${story._id}`}>Edit Story</LinkButton>
           <Button onClick={this.deleteStory}>Delete Story</Button>
         </div>
       )
