@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux"
-import LinkButton from "./../../components/LinkButton/LinkButton.js";
 
 // Components
 import StoryShow from "../../components/StoryShow/StoryShow";

@@ -63,11 +63,6 @@ class Navbar extends React.Component {
               {currentUser.displayName}
             </NavLink>
           </div>
-          {currentUser.isAdmin &&
-            <div className="text-div">
-              <NavLink to="/admin">Admin dashboard</NavLink>
-            </div>
-          }
           <div className="text-div">
             <NavLink to="/" className="text" exact={true}> Home </NavLink>
             <NavLink to="/stories/new" className="text">Create your story</NavLink>
