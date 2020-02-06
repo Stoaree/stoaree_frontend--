@@ -12,6 +12,18 @@ class StoryShow extends React.Component {
     avatarURL: ""
   };
 
+  handleStoryTags = () => {
+    const tags = this.props.story.tags;
+
+    return tags.map((tag) => {
+      return (
+        <div key={this.props.story.interviewer._id + tag}>
+          <p className="story-page-tag"> {tag} </p>
+        </div>
+      )
+    })
+  }
+
   render() {
     const { story } = this.props;
 
@@ -24,19 +36,19 @@ class StoryShow extends React.Component {
           <div className="story-page-title-profile-image">
             <ProfileImage avatarURL={story.interviewer.avatarURL} />
             <h2 className="story-page-title"> {story.title} </h2>
-            <div className="heart">
+            <div className="heart-container">
               <div className="like-box">
                 <LikeButton story={story} />
               </div>
             </div>
           </div>
-          <div className="story-description">
-            <p className="description-text">Description:</p>
-            <p className="description-text">{story.description}</p>
+          <div className="story-page-tags-container">
+            {this.handleStoryTags()}
           </div>
-          <div className="tag-description">
-            <p>Tags:</p>
-            <p className="descriptionText">{story.tags}</p>
+          <div className="story-page-description">
+            <h3 className="description-text">Description:</h3>
+            <p className="description-text">{story.description}</p>
+            <hr/> 
           </div>
         </div>
       </div>

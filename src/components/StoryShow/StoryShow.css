@@ -9,6 +9,39 @@
   display: flex;
   flex-direction: column;
   margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.story-page-tags-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.story-page-tag {
+  color: var(--main-grey);
+  border: 1px solid var(--main-grey);
+  border-radius: 5px;
+  padding: 0.5rem;
+  margin-right: 1rem; 
+}
+
+.story-page-tag:hover {
+  background: var(--main-green);
+  color: var(--main-white);
+  cursor: default;
+}
+
+.story-page-content-container h3 {
+  color: var(--main-grey);
+}
+
+.story-page-description p  {
+  color: var(--main-grey);
+}
+
+.story-page-content-container hr  {
+  color: var(--main-grey);
+  border: 0.5px solid;
 }
 
 .story-page-title-profile-image {
@@ -25,4 +58,5 @@
   margin-left: 1rem;
   color: var(--main-green);
 }
+
 

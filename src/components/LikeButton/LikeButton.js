@@ -54,7 +54,7 @@ class LikeButton extends React.Component {
       return <i className="far fa-heart like-button" onClick={this.onLikeClick}></i>
     }
     else {
-      return <i class="fas fa-heart like-button">{likes || "0"}</i>;
+      return <i className="fas fa-heart like-button">{likes || "0"}</i>;
     }
   }
 }
