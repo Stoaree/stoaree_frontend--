@@ -30,7 +30,7 @@ class StoryShow extends React.Component {
     return (
       <div className="story-page-container">
         <div className="story-page-image-show-container">
-          <img className="story-page-image" src={story.imageURL} alt="header" />
+          <img className="story-page-image" src={story.imageURL || "https://picsum.photos/800/600?grayscale"} alt="header" />
         </div>
         <div className="story-page-content-container">
           <div className="story-page-title-profile-image">
@@ -48,7 +48,7 @@ class StoryShow extends React.Component {
           <div className="story-page-description">
             <h3 className="description-text">Description:</h3>
             <p className="description-text">{story.description}</p>
-            <hr/> 
+            <hr />
           </div>
         </div>
       </div>
