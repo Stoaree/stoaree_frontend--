@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux"
+import LinkButton from "./../../components/LinkButton/LinkButton.js";
 
 // Components
 import StoryShow from "../../components/StoryShow/StoryShow";
 import Comment from "../../components/Comment/Comment";
 import CommentForm from "./../../components/CommentForm/CommentForm.js";
 import Playback from "../../components/Playback/Playback";
-
 import Button from "../../components/Button/Button";
 import LinkButton from "../../components/LinkButton/LinkButton";
 

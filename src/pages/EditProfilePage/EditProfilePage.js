@@ -5,6 +5,9 @@ import { setCurrentUser } from "../../redux/userReducer"
 import ProfileForm from "../../components/ProfileForm/ProfileForm";
 import fileUpload from "../../services/fileUpload"
 
+// CSS 
+import "./EditProfilePage.css";
+
 function mapStateToProps(state) {
   return {
     currentUser: state.userReducer.currentUser
@@ -47,7 +50,7 @@ class EditProfilePage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="edit-profile-page-container">
         {this.state.updateSuccess && "Profile updated successfully."}
         <h3>Edit Profile</h3>
         {this.renderForm()}
