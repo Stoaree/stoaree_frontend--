@@ -1,9 +1,12 @@
 import React from "react";
-import axios from "axios";
 import axiosAPI from "../../api/stoareeAPI";
 import { connect } from "react-redux";
 import { setCurrentUser } from "../../redux/userReducer"
 import ProfileForm from "../../components/ProfileForm/ProfileForm";
+import fileUpload from "../../services/fileUpload"
+
+// CSS 
+import "./EditProfilePage.css";
 
 function mapStateToProps(state) {
   return {
@@ -29,34 +32,9 @@ class EditProfilePage extends React.Component {
     });
   }
 
-  onSubmit = (values) => {
+  onSubmit = async (values) => {
     if (values.avatar) {
-      console.log('Preparing the upload');
-
-      axiosAPI.post("/sign_s3", {
-        fileName: Math.random().toString() + "/" + values.avatar.name,
-        fileType: values.avatar.type
-      }).then(response => {
-        const returnData = response.data.data.returnData;
-        const signedRequest = returnData.signedRequest;
-        const url = returnData.url;
-
-        console.log('Received a signed request ' + signedRequest);
-
-        const options = {
-          headers: {
-            'Content-Type': values.avatar.type
-          }
-        };
-
-        axios.put(signedRequest, values.avatar, options).then(result => {
-          console.log("Response from s3");
-
-          this.sendUpdate(values, url);
-        });
-      }).catch(error => {
-        alert(JSON.stringify(error));
-      });
+      fileUpload(values, values.avatar, this.sendUpdate);
     }
     else {
       this.sendUpdate(values);
@@ -72,7 +50,7 @@ class EditProfilePage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="edit-profile-page-container">
         {this.state.updateSuccess && "Profile updated successfully."}
         <h3>Edit Profile</h3>
         {this.renderForm()}

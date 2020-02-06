@@ -1,8 +1,13 @@
 import React from "react";
 import axiosAPI from "../../api/stoareeAPI";
+import { connect } from "react-redux";
+
+// Components
 import Question from "../../components/Question/Question";
 import LinkButton from "../../components/LinkButton/LinkButton"
-import { connect } from "react-redux";
+
+// CSS
+import "./RecordPage.css";
 
 import { setAllQuestions, nextQuestion, setCurrentStory } from "../../redux/storyReducer";
 
@@ -29,9 +34,9 @@ class RecordPage extends React.Component {
     if (currentQuestion) {
       if (currentQuestion === "finished") {
         return (
-          <div>
-            <h2>No more questions!</h2>
-            <LinkButton to={`/stories/${currentStory}`}>Finish Story</LinkButton>
+          <div className="record-page-finish-container">
+            <h2 className="record-page-text">No more questions!</h2>
+            <LinkButton to={`/stories/${currentStory}`} className="record-page-finish-button">Finish Story</LinkButton>
           </div>
         )
       }

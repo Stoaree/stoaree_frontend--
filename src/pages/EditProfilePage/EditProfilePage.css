@@ -1,0 +1,7 @@
+.edit-profile-page-container {
+  margin-left: 1rem;
+}
+
+.edit-profile-page-container h3 {
+  color: var(--main-grey);
+}

@@ -1,17 +1,24 @@
 import React from "react";
+import { connect } from "react-redux"
+import LinkButton from "./../../components/LinkButton/LinkButton.js";
 
 // Components
 import StoryShow from "../../components/StoryShow/StoryShow";
 import Comment from "../../components/Comment/Comment";
 import CommentForm from "./../../components/CommentForm/CommentForm.js";
 import Playback from "../../components/Playback/Playback";
-import LikeButton from "../../components/LikeButton/LikeButton";
 import Button from "../../components/Button/Button";
 
 // CSS
 import "./StoryPage.css";
 
 import axiosAPI from "../../api/stoareeAPI";
+
+function mapStateToProps(state) {
+  return {
+    currentUser: state.userReducer.currentUser
+  }
+}
 
 class StoryPage extends React.Component {
   state = {
@@ -80,7 +87,7 @@ class StoryPage extends React.Component {
 
   renderSounds() {
     return (
-      <div className="button-box">
+      <div className="button-box-container">
         {this.state.sounds.map((sound, index) => (
           <Playback
             {...sound}
@@ -90,10 +97,46 @@ class StoryPage extends React.Component {
             key={sound._id}
           />
         ))}
-        <Button onClick={() => this.handlePlay(this.state.currentIndex)}>Play</Button>
-        <Button onClick={this.handlePause}>Pause</Button>
+        <div className="story-page-buttons-container">
+          <Button onClick={() => this.handlePlay(this.state.currentIndex)}>Play Story</Button>
+          <Button onClick={this.handlePause}>Pause</Button>
+        </div>
       </div>
     );
+  }
+
+  renderForms = () => {
+    if (this.props.currentUser) {
+      return (
+        <div className="comment-like-box">
+          <CommentForm onSubmit={this.onCommentSubmit} />
+        </div>
+      )
+    }
+  }
+
+  deleteStory = () => {
+    const confirm = window.confirm("Are you sure you want to delete this story?");
+    if (confirm) {
+      axiosAPI.delete(`/stories/${this.state.story._id}`).then(res => {
+        if (res.status === 200) {
+          window.location.assign("/");
+        }
+      })
+    }
+  }
+
+  renderEditButton = () => {
+    const { story } = this.state;
+    const { currentUser } = this.props;
+    if (currentUser && currentUser._id === story.interviewer._id) {
+      return (
+        <div className="story-page-buttons-container">
+          <LinkButton to={`/stories/edit/${story._id}`}>Edit Story</LinkButton>
+          <Button onClick={this.deleteStory}>Delete Story</Button>
+        </div>
+      )
+    }
   }
 
   render() {
@@ -105,14 +148,10 @@ class StoryPage extends React.Component {
         <div className="story-content">
           {" "}
           <StoryShow story={story} />
+          {this.renderEditButton()}
           {this.renderSounds()}
           {this.renderComments()}
-          <div className="comment-like-box">
-            <CommentForm onSubmit={this.onCommentSubmit} />
-            <div className="like-box">
-              <LikeButton story={story} />
-            </div>
-          </div>
+          {this.renderForms()}
         </div>
       );
     } else {
@@ -121,4 +160,4 @@ class StoryPage extends React.Component {
   }
 }
 
-export default StoryPage;
+export default connect(mapStateToProps)(StoryPage);

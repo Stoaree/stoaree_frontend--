@@ -1,0 +1,23 @@
+.record-page-finish-container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+
+.record-page-finish-container h2 {
+  color: var(--main-grey);
+}
+
+.record-page-finish-button {
+  background: var(--main-green);
+  border: solid 1px var(--main-grey);
+  border-radius: 0.4rem;
+  padding: 0.5rem;
+  margin-right: 5px;
+  width: 30rem;
+  color: var(--main-white);
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}

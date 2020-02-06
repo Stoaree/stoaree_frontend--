@@ -1,0 +1,32 @@
+.profile-form-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.profile-form-input-container input {
+  border: solid 1px var(--main-grey);
+  border-radius: 0.4rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  height: 2.8rem;
+  width: 16rem;
+  margin-right: 1rem;
+}
+
+.profile-form-input-container label {
+  color: var(--main-grey);
+}
+
+.profile-form-submit-button {
+  background: var(--main-green);
+  border: solid 1px var(--main-grey);
+  border-radius: 0.4rem;
+  padding: 0.7rem;
+  width: 12rem;
+  color: var(--main-white);
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: 15px;
+  cursor: pointer;
+}

@@ -58,8 +58,10 @@ class Navbar extends React.Component {
             <SearchBar />
           </div>
           <div className="user-div">
-            {currentUser.avatarURL && <img src={currentUser.avatarURL} alt="avatar" />}
-            {currentUser.displayName}
+            <NavLink to={`/profile/${currentUser._id}`} className="text">
+              {currentUser.avatarURL && <img src={currentUser.avatarURL} alt="avatar" />}
+              {currentUser.displayName}
+            </NavLink>
           </div>
           <div className="text-div">
             <NavLink to="/" className="text" exact={true}> Home </NavLink>

@@ -1,9 +1,43 @@
 .recording {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    align-items: center;
-    justify-content: space-around;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.mic-icon-container {
+  background:var(--main-green);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-top: 1rem;
+  margin-bottom: 2rem; 
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.mic-icon {
+  color: var(--main-white);
+  cursor: pointer;
+}
+
+.mic-icon-container:hover {
+  cursor: pointer;
+}
+
+.stop-recording {
+  background: var(--main-orange);
+  border: solid 1px var(--main-grey);
+  border-radius: 0.4rem;
+  padding: 0.5rem;
+  margin-right: 5px;
+  width: 15rem;
+  color: var(--main-white);
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
