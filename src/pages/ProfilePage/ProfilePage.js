@@ -1,10 +1,13 @@
 import React from 'react';
 import UserDataDisplay from './../../components/UserDataDisplay/UserDataDisplay.js';
 import { getUserData } from './../../services/getUserData.js';
+import { NavLink } from "react-router-dom";
 
 // Components
 import ProfileImage from './../../components/ProfileImage/ProfileImage.js';
-import ImageUpload from './../../services/imageUpload.js';
+
+// CSS
+import "./ProfilePage.css";
 
 class ProfilePage extends React.Component {
 
@@ -15,7 +18,7 @@ class ProfilePage extends React.Component {
   }
 
   componentDidMount() {
-    
+
     getUserData(this.props.match.params.id).then((response) => {
       const stories = response.data.stories.map((story) => {
         return story
@@ -25,18 +28,18 @@ class ProfilePage extends React.Component {
       console.log(err);
     })
   };
-  
-  render () {
+
+  render() {
     return (
 
-      <div>
+      <div className="profile-page-container">
+        <NavLink to="/profile/update"> <i className="fas fa-user-edit user-edit-icon"></i> </NavLink>
         <h1> {this.state.userData.displayName} </h1>
-        <div> 
-          <ProfileImage avatarURL={this.state.avatarURL}/>
-          <ImageUpload  userId={this.state.userData._id} />
+        <div>
+          <ProfileImage avatarURL={this.state.avatarURL} />
         </div>
 
-        <UserDataDisplay userData={this.state.userData} stories={this.state.stories} avatarURL={this.state.avatarURL} />    
+        <UserDataDisplay userData={this.state.userData} stories={this.state.stories} avatarURL={this.state.avatarURL} />
       </div>
     )
   }

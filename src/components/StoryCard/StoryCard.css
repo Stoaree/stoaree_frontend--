@@ -1,30 +1,37 @@
 .story-card {
-  border: var(--main-grey) 1px solid;
   margin-top: 1rem;
+  margin-left: 1rem;
   padding-top: 1rem;
 }
 
-.story-content {
+.image-header-card {
+  width: 20vw;
+  height: 20vh;
+  border-radius: 10%;
+  display: block;
+  object-fit: cover;
+  border: solid 1px var(--main-grey);
+}
+
+.story-content-card {
   display: flex;
-  flex-direction: row;
+  margin-top: 1rem;
 }
 
-.story-title {
-  color: green;
-  margin-top: 0;
-  margin-left: 0.5rem;
+.story-text-container-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 1rem;
+  width: 216px;
 }
 
-.description-text {
+.story-title-card {
   color: var(--main-green);
-  margin-top: 0;
-  margin-left: 3rem;
+  text-decoration: none;
 }
 
-.profile-image {
-  border: tomato 1px solid;
-  border-radius: 50%;
-  padding: 1rem;
+.description-text-card {
+  color: var(--main-grey);
+  font-size: small;
 }
-
-

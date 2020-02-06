@@ -14,6 +14,8 @@ import StoryPage from "../pages/StoryPage/StoryPage.js";
 import ProfilePage from "../pages/ProfilePage/ProfilePage.js";
 import AdminPage from '../pages/AdminPage/AdminPage';
 import CreateStoryPage from "../pages/CreateStoryPage/CreateStoryPage";
+import EditProfilePage from "../pages/EditProfilePage/EditProfilePage";
+import EditStoryPage from "../pages/EditStoryPage/EditStoryPage";
 
 // Components
 import NavBar from "./../components/Navbar/NavBar.js";
@@ -28,7 +30,9 @@ class AppRouter extends React.Component {
             <Route path="/search" component={SearchPage} />
             <Route path="/admin" component={AdminPage} />
             <Route path="/stories/new" component={CreateStoryPage} />
+            <Route path="/stories/edit/:id" component={EditStoryPage} />
             <Route path="/stories/:id" component={StoryPage} />
+            <Route path="/profile/update" component={EditProfilePage} />
             <Route path="/profile/:id" component={ProfilePage} />
             <Route path="/question" component={QuestionsPage} />
             <Route path="/signup" component={SignupPage} />

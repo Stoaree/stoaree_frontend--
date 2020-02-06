@@ -1,28 +1,62 @@
-.storyCard {
-  border: var(--main-grey) 1px solid;
-  margin-top: 1rem;
-  padding-top: 1rem;
+.story-page-image {
+  width: 100%;
+  height: 600px;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-.storyContent {
+.story-page-content-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.story-page-tags-container {
   display: flex;
   flex-direction: row;
 }
 
-.storyTitle {
-  color: red;
-  margin-top: 0;
-  margin-left: 0.5rem;
+.story-page-tag {
+  color: var(--main-grey);
+  border: 1px solid var(--main-grey);
+  border-radius: 5px;
+  padding: 0.5rem;
+  margin-right: 1rem; 
 }
 
-.descriptionText {
+.story-page-tag:hover {
+  background: var(--main-green);
+  color: var(--main-white);
+  cursor: default;
+}
+
+.story-page-content-container h3 {
+  color: var(--main-grey);
+}
+
+.story-page-description p  {
+  color: var(--main-grey);
+}
+
+.story-page-content-container hr  {
+  color: var(--main-grey);
+  border: 0.5px solid;
+}
+
+.story-page-title-profile-image {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.story-page-title-profile-image hr {
+  border: solid 1px var(--main-grey);
+}
+
+.story-page-title {
+  margin-left: 1rem;
   color: var(--main-green);
-  margin-top: 0;
-  margin-left: 3rem;
 }
 
-.profileImage {
-  border: tomato 1px solid;
-  border-radius: 50%;
-  padding: 1rem;
-}
+

@@ -1,7 +1,6 @@
 .profile-image {
-  border: tomato 1px solid;
   border-radius: 50%;
-  width: 10%;
-  height: 10%;
-  padding: 1rem;
+  width: 40px;
+  height: 40px;
+  border: solid 1px var(--main-grey);
 }

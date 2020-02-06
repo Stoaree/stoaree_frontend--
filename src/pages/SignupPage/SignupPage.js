@@ -5,6 +5,9 @@ import Cookies from 'universal-cookie';
 // Component
 import SignupForm from '../../components/SignupForm/SignupForm.js';
 
+// CSS
+import "./SignupPage.css";
+
 const cookies = new Cookies();
 class SignupPage extends React.Component {
 
@@ -22,7 +25,8 @@ class SignupPage extends React.Component {
           password: values.password
         }).then(response => {
           const token = response.data.token;
-          cookies.set(token, true, { path: "/" })
+          cookies.set("stoaree", token, { path: "/" })
+          window.location.assign("/");
         })
       }
     }).catch((err) => {
@@ -32,9 +36,12 @@ class SignupPage extends React.Component {
 
   render() {
     return (
-      <div>
-        <h3> SignUp Page </h3>
-        <SignupForm onSubmit={this.onSubmit} initialValues={this.data} />
+      <div className="signup-container-page">
+        <div className="signup-text-container-page">
+          <h3 className="signnup-text-page"> Let's hear about your stories... </h3>
+          <p className="signnup-text-page"> Please fill in the information below </p>
+          <SignupForm onSubmit={this.onSubmit} initialValues={this.data} />
+        </div>
       </div>
     )
   }

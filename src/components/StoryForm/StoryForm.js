@@ -1,6 +1,10 @@
 import React from "react";
 import { Field, FieldArray, reduxForm } from "redux-form";
 import FormFileInput from "../FormFileInput/FormFileInput"
+import FormField from "../FormField/FormField";
+
+// CSS 
+import "./StoryForm.css";
 
 function validate(values) {
   let errors = {};
@@ -74,25 +78,63 @@ class StoryForm extends React.Component {
     </div>
   )
 
+  renderSubmit = () => {
+    if (this.props.editing) {
+      return (
+        <div className="story-form-container">
+          <button type="submit" className="create-story-button">Update Story</button>
+        </div>
+      )
+    }
+    else {
+      return (
+        <div className="story-form-container">
+          <p>Once you save, you will be redirected to the questions so you can start recording.</p>
+          <button type="submit" className="create-story-button"> Save Story </button>
+        </div>
+      )
+    }
+  }
+
   render() {
+    const { imageURL } = this.props;
+
     return (
       <div>
         <form onSubmit={this.props.handleSubmit}>
 
-          <div>
-            <Field name="title" component={this.renderField} type="text" label="Title" />
-            <label>Description</label>
-            <div><Field name="description" component="textarea" placeholder="Description" /></div>
-            <Field name="interviewee" component={this.renderField} type="email" label="Interviewee" placeholder="User's account email" />
-            <FieldArray name="tags" component={this.renderTags} />
-            <Field name="public" component={this.renderField} type="checkbox" label="Make public?" />
-            <label>Header image</label>
-            <div><Field name="image" component={FormFileInput} /></div>
-          </div>
+          <div className="story-form-container">
+            <div className="story-form-input-container">
+              <Field name="title" component={FormField} type="text" label="Title" />
+            </div>
 
-          <div>
-            Once you save, you will be redirected to the questions so you can start recording.<br />
-            <button type="submit"> Save Story </button>
+            <div className="story-form-input-container">
+              <Field name="description" component={FormField} placeholder="Description" label="Description"/>
+            </div>
+
+            <div className="story-form-input-container">
+              <Field name="interviewee" component={FormField} type="email" label="Interviewee" placeholder="User's account email" />
+            </div>
+
+            
+
+            <div className="story-form-click-ables-container">
+              <ol className="story-form-click-ables">
+                <FieldArray name="tags" component={this.renderTags} />
+              </ol>
+
+              <ol className="story-form-click-ables">
+                <Field name="isPublic" component={FormField} type="checkbox" label="Make public?" />
+              </ol>
+
+              <ol className="story-form-click-ables">
+                <label for="imageHeader"> Header Image </label>
+                {imageURL && <img src={imageURL} alt="Current story header" />}
+                <Field name="image" label="Header Image" component={FormFileInput} id="imageHeader" />
+              </ol>
+            </div>
+
+            {this.renderSubmit()}
           </div>
         </form>
       </div>

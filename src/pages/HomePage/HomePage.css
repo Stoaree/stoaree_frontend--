@@ -1,0 +1,27 @@
+.about-stoaree-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ef6248;
+  color: white;
+  padding-bottom: 1rem;
+}
+
+.stoaree-text {
+  margin: 0px auto;
+  margin: 10px;
+  width: 1100px;
+}
+
+.cardDiv {
+  height: 100%;
+  max-width: 1250px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 0px auto;
+}
+
+

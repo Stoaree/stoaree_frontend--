@@ -1,7 +1,22 @@
-.search-div {
-  padding-right: 2rem;
-  padding-left: 2rem;
-  border: solid 3px var(--main-grey);
-  border-radius: 0.5rem;
+.search-bar {
+  position: relative;
 }
 
+.input-field {
+  width: 100%;
+  border-radius: 5px;
+  padding: 0.5rem;
+  padding-right: 10rem;
+  border-color: var(--main-grey);
+}
+
+.search-icon {
+  background: url("./../../assets/icons/searchIcon.svg");
+  right: 7px;
+  top: calc((100% - 1.5rem) / 2);
+  height: 1.5rem;
+  width: 1.5rem;
+  display: block;
+  background-repeat: no-repeat;
+  position: absolute;
+}
