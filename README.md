@@ -1,10 +1,11 @@
 # Story App - Luke, Tess and Max
 
 ## URL
-
+- **https://stoaree.netlify.com/**
 
 ## Github Link
   - https://github.com/Stoaree
+
 ### Purpose
 
 - Stoaree is an online platform allowing users to share and create compelling interviews easily with another individual based off Mark Howards line of questions. After Mark Howard created his podcast "Howie Games" which has amassed up to 20 million listens he started to get contacted to interview the loved ones of his listeners who were either sick or elderly and to capture their story and how they came to be who they're today. This soon lead to the idea of Stoaree. The purpose of Stoaree is to allow users to easily capture compelling stories from family members, friends or interesting people based off the questions Mark asks in his podcasts. Along with capturing the stories it also becomes a place to share them with the world. A social aspect allowing users to listen to stories around them. Mark wants to also capture the important memories in people's lives and allow them to easily share them amongst family members and store them in one place.
@@ -65,36 +66,37 @@
 - **mongoose-unique-validator** - This library is used to add a uniqueness validator to Mongo schema fields . The user's email address is used as a login credential, so it is essential
 - **jest** and **supertest** - These libraries used to create and run automated tests that utilise the Express server and provide coverage reports.
 
-## How to run servers and tests locally 
+## How to run servers and tests locally
 
 ### Downloading and installing dependencies
 
 - Clone down both stoaree_frontend-- and stoaree_backend-- repositories.
-
-- `cd` into stoaree_backend-- and run `npm install`   
-
-- `cd` into stoaree_frontend-- and run `yarn install`   
+- `cd` into stoaree_backend-- and run `npm install`
+- `cd` into stoaree_frontend-- and run `yarn install`
 
 ### Running the backend and frontend locally
 
-- `cd` into stoaree_backend-- and run `npm start`   
+- `cd` into stoaree_backend-- and run `npm start`
+- `cd` into stoaree_frontend-- and run `yarn start`
 
-- `cd` into stoaree_frontend-- and run `yarn start` 
-
-### Running frontend tests 
+### Running frontend tests
 
 - `cd` into stoaree_frontend-- and run `yarn start`
-- `cd` into stoaree_backend-- and run `npm start`   
-- In another instance of terminal - `cd` into stoaree_frontend-- and run `yarn run cypress open` 
-- A new browser instance will be opened in Cypress. Click the 'run all specs' button to run all tests. 
+- `cd` into stoaree_backend-- and run `npm start`
+- In another instance of terminal - `cd` into stoaree_frontend-- and run `yarn run cypress open`
+- A new browser instance will be opened in Cypress. Click the 'run all specs' button to run all tests.
 - A score of the total coverage is stored in /coverage/lcov-report/index.html
 
+### Running backend tests
 
-### Running backend tests 
-- `cd` into stoaree_backend-- and run `yarn start`   
-- `cd` into stoaree_frontend-- and run `npm start` 
-- In another instance of terminal - `cd` into stoaree_backend-- and run `npm test` 
+- In .env, change either DB_URI or DB_NAME so that Mongoose is pointing toward a fresh database (it will be wiped clean before the tests are run)
+- `cd` into stoaree_backend-- and run `npm test`
+- A score of the total coverage is stored in /coverage/lcov-report/index.html
 
+### Admin user
+
+- A user has to be manually given admin status directly through Mongo, by adding the field `isAdmin: true` to a user in the database.
+- Admin users have access to the admin dashboard at `/admin` where the master list of questions can be manipulated.
 
 ## Manual Testing
 
@@ -179,7 +181,24 @@ The first diagram is an overview of data flow throughout the whole app, while th
 - For prototype and interaction with the desktop designs please see: https://sketch.cloud/s/kRppA/a/pnnA8o/play
 - For prototype and interaction with the mobile designs please see: https://sketch.cloud/s/kRppA/v/m1kR0k/a/gnnoZz/play
 
-- Note: This application was designed for mobile first.
+- The below is designs for desktop:
+
+![Desktop Design](./assets/images/desktopDesigns/01_desktop_design.png)
+
+![Desktop Design](./assets/images/desktopDesigns/02_desktop_design.png)
+
+![Desktop Design](./assets/images/desktopDesigns/03_desktop_design.png)
+
+![Desktop Design](./assets/images/desktopDesigns/04_desktop_design.png)
+
+![Desktop Design](./assets/images/desktopDesigns/05_desktop_design.png)
+
+![Desktop Design](./assets/images/desktopDesigns/06_desktop_design.png)
+
+![Desktop Design](./assets/images/desktopDesigns/07_desktop_design.png)
+
+![Desktop Design](./assets/images/desktopDesigns/08_desktop_design.png)
+
 - Below is the wire frames for a mobile device:
 
 ![Mobile Design](./assets/images/mobileDesigns/01_mobile_design.png)
@@ -205,24 +224,6 @@ The first diagram is an overview of data flow throughout the whole app, while th
 ![Mobile Design](./assets/images/mobileDesigns/11_mobile_design.png)
 
 ![Mobile Design](./assets/images/mobileDesigns/12_mobile_design.png)
-
-- The below is designs for desktop:
-
-![Desktop Design](./assets/images/desktopDesigns/01_desktop_design.png)
-
-![Desktop Design](./assets/images/desktopDesigns/02_desktop_design.png)
-
-![Desktop Design](./assets/images/desktopDesigns/03_desktop_design.png)
-
-![Desktop Design](./assets/images/desktopDesigns/04_desktop_design.png)
-
-![Desktop Design](./assets/images/desktopDesigns/05_desktop_design.png)
-
-![Desktop Design](./assets/images/desktopDesigns/06_desktop_design.png)
-
-![Desktop Design](./assets/images/desktopDesigns/07_desktop_design.png)
-
-![Desktop Design](./assets/images/desktopDesigns/08_desktop_design.png)
 
 ## Screenshots of your Jira board throughout the duration of the project
 
@@ -251,3 +252,16 @@ The first diagram is an overview of data flow throughout the whole app, while th
 ![Jira Progress](./assets/images/jiraProgress/12-jira-progress.png)
 
 ![Jira Progress](./assets/images/jiraProgress/13-jira-progress.png)
+
+![Jira Progress](./assets/images/jiraProgress/14-jira-progress.png)
+
+![Jira Progress](./assets/images/jiraProgress/15-jira-progress.png)
+
+![Jira Progress](./assets/images/jiraProgress/16-jira-progress.png)
+
+![Jira Progress](./assets/images/jiraProgress/17-jira-progress.png)
+
+![Jira Progress](./assets/images/jiraProgress/18-jira-progress.png)
+
+![Jira Progress](./assets/images/jiraProgress/19-jira-progress.png)
+
