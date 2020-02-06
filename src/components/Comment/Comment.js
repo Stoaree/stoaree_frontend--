@@ -15,7 +15,6 @@ class Comment extends React.Component {
             <div className="comment-content-container">
               <h4>{this.props.user.displayName}</h4>
               <p>{this.props.text}</p>
-              <hr />
             </div>
         </div>
       </div>

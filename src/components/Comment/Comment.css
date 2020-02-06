@@ -1,19 +1,21 @@
 .comment-container {
   margin-left: 1rem;
-  margin-top: 1rem;
+  margin-top: 2rem;
   margin-bottom: 1rem;
+  margin-right: 1rem;
+  padding-bottom: 1rem;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   border-bottom: 1px solid var(--main-grey);
-  margin-right: 1rem;
+  
 }
 
 .comment-content-container {
   display: flex;
   flex-direction: column;
   margin-left: 1rem;
-
+  color: var(--main-grey);
 }
 
 .comment-content-container p {

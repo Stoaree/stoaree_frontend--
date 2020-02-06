@@ -1,6 +1,11 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
+
+
+// Components
 import Button from "../Button/Button";
+
+// CSS
 import "./CommentForm.css";
 
 function validate(values) {
