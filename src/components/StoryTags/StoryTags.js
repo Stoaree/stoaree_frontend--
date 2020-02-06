@@ -1,5 +1,8 @@
 import React from 'react';
 
+// CSS 
+import "./StoryTags.css";
+
 class StoryTags extends React.Component {
 
   handleTags() {
