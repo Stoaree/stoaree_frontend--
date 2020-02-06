@@ -99,10 +99,10 @@ class Question extends React.Component {
     else {
       const { uploadComplete } = this.props;
       return (
-        <div>
+        <div className="question-button-container">
           <Recording />
           {uploadComplete && "Audio uploaded successfully"}
-          <button onClick={this.nextQuestion} disabled={!uploadComplete}>Next</button>
+          <button onClick={this.nextQuestion} disabled={!uploadComplete} className="question-next-button">Next Question</button>
         </div>
       )
     }
