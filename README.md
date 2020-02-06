@@ -1,7 +1,7 @@
 # Story App - Luke, Tess and Max
 
 ## URL
-**https://stoaree.netlify.com/**
+- **https://stoaree.netlify.com/**
 
 ## Github Link
   - https://github.com/Stoaree
@@ -71,15 +71,12 @@
 ### Downloading and installing dependencies
 
 - Clone down both stoaree_frontend-- and stoaree_backend-- repositories.
-
 - `cd` into stoaree_backend-- and run `npm install`
-
 - `cd` into stoaree_frontend-- and run `yarn install`
 
 ### Running the backend and frontend locally
 
 - `cd` into stoaree_backend-- and run `npm start`
-
 - `cd` into stoaree_frontend-- and run `yarn start`
 
 ### Running frontend tests
@@ -95,6 +92,11 @@
 - In .env, change either DB_URI or DB_NAME so that Mongoose is pointing toward a fresh database (it will be wiped clean before the tests are run)
 - `cd` into stoaree_backend-- and run `npm test`
 - A score of the total coverage is stored in /coverage/lcov-report/index.html
+
+### Admin user
+
+- A user has to be manually given admin status directly through Mongo, by adding the field `isAdmin: true` to a user in the database.
+- Admin users have access to the admin dashboard at `/admin` where the master list of questions can be manipulated.
 
 ## Data Flow Diagram
 
@@ -168,7 +170,24 @@ The first diagram is an overview of data flow throughout the whole app, while th
 - For prototype and interaction with the desktop designs please see: https://sketch.cloud/s/kRppA/a/pnnA8o/play
 - For prototype and interaction with the mobile designs please see: https://sketch.cloud/s/kRppA/v/m1kR0k/a/gnnoZz/play
 
-- Note: This application was designed for mobile first.
+- The below is designs for desktop:
+
+![Desktop Design](./assets/images/desktopDesigns/01_desktop_design.png)
+
+![Desktop Design](./assets/images/desktopDesigns/02_desktop_design.png)
+
+![Desktop Design](./assets/images/desktopDesigns/03_desktop_design.png)
+
+![Desktop Design](./assets/images/desktopDesigns/04_desktop_design.png)
+
+![Desktop Design](./assets/images/desktopDesigns/05_desktop_design.png)
+
+![Desktop Design](./assets/images/desktopDesigns/06_desktop_design.png)
+
+![Desktop Design](./assets/images/desktopDesigns/07_desktop_design.png)
+
+![Desktop Design](./assets/images/desktopDesigns/08_desktop_design.png)
+
 - Below is the wire frames for a mobile device:
 
 ![Mobile Design](./assets/images/mobileDesigns/01_mobile_design.png)
@@ -194,24 +213,6 @@ The first diagram is an overview of data flow throughout the whole app, while th
 ![Mobile Design](./assets/images/mobileDesigns/11_mobile_design.png)
 
 ![Mobile Design](./assets/images/mobileDesigns/12_mobile_design.png)
-
-- The below is designs for desktop:
-
-![Desktop Design](./assets/images/desktopDesigns/01_desktop_design.png)
-
-![Desktop Design](./assets/images/desktopDesigns/02_desktop_design.png)
-
-![Desktop Design](./assets/images/desktopDesigns/03_desktop_design.png)
-
-![Desktop Design](./assets/images/desktopDesigns/04_desktop_design.png)
-
-![Desktop Design](./assets/images/desktopDesigns/05_desktop_design.png)
-
-![Desktop Design](./assets/images/desktopDesigns/06_desktop_design.png)
-
-![Desktop Design](./assets/images/desktopDesigns/07_desktop_design.png)
-
-![Desktop Design](./assets/images/desktopDesigns/08_desktop_design.png)
 
 ## Screenshots of your Jira board throughout the duration of the project
 
@@ -240,39 +241,15 @@ The first diagram is an overview of data flow throughout the whole app, while th
 ![Jira Progress](./assets/images/jiraProgress/12-jira-progress.png)
 
 ![Jira Progress](./assets/images/jiraProgress/13-jira-progress.png)
-## Available Scripts
 
-In the project directory, you can run:
+![Jira Progress](./assets/images/jiraProgress/14-jira-progress.png)
 
-### `yarn start`
+![Jira Progress](./assets/images/jiraProgress/15-jira-progress.png)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![Jira Progress](./assets/images/jiraProgress/16-jira-progress.png)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+![Jira Progress](./assets/images/jiraProgress/17-jira-progress.png)
 
-### `yarn test`
+![Jira Progress](./assets/images/jiraProgress/18-jira-progress.png)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![Jira Progress](./assets/images/jiraProgress/19-jira-progress.png)
